@@ -1,0 +1,260 @@
+% !TeX program = PdfLaTeX
+% !TeX root = ../../Elaborati_Aerodinamica_Bruno_Spoti.tex
+\chapter{Effetti della Comprimibilità}
+
+Lo studio del profilo alare PW106 fin ora condotto si è basato sul modello di moto incomprimibile, valido esclusivamente alle basse velocità. Gli effetti dell’aumento del numero di Mach possono ancora essere studiati in un campo lineare se è valida l’ipotesi di piccole perturbazioni.\\
+Nel presente capitolo si terranno in conto gli effetti della comprimibilità in campo subsonico lineare andando preliminarmente a calcolare il numero di Mach critico inferiore e valutandone la variabilità con il $C_l$. Successivamente si analizzeranno gli effetti dell'aumento del numero di Mach sul $C_{p}$ in campo subsonico.
+Infine saranno confrontati i risultati ottenuti con XFOIL con quelli ricavati con le regole di similitudine di Prandtl-Glauert per il moto subsonico comprimibile.
+
+\noindent \\
+\section{Numero di Mach Critico Inferiore}
+
+
+Al fine di poter calcolare il numero di Mach Critico Inferiore, tramite MATLAB  sono stati costruiti alcuni rami del Abbaco che esprime il $Cp_{min}$ in funzione di $M_{\infty}$ e sul quale vi è la curva del $Cp^{*}$. \\ Dall’intersezione di queste due curve, per un certo angolo d’attacco, si ottiene la valutazione del numero di Mach Critico Inferiore ( $M_{\infty crit}$).\\ 
+
+L’angolo per il quale è stato calcolato il $M_{\infty crit}$ è  ${\alpha}=2^\circ$.\\
+
+Con XFOIL sono stati ricavati i valori del $Cp_{min}$ per vari valori del numero di Mach e i valori del $Cp^*$, ossia il $C_p$ del campo di moto ove si raggiungono condizioni soniche.
+
+
+\begin{figure} 
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ xmin=0, 
+xmax=1, 
+ymin=-16,
+ymax=0,
+xlabel=$M_{\infty}$, 
+ylabel=$Cp_{min}$ ,
+ y dir=reverse,
+width=12cm,
+height=7cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick,smooth,dashed]
+file{images/fileDat/Comprimibilità/m_cp_star.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_-0.9.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_-0.7.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_-0.5.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_-0.3.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_-0.1.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_0.11.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_0.3.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_0.5.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_0.7.dat};
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cPIncMin_atCl_0.9.dat};
+\legend {$Cp^*$,$Cp_{min}$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Abbaco per il calcolo del numero di Mach Critico Inferiore. Curve del $Cp_{min}$ parametrizzatere per $C_l$ che varia tra -0.9 e 0.9 con passo 0.2. Matlab R2016b. XFOIL~6.99 }\label{fig:cp}
+\end{figure}
+\noindent 
+
+Tramite MATLAB è stato calcolato il punto di intersezione tra le due curve al fine di calcolare il valore del numero di Mach richiesto:
+
+\begin{center}
+\bfseries  {$ M_{\infty crit}({\alpha}=2^\circ)$=0.624}
+\end {center}
+
+È interessante valutare l’andamento del $ M_{\infty crit} $ al variare del $C_l$. Ció è stato fatto tramite l’Abbaco introdotto entrando in tal grafico con il valore del $Cp_{min}$ ottenuto da XFOIL per diversi $C_l$.\\
+Il massimo valore trovato di  $ M_{\infty crit} $ è 0.727, ad un Coefficiente di Portanza di 0.11, come si evince dalla figura~\vref{fig:mcrCL}
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=1, 
+ymin=-1,
+ymax=1,
+ylabel=$C_l$, 
+xlabel=$ M_{\infty crit} $,
+ylabel style={rotate=-90},
+width=10cm,
+height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,mark=*,mark options={solid}]
+file{images/fileDat/Comprimibilità/grafico_cl_mcrinf.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, $M_{\infty crit} $  al variare del coefficiente di portanza. Matlab R2016b. XFOIL~6.99}\label{fig:mcrCL}
+\end{figure}
+\noindent \\
+
+\section{Effetti della comprimibilità }
+
+
+
+In primo luogo è interessante valutare come varia la distribuzione del Coefficiente di Pressione sul profilo.
+
+\noindent \\
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-1.5,
+ymax=1.5,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black,dashed]
+file{images/fileDat/Comprimibilità/cp_alfa2_M0.624.dat};
+\addplot [black]
+file{images/fileDat/Comprimibilità/cp_a2_M0.dat};
+\legend {$M=0.624$,$M=0$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, confronto del Coefficiente di Pressione per il campo incomprimibile e comprimibile subsonico per $\alpha=2^\circ$. XFOIL 6.69}\label{fig:cp}
+\end{figure}
+
+\noindent   \\
+
+Per effetto della comprimibilità cambierà la distribuzione del Coefficiente di pressione lungo il profilo. In particolare, all’aumentare del numero di Mach, le zone espanse espandono di più, e quelle compresse comprimono di più.\\ Nel grafico esistono alcuni punti, detti “Punti Neutri” che godono dell’invarianza del Cp, al variare del numero di Mach. Questi sono i punti per i quali il Coefficiente di pressione vale zero.\\ 
+
+Tramite XFOIL è possibile valutare l’andamento del $C_l$ all’aumentare del numero di Mach a monte (vedi figura~\vref{fig:cp1.4}). % È stato considerato come punto di partenza per M=0 un $C_l =0.67$. Questo coefficiente di portanza è relativo, in campo incomprimibile, ad un angolo d’attacco $ \alpha =2^\circ$ e ad esso corrisponde un numero di Mach Critico Inferiore di 0.624.\\  
+Dal grafico ottenuto si nota chel $C_l$ cresce all’aumentare del un $M_{\infty}$.
+
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.98,0.25)}},
+ylabel style={rotate=-90}, xmin=0, 
+xmax=9, 
+ymin=0,
+ymax=1.8,
+xlabel=$\alpha$,
+ylabel=$C_l$, 
+width=10cm,
+height=12 cm,
+scale only axis,
+grid=major] 
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/curva_portanza_M0.dat};
+\addplot [black,smooth,dashed]
+file{images/fileDat/Comprimibilità/curva_portanza_M0_2.dat};
+\addplot [black,smooth,dashdotted]
+file{images/fileDat/Comprimibilità/curva_portanza_M0_4.dat};
+\addplot [black,smooth,dotted]
+file{images/fileDat/Comprimibilità/curva_portanza_M0_6.dat};
+\legend {$M=0$,$M=0.2$, $M=0.4$,$M=0.6$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, andamento della curva di portanza al variare del $M_{\infty}$ . XFOIL 6.99}\label{fig:cp1.4}
+\end{figure}
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=0.7, 
+ymin=0.3,
+ymax=0.5,
+xlabel=$M_{\infty}$,
+ylabel=$C_l$, 
+width=10cm,
+height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,smooth]
+file{images/fileDat/Comprimibilità/cl_mach.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, andamento del $C_l $  al variare del $M_{\infty}$ per $ \alpha =2^\circ$ . XFOIL 6.99}\label{fig:cp1.4}
+\end{figure}
+
+
+\noindent \\ \\ 
+
+\section{Similitudine di Prandtl-Glauert }
+
+Con la similitudine di Prandtl-Glauert è possibile studiare campi comprimibile subsonici attraverso teorie incomprimibili. Ciò è fatto attraverso un cambiamento di variabili che ci consente di scrivere le seguenti equazioni 
+
+\begin{equation}
+\label{eqn:prandtcll}
+[C_l]_{M,{\alpha},{\tau},{\gamma}}=\frac {1}{\sqrt{1-M^2_{\infty}}}[C_l]_{M=0,{\alpha},{\tau},{\gamma}}
+\end{equation}
+
+
+\begin{equation}
+\label{eqn:prandtl}
+[C_p]_{M,{\alpha},{\tau},{\gamma}}=\frac {1}{\sqrt{1-M^2_{\infty}}}[C_p]_{M=0,{\alpha},{\tau},{\gamma}}
+\end{equation}
+
+
+Il codice XFOIL, per la risoluzione dei campi comprimibili, ricorre alla similitudine di Karman e Tsein che vanta una migliore accuratezza in alto subsonico rispetto la regola di Prandtl-Glauert. \\
+Di seguito si mostra un confronto tra la risoluzione del campo di moto comprimibile con i due approcci citati in termini di $C_l$ e Cp. \\
+
+
+Viene fissato un $C_l=0.3373$ cui corrisponde un $ M_{\infty crit}=0.624$. Da questo valore di partenza ($C_l=0.3373$, $M_{\infty}=0$), attraverso l'utilizzo di un codice MATLAB, si calcolano i valori del $C_l$ al variare del $ M_{\infty}$ con la similitudine Prandtl-Glauert fino ad un valore di $M_{\infty}=0.624$.\\ Il grafico ricavato viene confrontato con quello ottenuto da XFOIL.
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=0.7, 
+ymin=0.3,
+ymax=0.55,
+ylabel=$C_l$, 
+xlabel=$M_{\infty}$ ,
+width=10cm,
+height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick,dashed]
+file{images/fileDat/Comprimibilità/cl_mach.dat};
+\addplot [black,very thick]
+file{images/fileDat/Comprimibilità/prandtl.dat};
+\legend {XFOIL,Similitudine Prandtl-Glauert}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, confronto del Coefficiente di portanza per il campo comprimibile subsonico calcolato con la similitudine di Prandtl-Glauert e con XFOIL per $C_l=0.34$ a $ M_{\infty}=0$ ($ M_{\infty crit}=0.624)$. XFOIL 6.99. Matlab R2016b}\label{fig:cp}
+\end{figure}
+
+Per valutare la distribuzione del coefficiente di pressione in campo comprimibile utilizzando la similitudine di  Karman-Tsein è stato ricavato il Cp per $C_l=0.34$ e $M_{\infty}=0.624$ tramite XFOIL, mentre per ottenere il  $C_p$ con la similitudine di Prandtl-Glauert è stato implementato uno script in MATLAB che, a partire dai valori del $C_p$ per $C_l=0.34$ e $M_{\infty}=0$ ottenuti con XFOIL, calcola la distribuzione del coefficiente di pressione che tiene conto degli effetti della comprimibilità.
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-1.5,
+ymax=1.5,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick,dashed]
+file{images/fileDat/Comprimibilità/cp_alfa2_M0.624.dat};
+\addplot [black,very thick]
+file{images/fileDat/Comprimibilità/cpprandtl.dat};
+\legend {XFOIL,Similitudine Prandtl-Glauert}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, confronto del coefficiente di pressione per il campo comprimibile subsonico calcolato con la similitudine di Prandtl-Glauert e con XFOIL per $C_l=0.34$ e $M_{\infty}=0.624$. XFOIL 6.99. Matlab R2016b}\label{fig:cp}
+\end{figure}

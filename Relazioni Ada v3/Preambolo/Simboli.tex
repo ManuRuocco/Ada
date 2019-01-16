@@ -1,0 +1,297 @@
+%****************************************************************************************
+% 												
+%	PACCHETTI RICHIESTI PER UNA CORRETTA COMPILAZIONE
+%	amsmath, mathtools, relsize, xspace
+%
+%	ALTRE NOTE
+%	- Aggiungere il comando \xspace alla fine di ogni nuova dichiarazione, all'interno
+%	dell'ambiente newcommand, in modo da risolvere a priori i problemi della spaziatura
+%	- Gli stili non sono omogenei o perfetti, quindi controllare a video simbolo per
+%	simbolo la resa di ogni comando
+%
+%****************************************************************************************
+
+% --------------------------------------------------------------------------------------------------------------------------------------------
+% TESTO IN AMBIENTE MATEMATICO
+% --------------------------------------------------------------------------------------------------------------------------------------------
+%\newcommand{\de}{\ensuremath{\mathrm d}\xspace} % Derivata totale
+%\newcommand{\cost}{\ensuremath{\mathrm{costante}}\xspace} % Costante
+%
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%% LETTERE CALLIGRAFICHE
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%\newcommand{\calB}{\ensuremath{\mathcal B}\xspace} % Lettera calligrafica B
+%\newcommand{\calE}{\ensuremath{\mathcal E}\xspace} % Lettera calligrafica E
+%\newcommand{\calP}{\ensuremath{\mathcal P}\xspace} % Lettera calligrafica P
+%\newcommand{\calR}{\ensuremath{\mathcal R}\xspace} % Lettera calligrafica R
+%\newcommand{\calS}{\ensuremath{\mathcal S}\xspace} % Lettera calligrafica S
+%\newcommand{\calI}{\ensuremath{\mathcal J}\xspace} % Lettera calligrafica I
+%
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%% GRANDEZZE CON PEDICI
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%\newcommand{\xA}{\ensuremath{x_\mathrm A}\xspace} % Coordinata x del punto A
+%\newcommand{\yA}{\ensuremath{y_\mathrm A}\xspace} % Coordinata y del punto A
+%\newcommand{\zA}{\ensuremath{z_\mathrm A}\xspace} % Coordinata z del punto A
+%\newcommand{\xAA}{\ensuremath{x_{\mathrm A_1}}\xspace} % Coordinata x del punto A_1
+%\newcommand{\yAA}{\ensuremath{y_{\mathrm A_1}}\xspace} % Coordinata y del punto A_1
+%\newcommand{\xAAA}{\ensuremath{x_{\mathrm A_2}}\xspace} % Coordinata x del punto A_2
+%\newcommand{\yAAA}{\ensuremath{y_{\mathrm A_2}}\xspace} % Coordinata y del punto A_2
+%\newcommand{\xB}{\ensuremath{x_\mathrm B}\xspace} % Coordinata x del punto B
+%\newcommand{\yB}{\ensuremath{y_\mathrm B}\xspace} % Coordinata y del punto B
+%\newcommand{\zB}{\ensuremath{z_\mathrm B}\xspace} % Coordinata z del punto B
+%\newcommand{\xBB}{\ensuremath{x_{\mathrm B_1}}\xspace} % Coordinata x del punto B_1
+%\newcommand{\yBB}{\ensuremath{y_{\mathrm B_1}}\xspace} % Coordinata y del punto B_1
+%\newcommand{\xBBB}{\ensuremath{x_{\mathrm B_2}}\xspace} % Coordinata x del punto B_2
+%\newcommand{\yBBB}{\ensuremath{y_{\mathrm B_2}}\xspace} % Coordinata y del punto B_2
+%\newcommand{\xC}{\ensuremath{x_\mathrm C}\xspace} % Coordinata x del punto C
+%\newcommand{\yC}{\ensuremath{y_\mathrm C}\xspace} % Coordinata y del punto C
+%\newcommand{\zC}{\ensuremath{z_\mathrm C}\xspace} % Coordinata z del punto C
+%\newcommand{\xD}{\ensuremath{x_\mathrm D}\xspace} % Coordinata x del punto D
+%\newcommand{\yD}{\ensuremath{y_\mathrm D}\xspace} % Coordinata y del punto D
+%\newcommand{\zD}{\ensuremath{z_\mathrm D}\xspace} % Coordinata z del punto D
+%\newcommand{\xP}{\ensuremath{x_\mathrm P}\xspace} % Coordinata x del punto P
+%\newcommand{\yP}{\ensuremath{y_\mathrm P}\xspace} % Coordinata y del punto P
+%\newcommand{\zP}{\ensuremath{z_\mathrm P}\xspace} % Coordinata z del punto P
+%\newcommand{\xG}{\ensuremath{x_\mathrm G}\xspace} % Coordinata x del baricentro
+%\newcommand{\yG}{\ensuremath{y_\mathrm G}\xspace} % Coordinata y del baricentro
+%\newcommand{\zG}{\ensuremath{z_\mathrm G}\xspace} % Coordinata z del baricentro
+%\newcommand{\dotxG}{\ensuremath{\dot x_\mathrm G}\xspace} % Coordinata x del baricentro
+%\newcommand{\dotyG}{\ensuremath{\dot y_\mathrm G}\xspace} % Coordinata y del baricentro
+%\newcommand{\dotzG}{\ensuremath{\dot z_\mathrm G}\xspace} % Coordinata z del baricentro
+%\newcommand{\xOx}{\ensuremath{x_\mathrm {O1}}\xspace} % Coordinata x01
+%\newcommand{\xOy}{\ensuremath{x_\mathrm {O2}}\xspace} % Coordinata x02
+%\newcommand{\xOz}{\ensuremath{x_\mathrm {O3}}\xspace} % Coordinata x03
+%\newcommand{\xOj}{\ensuremath{x_{\mathrm O j}}\xspace} % Coordinata x0j
+%\newcommand{\xx}{\ensuremath{x_\mathrm 1}\xspace} % Coordinata x1
+%\newcommand{\xy}{\ensuremath{x_\mathrm 2}\xspace} % Coordinata x1
+%\newcommand{\xz}{\ensuremath{x_\mathrm 3}\xspace} % Coordinata x1
+%\newcommand{\yx}{\ensuremath{y_\mathrm 1}\xspace} % Coordinata y1
+%\newcommand{\yy}{\ensuremath{y_\mathrm 2}\xspace} % Coordinata y1
+%\newcommand{\yz}{\ensuremath{y_\mathrm 3}\xspace} % Coordinata y1
+%\newcommand{\Axx}{\ensuremath{A_\mathrm {11}}\xspace} % Coseno direttore A11
+%\newcommand{\Axy}{\ensuremath{A_\mathrm {12}}\xspace} % Coseno direttore A12
+%\newcommand{\Axz}{\ensuremath{A_\mathrm {13}}\xspace} % Coseno direttore A13
+%\newcommand{\Ayx}{\ensuremath{A_\mathrm {21}}\xspace} % Coseno direttore A21
+%\newcommand{\Ayy}{\ensuremath{A_\mathrm {22}}\xspace} % Coseno direttore A22
+%\newcommand{\Ayz}{\ensuremath{A_\mathrm {23}}\xspace} % Coseno direttore A23
+%\newcommand{\Azx}{\ensuremath{A_\mathrm {31}}\xspace} % Coseno direttore A31
+%\newcommand{\Azy}{\ensuremath{A_\mathrm {32}}\xspace} % Coseno direttore A32
+%\newcommand{\Azz}{\ensuremath{A_\mathrm {33}}\xspace} % Coseno direttore A33
+%\newcommand{\Aih}{\ensuremath{A_{ih}}\xspace} % Coseno direttore Aih
+%\newcommand{\Aij}{\ensuremath{A_{ij}}\xspace} % Coseno direttore Aij
+%\newcommand{\Ajk}{\ensuremath{A_{jk}}\xspace} % Coseno direttore Ajk
+%\newcommand{\Ajh}{\ensuremath{A_{jh}}\xspace} % Coseno direttore Ajh
+%\newcommand{\Bij}{\ensuremath{B_{ij}}\xspace} % Coseno direttore Bij
+%\newcommand{\Ia}{\ensuremath{I_a}\xspace} % Momento d'inerzia rispetto all'asse a
+%\newcommand{\Iu}{\ensuremath{I_u}\xspace} % Momento d'inerzia rispetto all'asse u
+%\newcommand{\Ix}{\ensuremath{I_x}\xspace} % Momento d'inerzia rispetto all'asse x
+%\newcommand{\Iy}{\ensuremath{I_y}\xspace} % Momento d'inerzia rispetto all'asse y
+%\newcommand{\Iz}{\ensuremath{I_z}\xspace} % Momento d'inerzia rispetto all'asse z
+%\newcommand{\IaG}{\ensuremath{I_{a_\mathrm G}}\xspace} % Momento d'inerzia rispetto all'asse baricentrale x
+%\newcommand{\IxG}{\ensuremath{I_{x_\mathrm G}}\xspace} % Momento d'inerzia rispetto all'asse baricentrale x
+%\newcommand{\IyG}{\ensuremath{I_{y_\mathrm G}}\xspace} % Momento d'inerzia rispetto all'asse baricentrale y
+%\newcommand{\IzG}{\ensuremath{I_{z_\mathrm G}}\xspace} % Momento d'inerzia rispetto all'asse baricentrale z
+%\newcommand{\Ixy}{\ensuremath{I_{xy}}\xspace} % Momento centrifugo
+%\newcommand{\Iyz}{\ensuremath{I_{yz}}\xspace} % Momento centrifugo
+%\newcommand{\Ixz}{\ensuremath{I_{xz}}\xspace} % Momento centrifugo
+%\newcommand{\numIxy}{\ensuremath{I_{12}}\xspace} % Momento centrifugo
+%\newcommand{\numIyz}{\ensuremath{I_{23}}\xspace} % Momento centrifugo
+%\newcommand{\numIxz}{\ensuremath{I_{13}}\xspace} % Momento centrifugo
+%\newcommand{\MC}{\ensuremath{M_\mathrm C}\xspace} % Matrice cinematica
+%\newcommand{\vettuh}{\ensuremath{\underline u_ h}\xspace} % Vettore uh
+%\newcommand{\vettui}{\ensuremath{\underline u_ i}\xspace} % Vettore ui
+%\newcommand{\vettdotui}{\ensuremath{\underline{\dot u}_i}\xspace} % Vettore ui derivato
+%\newcommand{\vettuj}{\ensuremath{\underline u_ j}\xspace} % Vettore uj
+%\newcommand{\vettdotuj}{\ensuremath{\underline{\dot u}_j}\xspace} % Vettore uj derivato
+%\newcommand{\vetteh}{\ensuremath{\underline e_h}\xspace} % Vettore eh
+%\newcommand{\vettek}{\ensuremath{\underline e_k}\xspace} % Vettore ek
+%\newcommand{\deltaij}{\ensuremath{\delta_{ij}}\xspace} % simbolo di kronecker ij
+%\newcommand{\deltahk}{\ensuremath{\delta_{hk}}\xspace} % simbolo di kronecker hk
+%\newcommand{\vettrP}{\ensuremath{\underline r_\mathrm P}\xspace} % Vettore posizione del punto P
+%\newcommand{\vettrQ}{\ensuremath{\underline r_\mathrm Q}\xspace} % Vettore posizione del punto Q
+%\newcommand{\vettrA}{\ensuremath{\underline r_\mathrm A}\xspace} % Vettore posizione del punto A
+%\newcommand{\vettrB}{\ensuremath{\underline r_\mathrm B}\xspace} % Vettore posizione del punto B
+%\newcommand{\vettrC}{\ensuremath{\underline r_\mathrm C}\xspace} % Vettore posizione del punto C
+%\newcommand{\vettrD}{\ensuremath{\underline r_\mathrm D}\xspace} % Vettore posizione del punto D
+%\newcommand{\vettaG}{\ensuremath{\underline a_\mathrm G}\xspace} % Accelerazione del baricentro
+%\newcommand{\vettaP}{\ensuremath{\underline a_\mathrm P}\xspace} % Accelerazione del punto P
+%\newcommand{\vettaPs}{\ensuremath{\underline a_{\mathrm P^*}}\xspace} % Accelerazione del punto P*
+%\newcommand{\vettaQ}{\ensuremath{\underline a_\mathrm Q}\xspace} % Accelerazione del punto Q
+%\newcommand{\vettaa}{\ensuremath{\underline a_{\mathrm a}}\xspace} % Velocità assoluta aa
+%\newcommand{\vettar}{\ensuremath{\underline a_{\mathrm r}}\xspace} % Velocità assoluta ar
+%\newcommand{\vettatau}{\ensuremath{\underline a_{ \tau}}\xspace} % Velocità di trascinamento atau
+%\newcommand{\vettaC}{\ensuremath{\underline a_{\mathrm C}}\xspace} % Velocità assoluta ac
+%\newcommand{\vettvG}{\ensuremath{\underline v_\mathrm G}\xspace} % Velocità del baricentro
+%\newcommand{\vG}{\ensuremath{v_\mathrm G}\xspace} % Modulo della Velocità del baricentro
+%\newcommand{\vQ}{\ensuremath{v_\mathrm Q}\xspace} % Modulo della Velocità del punto Q
+%\newcommand{\vettvO}{\ensuremath{\underline v_\mathrm O}\xspace} % Velocità del punto O
+%\newcommand{\vettvA}{\ensuremath{\underline v_\mathrm A}\xspace} % Velocità del punto A
+%\newcommand{\vettvB}{\ensuremath{\underline v_\mathrm B}\xspace} % Velocità del punto B
+%\newcommand{\vettvH}{\ensuremath{\underline v_\mathrm H}\xspace} % Velocità del punto H
+%\newcommand{\vettvM}{\ensuremath{\underline v_\mathrm M}\xspace} % Velocità del punto M
+%\newcommand{\vettvQ}{\ensuremath{\underline v_\mathrm Q}\xspace} % Velocità del punto Q
+%\newcommand{\vettvP}{\ensuremath{\underline v_\mathrm P}\xspace} % Velocità del punto P
+%\newcommand{\vettvPs}{\ensuremath{\underline v_{\mathrm P^*}}\xspace} % Velocità del punto P*
+%\newcommand{\vettvOmega}{\ensuremath{\underline v_{\mathrm \Omega}}\xspace} % Velocità del punto Omega
+%\newcommand{\vettva}{\ensuremath{\underline v_{\mathrm a}}\xspace} % Velocità assoluta va
+%\newcommand{\vettvr}{\ensuremath{\underline v_{\mathrm r}}\xspace} % Velocità assoluta vr
+%\newcommand{\vettvtau}{\ensuremath{\underline v_{ \tau}}\xspace} % Velocità di trascinamento vtau
+%\newcommand{\vettomegaa}{\ensuremath{\underline \omega_{\mathrm a}}\xspace} % Velocità angolare assoluta
+%\newcommand{\vettomegar}{\ensuremath{\underline \omega_{\mathrm r}}\xspace} % Velocità angolare relativa
+%\newcommand{\vettxO}{\ensuremath{\underline x_\mathrm O}\xspace} % Vettore xO
+%\newcommand{\vettIO}{\ensuremath{\underline I_\mathrm O}\xspace} % Matrice d'inerzia rispetto al punto O
+%\newcommand{\vettIQ}{\ensuremath{\underline I_\mathrm Q}\xspace} % Matrice d'inerzia rispetto al punto Q
+%\newcommand{\vettIOmega}{\ensuremath{\underline I_{\mathrm \Omega}}\xspace} % Matrice d'inerzia rispetto al punto Omega
+%\newcommand{\vettMA}{\ensuremath{\underline M_\mathrm A}\xspace} % Momento di un sistema di vettori applicati rispetto al punto A
+%\newcommand{\vettMB}{\ensuremath{\underline M_\mathrm B}\xspace} % Momento di un sistema di vettori applicati rispetto al punto B
+%\newcommand{\vettMC}{\ensuremath{\underline M_\mathrm C}\xspace} % Momento di un sistema di vettori applicati rispetto al punto C
+%\newcommand{\vettMT}{\ensuremath{\underline M_\mathrm T}\xspace} % Momento di un sistema di vettori applicati rispetto al punto T
+%\newcommand{\vettMQ}{\ensuremath{\underline M_\mathrm Q}\xspace} % Momento di un sistema di vettori applicati rispetto al punto Q
+%\newcommand{\vettMS}{\ensuremath{\underline M_\mathrm S}\xspace} % Momento di un sistema di vettori applicati rispetto al punto S
+%\newcommand{\vettMO}{\ensuremath{\underline M_\mathrm O}\xspace} % Momento di un sistema di vettori applicati rispetto al punto O
+%\newcommand{\vettMP}{\ensuremath{\underline M_\mathrm P}\xspace} % Momento di un sistema di vettori applicati rispetto al punto p
+%\newcommand{\vettMPd}{\ensuremath{\underline M_{\mathrm P_2}}\xspace} % Momento di un sistema di vettori applicati rispetto al punto P2
+%\newcommand{\vettMTp}{\ensuremath{\underline M_{\mathrm T'}}\xspace} % Momento di un sistema di vettori applicati rispetto al punto T'
+%\newcommand{\vettNT}{\ensuremath{\underline N_\mathrm T}\xspace} % Componente del Momento di un sistema di vettori applicati rispetto al punto T ortogonale al risultante del sistema
+%\newcommand{\vettKP}{\ensuremath{\underline K_\mathrm P}\xspace} % Momento della quantità di moto rispetto al punto P
+%\newcommand{\vettKQ}{\ensuremath{\underline K_\mathrm Q}\xspace} % Momento della quantità di moto rispetto al punto Q
+%\newcommand{\vettKOmega}{\ensuremath{\underline K_{\mathrm \Omega}}\xspace} % Momento della quantità di moto rispetto al punto Omega
+%\newcommand{\vettMGe}{\ensuremath{\underline M_\mathrm G^\mathrm{(e)}}\xspace} % Vettore risultante dei momenti esterni rispetto al baricentro
+%\newcommand{\vettdotKG}{\ensuremath{\underline{\dot K}_\mathrm G}\xspace} % Momento della quantità di moto rispetto al baricentro derivato
+%\newcommand{\vettdotKOmega}{\ensuremath{\underline{\dot K}_{\mathrm \Omega}}\xspace} % Momento della quantità di moto rispetto al punto Omega derivato
+%\newcommand{\vettdotKQ}{\ensuremath{\underline{\dot K}_{\mathrm Q}}\xspace} % Momento della quantità di moto rispetto al punto Q derivato
+%\newcommand{\rhoa}{\ensuremath{\rho_a}\xspace} % Raggio d'inerzia rispetto all'asse a
+%\newcommand{\omegax}{\ensuremath{\omega_x}\xspace} % Componente del vettore velocità angolare rispetto all'asse x
+%\newcommand{\omegay}{\ensuremath{\omega_y}\xspace} % Componente del vettore velocità angolare rispetto all'asse y
+%\newcommand{\omegaz}{\ensuremath{\omega_z}\xspace} % Componente del vettore velocità angolare rispetto all'asse z
+%\newcommand{\vettPhiA}{\ensuremath{\underline \Phi_\mathrm A}\xspace} % Vettore PHI
+%\newcommand{\vettPhiB}{\ensuremath{\underline \Phi_\mathrm B}\xspace} % Vettore PHI
+%\newcommand{\vettPhiD}{\ensuremath{\underline \Phi_\mathrm D}\xspace} % Vettore PHI
+%
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%% GRANDEZZE CON APICI
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%\newcommand{\Me}{\ensuremath{M^\mathrm{(e)}}\xspace} % Risultante dei momenti esterni
+%\newcommand{\Mxe}{\ensuremath{ M_1^\mathrm{(e)}}\xspace} %Componente lungo i1 del Vettore risultante dei momenti delle forze esterne 
+%\newcommand{\Mye}{\ensuremath{ M_2^\mathrm{(e)}}\xspace} %Componente lungo i2 del Vettore risultante dei momenti delle forze esterne 
+%\newcommand{\Mze}{\ensuremath{ M_3^\mathrm{(e)}}\xspace} %Componente lungo i3 del Vettore risultante dei momenti delle forze esterne 
+%\renewcommand{\Re}{\ensuremath{R^\mathrm{(e)}}\xspace} % Risultante delle forze esterne
+%\newcommand{\La}{\ensuremath{L^\mathrm{(a)}}\xspace} % Lavoro delle forze attive
+%\newcommand{\Lv}{\ensuremath{L^\mathrm{(v)}}\xspace} % Lavoro virtuale
+%\newcommand{\Lin}{\ensuremath{L^\mathrm{(in)}}\xspace} % Lavoro interno
+%\newcommand{\Le}{\ensuremath{L^\mathrm{(e)}}\xspace} % Lavoro esterno
+%\newcommand{\TG}{\ensuremath{T^\mathrm{(G)}}\xspace} % Energia cinetica nel riferimento del moto relativo al baricentro $G$ 
+%\newcommand{\vettFe}{\ensuremath{\underline F^\mathrm{(e)}}\xspace} % Forze esterna
+%\newcommand{\vettFin}{\ensuremath{\underline F^\mathrm{(in)}}\xspace} % Forze interna
+%\newcommand{\vettMe}{\ensuremath{\underline M^\mathrm{(e)}}\xspace} % Vettore risultante dei momenti esterni
+%\newcommand{\vettMOmegav}{\ensuremath{\underline M_\Omega^\mathrm{(v)}}\xspace} % Vettore risultante dei momenti delle forze vincolari rispetto ad omega
+%\newcommand{\vettMQe}{\ensuremath{\underline M_Q^\mathrm{(e)}}\xspace} % Vettore risultante dei momenti delle forze vincolari rispetto a Q
+%\newcommand{\Mzv}{\ensuremath{ M_3^\mathrm{(v)}}\xspace} %Componente lungo i3 del Vettore risultante dei momenti delle forze vincolari 
+%\newcommand{\Mza}{\ensuremath{ M_3^\mathrm{(a)}}\xspace} %Componente lungo i3 del Vettore risultante dei momenti delle forze attive 
+%\newcommand{\vettMOmegaa}{\ensuremath{\underline M_\Omega^\mathrm{(a)}}\xspace} % Vettore risultante dei momenti delle forze attive rispetto ad omega
+%\newcommand{\vettMOmegae}{\ensuremath{\underline M_\Omega^\mathrm{(e)}}\xspace} % Vettore risultante dei momenti esterni rispetto ad omega
+%\newcommand{\vettMin}{\ensuremath{\underline M^\mathrm{(in)}}\xspace} % Vettore risultante dei momenti interni
+%\newcommand{\vettMOin}{\ensuremath{\underline M_O^\mathrm{(in)}}\xspace} % Vettore risultante dei momenti interni rispetto ad O
+%\newcommand{\vettRe}{\ensuremath{\underline R^\mathrm{(e)}}\xspace} % Vettore risultante delle forze esterne
+%\newcommand{\vettRv}{\ensuremath{\underline R^\mathrm{(v)}}\xspace} % Vettore risultante delle forze vincolari
+%\newcommand{\vettRa}{\ensuremath{\underline R^\mathrm{(a)}}\xspace} % Vettore risultante delle forze attive
+%\newcommand{\vettRin}{\ensuremath{\underline R^\mathrm{(in)}}\xspace} % Vettore risultante delle forze interne
+%\newcommand{\Pin}{\ensuremath{\calP^\mathrm{(in)}}\xspace} % Potenza interna
+%\newcommand{\Pe}{\ensuremath{\calP^\mathrm{(e)}}\xspace} % Potenza esterna
+%
+%
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%% VERSORI
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%\newcommand{\versee}{\ensuremath{\underline e}\xspace} % Versore e
+%\newcommand{\versex}{\ensuremath{\underline e_1}\xspace} % Versore e1
+%\newcommand{\versey}{\ensuremath{\underline e_2}\xspace} % Versore e2
+%\newcommand{\versez}{\ensuremath{\underline e_3}\xspace} % Versore e3
+%\newcommand{\versux}{\ensuremath{\underline u_1}\xspace} % Versore u1
+%\newcommand{\versuy}{\ensuremath{\underline u_2}\xspace} % Versore u2
+%\newcommand{\versuz}{\ensuremath{\underline u_3}\xspace} % Versore u3
+%\newcommand{\versi}{\ensuremath{\underline \imath}\xspace} % Versore i
+%\newcommand{\versix}{\ensuremath{{\underline \imath}_1}\xspace} % Versore i1
+%\newcommand{\versiy}{\ensuremath{{\underline \imath}_2}\xspace} % Versore i2
+%\newcommand{\versiz}{\ensuremath{{\underline \imath}_3}\xspace} % Versore i3
+%\newcommand{\versj}{\ensuremath{\underline \jmath}\xspace} % Versore j
+%\newcommand{\versk}{\ensuremath{\underline k}\xspace} % Versore k
+%\newcommand{\versdote}{\ensuremath{\underline{\dot e}}\xspace} % Versore e derivato
+%\newcommand{\versdotex}{\ensuremath{\underline{\dot e}_1}\xspace} % Versore e1 derivato
+%\newcommand{\versdotey}{\ensuremath{\underline{\dot e}_2}\xspace} % Versore e2 derivato
+%\newcommand{\versdotez}{\ensuremath{\underline{\dot e}_3}\xspace} % Versore e3 derivato
+%
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%% VETTORI
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%\newcommand{\vettnull}{\ensuremath{\underline 0}\xspace} % Vettore nullo
+%\newcommand{\vetta}{\ensuremath{\underline a}\xspace} % Vettore a
+%\newcommand{\vettb}{\ensuremath{\underline b}\xspace} % Vettore b
+%\newcommand{\vettc}{\ensuremath{\underline c}\xspace} % Vettore c
+%\newcommand{\vette}{\ensuremath{\underline e}\xspace} % Vettore e
+%\newcommand{\vettn}{\ensuremath{\underline n}\xspace} % Vettore n
+%\newcommand{\vettr}{\ensuremath{\underline r}\xspace} % Vettore r
+%\newcommand{\vettt}{\ensuremath{\underline t}\xspace} % Vettore t
+%\newcommand{\vettu}{\ensuremath{\underline u}\xspace} % Vettore u
+%\newcommand{\vettv}{\ensuremath{\underline v}\xspace} % Vettore v
+%\newcommand{\vettw}{\ensuremath{\underline w}\xspace} % Vettore w
+%\newcommand{\vettx}{\ensuremath{\underline x}\xspace} % Vettore x
+%\newcommand{\vetty}{\ensuremath{\underline y}\xspace} % Vettore y
+%\newcommand{\vettE}{\ensuremath{\underline E}\xspace} % Vettore E
+%\newcommand{\vettF}{\ensuremath{\underline F}\xspace} % Vettore F
+%\newcommand{\vettH}{\ensuremath{\underline H}\xspace} % Vettore H
+%\newcommand{\vettI}{\ensuremath{\underline I}\xspace} % Vettore I
+%\newcommand{\vettK}{\ensuremath{\underline K}\xspace} % Vettore K
+%\newcommand{\vettM}{\ensuremath{\underline M}\xspace} % Vettore M
+%\newcommand{\vettN}{\ensuremath{\underline N}\xspace} % Vettore N
+%\newcommand{\vettP}{\ensuremath{\underline P}\xspace} % Vettore P
+%\newcommand{\vettQ}{\ensuremath{\underline Q}\xspace} % Vettore Q
+%\newcommand{\vettR}{\ensuremath{\underline R}\xspace} % Vettore R
+%\newcommand{\vettL}{\ensuremath{\underline L}\xspace} % Vettore L
+%\newcommand{\vettdotu}{\ensuremath{\underline{\dot u}}\xspace} % Vettore u derivato
+%\newcommand{\vettdotv}{\ensuremath{\underline{\dot v}}\xspace} % Vettore v derivato
+%\newcommand{\vettdotw}{\ensuremath{\underline{\dot w}}\xspace} % Vettore w derivato
+%\newcommand{\vettdotK}{\ensuremath{\underline{\dot K}}\xspace} % Vettore K derivato
+%\newcommand{\vettdotQ}{\ensuremath{\underline{\dot Q}}\xspace} % Vettore Q derivato
+%\newcommand{\vettepsilon}{\ensuremath{\underline \varepsilon}\xspace} % Vettore epsilon
+%\newcommand{\vettphi}{\ensuremath{\underline \varphi}\xspace} % Vettore phi
+%\newcommand{\vettomega}{\ensuremath{\underline \omega}\xspace} % Vettore omega
+%\newcommand{\vetttau}{\ensuremath{\underline \tau}\xspace} % Vettore tau
+%\newcommand{\vettPhi}{\ensuremath{\underline \Phi}\xspace} % Vettore PHI
+%\newcommand{\vettdotomega}{\ensuremath{\underline{\dot \omega}}\xspace} % Vettore omega derivato
+%
+%
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%% ALTRI SIMBOLI
+%% --------------------------------------------------------------------------------------------------------------------------------------------
+%\renewcommand{\parallel}{\ensuremath{/\!\!/}\xspace} % Simbolo di parallelismo
+%\newcommand{\tbar}{\ensuremath{\overline t}\xspace} % t segnato
+
+
+\newcommand{\Msup}{\ensuremath{M''_ {\infty_\mathrm{cr}}}\xspace} % Mach critico superiore
+\newcommand{\Mcrinf}{\ensuremath{M'_ {\infty_\mathrm{cr}}}\xspace} % Mach critico inferiore
+\newcommand{\Minf}{\ensuremath{M_ {\infty}}\xspace} % Mach infinito
+\newcommand{\alphazl}{\ensuremath{\alpha_{0l}}\xspace} % Alpha zero lift
+\newcommand{\Cmac}{\ensuremath{C_{m_{\mathrm{ac}}}}} % Coefficiente di momento rispetto il centro aerodinamico
+\newcommand{\Cmle}{\ensuremath{C_{m_{\mathrm le}}}} % Coefficiente di momento rispetto il leading edge
+\newcommand{\Vc}{\ensuremath{V_c}\xspace} % Velocità di crociera
+\newcommand{\Mc}{\ensuremath{M_\mathrm{c}}\xspace} % Mach di crociera
+\newcommand{\Vmax}{\ensuremath{V_\mathrm{max}}\xspace} % Velocità massima
+\newcommand{\Mmo}{\ensuremath{M_\mathrm{MO}}\xspace} % Mach massimo operativo
+\newcommand{\Vmo}{\ensuremath{V_\mathrm{MO}}\xspace} % Velocità massima operativo
+\newcommand{\Vsf}{\ensuremath{V_\mathrm{sf}}\xspace} % Velocità stallo full flap
+\newcommand{\Vsc}{\ensuremath{V_\mathrm{sc}}\xspace} % Velocità cleaned configuration
+\newcommand{\hmax}{\ensuremath{h_\mathrm{max}}\xspace} % Quota massima certificata
+\newcommand{\MTOW}{\ensuremath{W_\mathrm{TO_{max}}}\xspace} % Peso massimo al decollo
+\newcommand{\WLmax}{\ensuremath{W_\mathrm{L_{max}}}\xspace} % Peso massimo al'atterraggio
+\newcommand{\Wzfmax}{\ensuremath{W_\mathrm{zf_{max}}}\xspace} % Peso massimo zerofuel
+\newcommand{\WoverSmax}{\ensuremath{(W/S)_\mathrm{max}}\xspace} % Massimo carico alare
+\newcommand{\WOE}{\ensuremath{W_\mathrm{OE}}\xspace} % Peso a vuoto operativo
+\newcommand{\WPLmax}{\ensuremath{W_{\mathrm{PL}_\mathrm{max}}}\xspace} % Carico pagante
+\newcommand{\TOFL}{\ensuremath{L_\mathrm{TO}}\xspace} % Carico pagante
+\newcommand{\croot}{\ensuremath{c_\mathrm{r}}\xspace}  %corda alla radice
+\newcommand{\ct}{\ensuremath{c_\mathrm{t}}\xspace}  %corda all' estremità
+\newcommand{\ck}{\ensuremath{c_\mathrm{k}}\xspace}  %corda al kink
+\newcommand{\Dfmax}{\ensuremath{D_\mathrm{f_{max}}}\xspace}  %corda al kink
+\newcommand{\bHtail}{\ensuremath{b_\mathrm{H}}\xspace}  %apertura piano di coda orizzontale

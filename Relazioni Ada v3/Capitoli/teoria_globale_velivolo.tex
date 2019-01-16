@@ -1,0 +1,500 @@
+\chapter{La Teoria Globale}
+In questo capitolo saranno condotti dei calcoli al fine di determinare i valori di interesse del velivolo, come $C_L$, $C_{D_i}$, $D_i$, deviazione globale e componente della velocità verticale impresse dall'aria. Successivamente saranno illustrati dei grafici che riportano le variazioni di tali grandezze con la velocità, la quota e il peso del velivolo.
+
+\section{ Calcoli Preliminari}
+
+Prima di procedere con il calcolo dei valori d’interesse attraverso la Teoria Globale, è necessario calcolare alcuni dati utili alle successive applicazioni.\\ Tali valori che saranno di seguito calcolati sono giá stati riportati nelle relative tabelle dei dati per avere una migliore visione d’insieme degli stessi.
+
+\subsection { Densità alla quota di tangenza}
+
+\noindent \\
+
+Fino ad un’altitudine di $11000 m $, secondo il modello di Atmosfera Standard Internazionale {\bfseries ICAO} la temperatura decresce linearmente con la quota, mentre il rapporto tra le densità è espresso dalla seguente equazione\cite{prof:losito} \\
+
+\begin{equation}
+\label{eqn:densita}
+\frac {{\rho_2}}{{\rho_1}}= (\frac {T_2}{T_1})^{(\frac{{g-RT_z}}{RT_z})}
+\end{equation}
+
+\noindent \\ \\
+
+Ove l'esponente nella  \ref{eqn:densita} è una costante e vale \\ 
+
+\begin{equation}
+\label{eqn:costante}
+{\frac{{g-RT_z}}{RT_z}}=4.256
+\end{equation}
+
+\noindent \\ \\
+
+Si ottiene cosí il valore della densità che ci interessa \\ \\
+
+\begin{center}
+${{\rho_2}={0.7694{\frac{Kg}{m^3}}}}$
+\end {center}
+
+\noindent \\ 
+
+\subsection {Fattore di Oswald}
+
+\noindent \\
+È possibile stimare il fattore di Oswald di un velivolo con un valore compreso tra $0.7$ e $0.8$. Pur potendo fare così  una stima sufficientemente accettabile si è preferito effettuare un calcolo analitico ricorrendo alla seguente formula \cite{prof:brandt} \\ 
+
+
+\begin{equation}
+\label{eqn:coswald}
+e= 4.61(1-0.045 {\AR}^{0.68})(cos{\Lambda}_LE)^{0.15}-3.1
+\end{equation}
+
+\noindent \\ 
+
+Da cui si ottiene un valore del fattore di Oswald per il {\bfseries JABIRU J450} \\
+
+\begin{center}
+$ e= 0.69 $
+\end {center}
+
+\noindent \\
+
+\section{ Coefficiente di Portanza}
+
+Per sviluppare i calcoli riguardo il Coefficiente di Portanza, si è supposto il velivolo in volo livellato, dimodoché risulti $ L=W$. \\
+Il massimo $C_L$ del velivolo è stato valutato nelle seguenti condizioni \\
+
+\begin {itemize}
+\item peso massimo al decollo
+\item quota al livello del mare
+\item velocità di stallo ( con {\itshape flap} deflessi e in configurazione pulita)
+\end{itemize}
+
+\noindent \\
+Sostituendo i detti valori nella formula del Coefficiente di Portanza con le opportune unità di misura \\
+
+
+\begin{equation}
+\label{eqn:cl}
+C_L=\frac {L}{{\frac{1}{2}{\rho_{\infty}}V_{\infty}^2S}}
+\end{equation}
+\noindent \\
+
+Si ottengono i seguenti valori rispettivamente nella configurazione con flap e in quella pulita
+
+\begin{center}
+$C_{L_f}= 1.887 $
+\end {center}
+
+\begin{center}
+$C_{L_c}= 1.263 $
+\end {center}
+
+\noindent \\ 
+
+\section{ Coefficiente di Resistenza indotta e Resistenza indotta}
+
+La relazione che lega il Coefficiente di Resistenza indotta e il Coefficiente di Portanza  è la seguente \\
+
+\begin{equation}
+\label{eqn:cdi}
+C_{D_ i}=\frac {C_L^2}{{\pi}{\AR}e}
+\end{equation}
+
+Nelle seguenti condizioni \\ 
+\begin {itemize}
+\item peso massimo al decollo
+\item quota al livello del mare
+\item  {\itshape flap} deflessi 
+\end{itemize}
+
+\noindent \\
+
+Il Coefficiente di Resistenza indotta assume un valore di \\
+
+\begin{center}
+$C_{D_i}= 0.2190$
+\end {center}
+
+cui corrisponde una Resistenza indotta di
+
+\begin{center}
+$D_{i}= 801.5 N $
+\end {center}
+
+
+\noindent \\ 
+
+\section{ Deviazione impressa della corrente e velocità verticale}
+
+Nella Teoria Globale si sostituisce l'effetto che subiscono le particelle d'aria perturbate da un aeromobile con l'effetto di un tubo di flusso curvo che imprime sulle particelle in ingresso una deviazione ${\beta}$. \\
+Per calcolare ${\beta}$ si é utilizzata la seguente formula
+\noindent \\
+
+\begin{equation}
+\label{eqn:beta}
+{\beta}=\frac {2C_L}{{\pi}{\AR}e}
+\end{equation}
+
+Nelle seguenti ipotesi 
+
+\begin {itemize}
+\item peso Massimo al Decollo
+\item quota al livello del mare
+\item velocità di stallo ( con {\itshape flap} deflessi e in configurazione pulita)
+\end{itemize}
+
+Il valore assunto da ${\beta}$  è 
+
+\begin{center}
+${\beta}= 13.29 ^\circ $
+\end {center}
+
+La velocità verticale, nell'ipotesi di deviazioni piccole, puó essere approssimata con la seguente formula
+
+\begin{equation}
+\label{eqn:velocita}
+{\Delta}V_v={\beta}V_{\infty}
+\end{equation}
+\noindent \\
+
+In corrispondenza del valore di ${\beta}$ calcolato, si ottiene un ${\Delta}V_v$
+
+\begin{center}
+${{\Delta}V_v}= 5.369 \frac{m}{s} $
+\end {center}
+
+\noindent \\ \\ \\ \\ \\ \\
+\section{Grafici}
+\noindent \\
+
+Di seguito sono riportati alcuni grafici degni di nota delle grandezze analizzate \\
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0.6, 
+xmax=1.3, 
+ymin=18,
+ymax=34,
+xlabel=${\rho}({\frac{Kg}{m^3}})$, 
+ylabel=$V_{min}({\frac{m}{s}})$ ,
+width=12cm,
+height=8cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/ro_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/ro_v_2.dat};
+\legend {$W=MTOW=700 kg$,$W=550 Kg$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Variazione della velocità al variare della densità e quindi della quota. Velivolo {\bfseries J450} con flap deflessi}
+\end{figure}
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0.6, 
+xmax=1.3, 
+ymin=24,
+ymax=40,
+xlabel=${\rho}({\frac{Kg}{m^3}})$, 
+ylabel=$V_{min}({\frac{m}{s}})$ ,
+width=12cm,
+height=8 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/ro_v_3.dat};
+\addplot [black,very thick, dashed]
+file{immagini/ro_v_4.dat};
+\legend {$W=MTOW=700 kg$,$W=550 Kg$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Variazione della velocità al variare della densità e quindi della quota. Velivolo {\bfseries J450}, configurazione pulita}
+\end{figure}
+
+
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=0,
+ymax=2,
+ylabel=$C_L$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/cl_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/cl_v_2.dat};
+\legend {$W=MTOW=700 kg$,$W=550 Kg$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del $C_L$ con la velocità. Confronto al variare del peso, fissata la quota SL. Velivolo {\bfseries J450}}
+\end{figure}
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=0,
+ymax=2.5,
+ylabel=$C_L$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/cl_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/cl_v_3.dat};
+\addplot [black,very thick, dashdotted]
+file{immagini/cl_v_5.dat};
+\legend {$z=SL$,$z=2500m$,$z=4570m$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del $C_L$ con la velocità. Confronto al variare della quota, fissato il peso MTOW. Velivolo {\bfseries J450}}
+\end{figure}
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=0,
+ymax=0.25,
+ylabel=$C_{D_i}$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/cd_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/cd_v_2.dat};
+\legend {$W=MTOW=700 kg$,$W=550 Kg$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del $C_{D_i}$ con la velocità. Confronto al variare del peso, fissata la quota SL. Velivolo {\bfseries J450}}
+\end{figure}
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=0,
+ymax=0.3,
+ylabel=$C_{D_i}$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/cd_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/cd_v_3.dat};
+\addplot [black,very thick, dashdotted]
+file{immagini/cd_v_5.dat};
+\legend {$z=SL$,$z=2500m$,$z=4570m$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del $C_{D_i}$ con la velocità. Confronto al variare della quota, fissato il peso MTOW. Velivolo {\bfseries J450}}
+\end{figure}
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=50,
+ymax=900,
+ylabel=$D_i (N)$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/d_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/d_v_2.dat};
+\legend {$W=MTOW=700 kg$,$W=550 Kg$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del $D_i$ con la velocità. Confronto al variare del peso, fissata la quota SL. Velivolo {\bfseries J450}}
+\end{figure}
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=50,
+ymax=1000,
+ylabel=$D_ i(N)$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/d_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/d_v_3.dat};
+\addplot [black,very thick, dashdotted]
+file{immagini/d_v_5.dat};
+\legend {$z=SL$,$z=2500m$,$z=4570m$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del $D_i$ con la velocità. Confronto al variare della quota, fissato il peso MTOW. Velivolo {\bfseries J450}}
+\end{figure}
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=1,
+ymax=15,
+ylabel=${\beta}(deg)$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/beta_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/beta_v_2.dat};
+\legend {$W=MTOW=700 kg$,$W=550 Kg$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del ${\beta}$ con la velocità. Confronto al variare del peso, fissata la quota SL. Velivolo {\bfseries J450}}
+\end{figure}
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=0,
+ymax=15,
+ylabel=${\beta}(deg)$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/beta_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/beta_v_3.dat};
+\addplot [black,very thick, dashdotted]
+file{immagini/beta_v_5.dat};
+\legend {$z=SL$,$z=2500m$,$z=4570m$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del ${\beta}$ con la velocità. Confronto al variare della quota, fissato il peso MTOW. Velivolo {\bfseries J450}}
+\end{figure}
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=1,
+ymax=6,
+ylabel=${\Delta}V_v ({\frac{m}{s}})$, 
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/dv_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/dv_v_2.dat};
+\legend {$W=MTOW=700 kg$,$W=550 Kg$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del ${\Delta}V_v$ con la velocità. Confronto al variare del peso, fissata la quota SL. Velivolo {\bfseries J450}}
+\end{figure}
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=23, 
+xmax=65, 
+ymin=1,
+ymax=8,
+ylabel=${\Delta}V_v ({\frac{m}{s}})$,  
+xlabel=$V_{\infty}({\frac{m}{s}})$ ,
+width=12cm,
+height=8.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/dv_v_1.dat};
+\addplot [black,very thick, dashed]
+file{immagini/dv_v_3.dat};
+\addplot [black,very thick, dashdotted]
+file{immagini/dv_v_5.dat};
+\legend {$z=SL$,$z=2500m$,$z=4570m$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del ${\Delta}V_v$ con la velocità. Confronto al variare della quota, fissato il peso MTOW. Velivolo {\bfseries J450}}
+\end{figure}
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=0.2, 
+ymin=-1.5,
+ymax=2,
+ylabel=$C_L$, 
+xlabel=$C_{D_i}$ ,
+width=14cm,
+height=17 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/polare.dat};
+\addplot [black,very thick]
+file{immagini/polareinv1.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Polare parabolica per il velivolo {\bfseries J450}}
+\end{figure}

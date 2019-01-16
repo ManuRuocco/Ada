@@ -1,0 +1,1080 @@
+% !TeX program = PdfLaTeX
+% !TeX root = ../../Elaborati_Aerodinamica_Bruno_Spoti.tex
+\chapter{Generalità e geometria del profilo alare per il volo supersonico}
+Scopo della seguente parte è lo studio dell'aerodinamica di tipo non viscoso per un profilo alare alle alte velocità di volo. La geometria del profilo è stata fornita tramite le coordinate di quattro punti che rappresentano i vertici di un quadrilatero.\\
+Lo studio del profilo è stato condotto attraverso uno {\itshape script} interamente scritto in MATLAB parametrizzato per le coordinate che ne definiscono la geometria e le condizioni operative. In primo luogo viene calcolata la geometria completa in termini di angoli interni e distanze tra i punti. Noti tali valori è valutato il $M'_{\infty\mathrm{cr}}$ in funzione dell'angolo d'attacco $\alpha$. Successivamente per $M_{\infty}=3$ e $\alpha=0^{\circ}$ è stato calcolato il campo di moto attorno al corpo, i coefficienti di forza e momento, le forze, i momenti, il centro di pressione, il centro aerodinamico e il campo di moto a valle. Infine sono state calcolate le curve di portanza, le polari non viscose e il campo di moto per alcune diverse combinazioni di  $\alpha$ e $M_{\infty}$ allo scopo di evidenziare gli effetti del numero di Mach sull'aerodinamica del profilo.  Il calcolo di tale campo di moto è stato parametrizzato rispetto l'angolo d'attacco del profilo cosicchè lo {\itshape script} sia in grado di valutare per ogni regione la presenza di onde d'urto od onde di espansione in funzione della geometria del profilo alare.
+
+\section{Geometria del Profilo}
+La geometria del profilo è stata fornita in forma puntuale mediante i quattro vertici di un quadrilatero
+\begin{itemize}
+\item Bordo d'attacco A(0,0);
+\item Bordo d'uscita B(1,0);
+\item C(0.60, 0.02)
+\item D(0.35, -0.06)
+\end{itemize}
+
+Unendo questi quattro punti si ottiene il profilo in questione come si vede in figura~\vref{figS1}.
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ 
+xmin=0, 
+xmax=1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid, thick,mark=*,mark options={solid}, mark size=2pt]
+file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+\addplot[black,solid, thick,mark=*,mark options={solid}, mark size=2pt]coordinates {
+(0,0)
+(1,0) };
+\node at (axis cs: 0.02, 0.024) {$A$};
+\node at (axis cs: 0.6, 0.05) {$C$};
+\node at (axis cs: 0.35, -0.085) {$D$};
+\node at (axis cs: 0.98, 0.024) {$B$};
+%\coordinate (D) at (0.35,-0.06);
+%\coordinate (D1) at (0.35,0);
+%\coordinate (C) at (0.6,0.02);
+%\coordinate (C1) at (0.6,0);
+%\draw[thick] (D) -- (D1);
+%\draw[thick] (C) -- (C1);
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Punti assegnati e geometria del profilo alare per il volo supersonico}
+\label{figS1}
+\end{figure}
+
+Tramite lo {\itshape script} MATLAB sono state calcolate tutte le caratteristiche geometriche d'interesse del quadrilatero in analisi le quali, con riferimento alle notazioni presenti in figura~\vref{figS1} sono state riportate nella tabella~\vref{tabS1}.%riferimento tabella
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c  c  c c }
+\toprule
+\emph{Lato} & \emph{Lunghezza} [$L/c$] & \emph{Angolo} & \emph{Ampiezza} [deg]  \\
+\midrule
+$L_1=\overline{AC}$  &  0.600 &   $\theta_1=C\widehat{A}B$ &  $1.91$   \\   
+$L_2=\overline{CB}$  &  0.401 &   $\theta_2=C\widehat{B}A$  &  $2.86$ \\ 
+$L_4=\overline{AD}$  &  0.355 & $\theta_4= D\widehat{A}B $ &  $9.73 $ \\ 
+$L_5=\overline{DB}$  &  0.653 &  $\theta_5= D\widehat{B}A$ &  $5.27 $ \\ 
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Caratteristiche geometriche del profilo}
+\label{tabS1}
+\end{table}
+
+Nello svolgimento delle analisi riportate nei successivi capitoli sono state ricavate le caratteristiche areodinamiche di profilo riportate in tabella tabella~\vref{tabS1b}.
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c c}
+\toprule
+\multicolumn{2}{c}{\emph{Grandezze aerodinamiche}}  \\ 
+\bottomrule
+\alphazl &$ -0,7439 ^{\circ}$\\
+\bottomrule
+$\overline{x}_{ac}$ & 0.4350 \\
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Principali grandezze aerodinamiche del profilo per il volo supersonico.}
+\label{tabS1b}
+\end{table}
+
+%-------------
+
+\chapter{Numero di Mach critico superiore \Msup}
+In questo capitolo sono riportati i risultati ottenuti per il calcolo del numero di Mach critico superiore \Msup del profilo per il volo supersonico. Per prima cosa, note le caratteristiche dell'aria, è stato ricostruito l'abbaco d'urto in MATLAB R2016b, per via analitica, riportato in figura~\vref{figS2}
+Successivamente, assegnata la geometria e l'angolo d'attacco ($\alpha$ da $-8^{\circ}$ a $8^{\circ}$, con passo $\alpha=2^{\circ}$), è stato calcolato il numero di Mach critico superiore in quelle condizioni i cui risultati sono riportati in figura~\vref{figS2} e in tabella~\vref{tabS2}.
+
+%\begin{figure}[h!]
+%\centering
+%\begin{tikzpicture}
+%\begin{axis}[ 
+%xmin=0, 
+%xmax=90, 
+%ymin=0,
+% ymax=50,
+% xlabel=$ \varepsilon$, 
+%ylabel=$ \delta$,
+%ylabel style={rotate=-90},
+%width=13cm,
+% height=10 cm,
+%scale only axis,
+%grid=major] 
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.1616.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.3636.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.5657.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.7677.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.9697.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.1717.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.3737.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.5758.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.7778.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.9798.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.1818.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.3838.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.5859.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.7879.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.9899.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_4.596.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_4.798.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_4.1919.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_4.3939.dat};
+%\addplot [black,solid]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_5.dat};
+%\addplot [black,solid, dashed]
+%file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/CurvaMaxAbbaco.dat};
+%\end{axis}
+%\end{tikzpicture}
+%\caption{\footnotesize Abbaco d'urto per l'aria}
+%\label{figS2}
+%\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ 
+xmin=-8, 
+xmax=8, 
+ymin=1, ymax=2,
+ xlabel=$ \alpha$, 
+ylabel=\Msup,
+ylabel style={rotate=-90},
+width=13cm,
+ height=7cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid, thick,mark=*,mark options={solid}, mark size=2pt]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/Msup_vs_alpha_Mach.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Numero di Mach critico superiore al variare di $\alpha$. MATLAB R2016b}
+\label{figS3}
+\end{figure}
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c c }
+\toprule
+$\alpha$ [deg] & \Msup  \\ 
+\midrule
+-8	&	1.418	\\
+-6	&	1.345	\\
+-4	&	1.273	\\
+-2	&	1.338	\\
+0	&	1.411	\\
+2	&	1.485	\\
+4	&	1.563	\\
+6	&	1.645	\\
+8	&	1.732	\\
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Numero di Mach critico superiore al variare dell'angolo d'attacco $\alpha$}
+\label{tabS2}
+\end{table}
+
+
+\chapter{Campo di moto e aerodinamica non viscosa per fissati $\alpha$ e $M_{\infty}$}
+Lo scopo di questo capitolo è quello di esporre i risultati ottenuti dalla completa risoluzione del campo di moto fissate le condizioni operative riportate in tabella~\vref{tabS3} e dall'analisi aerodinamica non viscosa dello stesso.
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c c c}
+\toprule
+\emph{\Minf } &  $\alpha$ & h \\ 
+\midrule
+3 & $0^{\circ}$ & 1000 m \\
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Condizioni operative per l'analisi aerodinamica del profilo alare per il volo supersonico}
+\label{tabS3}
+\end{table}
+
+Utilizzando il modello dell'atmosfera \emph{standard} (\emph{ISA}), alla quota in esame l'aria si assume le caratteristiche di pressione densità e temperatura riportate in tabella~\vref{tabS4}
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c c c}
+\toprule
+\emph{$p_{\infty}$ } &  \emph{$T_{\infty}$ } & \emph{$\rho_{\infty}$ } \\ 
+\midrule
+26436.3 \si{\pascal} & $223.15 \si{\kelvin}$ & 0.413 \si{\kilo\gram\per\cubic\meter}\\
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Condizioni asintotiche della corrente a quota 10000\si{\meter}}
+\label{tabS4}
+\end{table} 
+
+\section{Determinazione del campo di moto attorno al corpo e a valle}
+Per ognuna delle regioni evidenziate in figura~\vref{figS4},
+nota la geometria del corpo, è stata considerata un'onda d'urto o un'onda di espansione in funzione dell'angolo di deviazione locale della corrente e sono state calcolate tutte le caratteristiche a valle della stessa.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ 
+axis lines=none,        %commentare per ritornare alla griglia
+xmin=-0.05, 
+xmax=1.40, 
+ymin=-0.15,
+ ymax=0.15,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.69 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid, thick,mark options={solid}, mark size=2pt]
+file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/1_IntermediateWave1_2_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/1_IntermediateWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/2_IntermediateWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/3_IntermediateWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/4_IntermediateWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/FirstWave1_2_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/FirstWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/LastWave1_2_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/LastWave1_2_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave0_1_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave0_4_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave2_3_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave5_6_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave5_6_alpha_0_Mach_3.dat};
+\addplot [black,dashed,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/SlipLine_alpha_0_Mach_3.dat};
+\node at (axis cs: 0.4, 0.07) { \scriptsize Regione 1};
+\node at (axis cs: 0.95, 0.07) { \scriptsize Regione 2};
+\node at (axis cs: 0.30, -0.1) { \scriptsize Regione 4};
+\node at (axis cs: 0.8, -0.1) { \scriptsize Regione 5};
+\node at (axis cs: 1.3, 0.04) { \scriptsize Regione 3};
+\node at (axis cs: 1.3, -0.05) { \scriptsize Regione 6};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Notazione regioni in cui si divide il campo di moto}
+\label{figS4}
+\end{figure}
+ 
+ Per il calcolo del campo di moto a valle del profilo, è stato implementato un procedimento iterativo, non essendo nota a priori la direzione della linea di slip, imponendo come criterio di convergenza che la differenza tra gli errori in due {/itshape step} successivi sia  minore di $10^-6$. Tale errore è valutato considerando che le pressioni nella regione 3 e nella regione 6 devono essere uguali. Il campo di moto ottenuto e riportato in figura~\vref{figS5}, dove l'inclinazione di tutte le onde è in scala reale, mentre i risultati per le diverse zone sono riportati in tabella~\vref{tabS5}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[label distance= 1mm]
+\pgfplotsset{every y tick label/.append style={font=\footnotesize, xshift=0.5ex}}
+\pgfplotsset{every x tick label/.append style={font=\footnotesize}}
+\begin{axis}[ 
+%axis lines=none,        %commentare per ritornare alla griglia
+xmin=-0.1, 
+xmax=1.3, 
+ymin=-0.15,
+ ymax=0.15,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+y label style={at={(axis cs: -0.2,0 )},rotate=-90,anchor=center},
+ytick={-.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=14cm,
+ height=3 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid, thick,mark options={solid}, mark size=2pt]
+file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/1_IntermediateWave1_2_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/1_IntermediateWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/2_IntermediateWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/3_IntermediateWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/4_IntermediateWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/FirstWave1_2_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/FirstWave4_5_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/LastWave1_2_alpha_0_Mach_3.dat};
+\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/LastWave1_2_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave0_1_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave0_4_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave2_3_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave5_6_alpha_0_Mach_3.dat};
+\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/ShockWave5_6_alpha_0_Mach_3.dat};
+\addplot [black,dashed,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/SlipLine_alpha_0_Mach_3.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.1.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.1.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.02.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.02.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.02.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.2.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.2.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.3.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.3.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.04.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.04.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.06.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.06.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.08.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.08.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.12.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.12.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.14.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.14.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_-0.16.dat};
+\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_alpha_0/flowLine_k_0.16.dat};
+\draw[-latex] (axis cs:-0.11, 0) -- (axis cs:-0.02, 0);
+
+\node at (axis cs: 0.35, 0.07) { \scriptsize  1};
+\node at (axis cs: 0.95, 0.07) { \scriptsize  2};
+\node at (axis cs: 0.28, -0.08) { \scriptsize  4};
+\node at (axis cs: 0.75, -0.075) { \scriptsize  5};
+\node at (axis cs: 1.25, 0.036) { \scriptsize  3};
+\node at (axis cs: 1.25, -0.037) { \scriptsize  6};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Schematizzazione campo di moto per $\alpha=0^\circ$ e $\Minf=3$ con inclinazione onde in scala reale}
+\label{figS5}
+\end{figure}
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{l  c  c c c c c}
+\toprule
+  & \emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\ 
+\midrule
+$M$	&	2.90	&	3.15	&	3.00	&	2.52	&	3.26	&	2.97	\\
+$p/p_{\infty}$ &   1.158	&	0.7965	&	1.001	&	2.018	&	0.6559	&	1.001	\\
+$p \ [\si{Pa}]$	&	30601.6	&	21057.8	&	26456.8	&	53338.4	&	17338.7	&	26456.9	\\
+$T/T_{\infty}$ &  1.043	&	0.9372	&	1.001	&	1.234	&	0.8953	&	1.012	\\
+$T \ [K]$	&	232.7	&	209.1	&	223.3	&	275.4	&	199.8	&	225.9	\\
+$\rho/\rho_{\infty}$ & 1.110	&	0.8500	&	1.000	&	1.635	&	0.7325	&	0.988	\\
+$\rho \ [kg/m^3]$	&	0.458	&	0.351	&	0.413	&	0.675	&	0.302	&	0.408	\\
+%$\mu$ &  1.37 & 1.37 & 1.37 & 1.37 & 1.37 & 1.37     \\
+%$\epsilon$ &  1.37 & 1.37 & 1.37 & 1.37 & 1.37 & 1.37   \\
+%$\delta$ &  1.37 & 1.37 & 1.37 & 1.37 & 1.37 & 1.37   \\
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=0^\circ$ e $\Minf=3$}
+\label{tabS5}
+\end{table}
+
+\section{Calcolo delle caratteristiche aerodinamiche}
+
+Note le distribuzioni delle pressioni sulle quattro facce del quadrilatero, e la geometria dello stesso, è stato possibile ottenere le forze normali e tangenziali, i relativi coefficienti, le forze di portanza e resistenza, i coefficienti aerodinamici e il coefficiente di momento rispetto al bordo d'attacco, i cui risultati sono riportati in tabella~\vref{tabS6}
+%Per il calcolo del centro di pressione è stato imposto nullo il momento aerodinamico e trascurata la componente lungo y dello stesso, ipotesi ammissibile per la sottigliezza del profilo.
+L'ascissa del centro di pressione è stato riportato in figura~\vref{figS6} al variare dell'angolo d'attacco, fissato il numero di Mach, per apprezzarne il suo movimento.
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c c}
+\toprule
+\multicolumn{2}{c}{{\emph Grandezze aerodinamiche}}  \\ 
+\bottomrule
+\toprule
+% $n$ & $t$ & $C_n$ & $C_t$ & 
+ $l$ &   3154.57 \si{N/m}\\ 
+\midrule
+ $d$ &   2350.86 \si{N/m}\\ 
+\midrule
+ $C_l$ &  0.0189\\ 
+\midrule
+ $C_d$ &   141.15 (Drag Counts)\\ 
+\midrule
+$m_{le}$ &   1309.53 \si{(N/m).m}\\ 
+\midrule
+$C_{m_{le}}$ & 0.0079\\ 
+\midrule
+$C_{m_{ac}}$ &  0.0166 \\ 
+\midrule
+ $\overline{x}_{cp}$ &   -0.4436 \\ 
+\midrule
+$\overline{y}_{cp}$ &   0.0036 \\ 
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=0^\circ$ e $\Minf=3$}
+\label{tabS6}
+\end{table}
+
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=-8, 
+xmax=8, 
+ymin=-1,
+ymax=1.8,
+xlabel=$ {\alpha}$, 
+ylabel=$\frac{x_{cp}}{c}$,
+width=9cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black,smooth]
+file{images/fileDat/Parte_2-Profilo_supersonico/CentroPressione/xcp_vs_alpha_Mach_3_ramo_negativo.dat};
+\addplot [black,smooth]
+file{images/fileDat/Parte_2-Profilo_supersonico/CentroPressione/xcp_vs_alpha_Mach_3_ramo_positivo.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Ascissa del centro di pressione al variare di ${\alpha}$. MATLAB R2016b}
+\label{figS6}
+\end{figure}
+
+\chapter{Campo di moto e aerodinamica non viscosa al variare delle condizioni}
+Lo {\itshape script} Matlab utilizzato per ottenere i risultati riportati in questo capitolo è parametizzato, oltre che per la geometria del profilo, anche per le condizioni operative in termini di quota, numero di Mach e angolo d'attacco. In particolare, nel seguente capitolo, facendo variare $\alpha$ e \Minf sono stati ottenuti i grafici seguenti che permettono di vedere gli effetti del numero di Mach sulle caratteristiche aerodinamiche del profilo alare.
+Per prima cosa sono stati ricostruiti i campi di moto per le caratteristiche riportate in tabella~\vref{tabS61}.
+Nelle cinque differenti condizioni operative descritte sono state calcolate le grandezze riportate da tabella~\vref{tabS6} a tabella~\vref{tabS10}, le onde d'urto e le onde di aspansione presenti, la direzione della linea di slip e le linee di corrente.
+
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+	\begin{tabular}{c c}
+		\toprule
+		\multicolumn{2}{c}{\emph{Campi di moto}}  \\ 
+		\midrule
+		$\alpha = 6^{\circ}$ & \Minf = 2, 4, 6\\
+		\Minf = 2 & $\alpha= -6^{\circ}, 0^{\circ},6^{\circ}$\\
+		\bottomrule
+	\end{tabular}
+	\caption {Condizioni operative utilizzate nel calcolo dei campi di moto.}
+	\label{tabs61}
+\end{table}
+
+\begin{table} [!h]
+	\centering 
+	\rowcolors{1}{}{grigio_chiaro}\begin{tabular}{l  c  c c c c c}   
+		 \toprule&   
+		  \emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule$M$ &2.1517 &2.3385 &1.9859 &1.4151 &1.9297 &1.9599 \\$p/p_{\infty}$ &0.78917 &0.58915 &1.0065 &2.2762 &1.0546 &1.0065 \\
+		  $p \ [\si{Pa}]$ &20862.8208 &15574.9526 &26607.012 &60173.4691 &27880.7177 &26607.2346 \\
+		  $T/T_{\infty}$ &0.93459&0.85971&1.0063&1.2853&1.0316&1.018\\
+		  $T \ [K]$ &208.5535&191.8435&224.5571&286.804&230.2119&227.1572\\
+		  $\rho/\rho_{\infty}$ &0.84441&0.68529&1.0002&1.771&1.0223&0.98871\\
+		  $\rho \ [kg/m^3]$ &0.34849&0.28282&0.41277&0.7309&0.4219&0.40805\\
+		  \bottomrule
+		  \end{tabular}
+		  \caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=6^\circ$ e $\Minf=2$}\label{tabS6}
+\end{table}			
+
+\begin{table} [!h]
+	\centering \rowcolors{1}{}{grigio_chiaro}
+	\begin{tabular}{l  c  c c c c c}   
+		 \toprule&    
+		 \emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule
+		 $M$ &4.3284 &4.7663 &3.9255 &2.8767 &3.7497 &3.8136 \\
+		 $p/p_{\infty}$ &0.65149 &0.37857 &1.0066 &3.8973 &1.0989 &1.0067 \\
+		 $p \ [\si{Pa}]$ &17223.0389 &10007.904 &26611.1007 &103030.9142 &29051.7301 &26612.3423 \\
+		 $T/T_{\infty}$ &0.88477&0.75765&1.0289&1.5819&1.1018&1.0745\\
+		 $T \ [K]$ &197.4368&169.0698&229.6046&353.0022&245.8629&239.7786\\
+		 $\rho/\rho_{\infty}$ &0.73634&0.49966&0.97831&2.4637&0.99741&0.93685\\
+		 $\rho \ [kg/m^3]$ &0.30389&0.20621&0.40376&1.0168&0.41164&0.38664\\
+		 \bottomrule
+		 \end{tabular}
+		 \caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=6^\circ$ e $\Minf=4$}\label{tabS7}\end{table}				
+	
+\begin{table} [!h]
+	\centering 
+	\rowcolors{1}{}{grigio_chiaro}
+	\begin{tabular}{l  c  c c c c c}    
+		\toprule&
+		    \emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule$M$ &6.6496 &7.5824 &5.6878 &3.8994 &5.2808 &5.4196 \\
+		    $p/p_{\infty}$ &0.52765 &0.22874 &1.0104 &6.4878 &1.1793 &1.0105 \\
+		    $p \ [\si{Pa}]$ &13949.2181 &6046.9323 &26711.9441 &171512.6281 &31176.5615 &26712.9049 \\
+		    $T/T_{\infty}$ &0.83305&0.65607&1.0977&2.0292&1.2467&1.1928\\
+		    $T \ [K]$ &185.8952&146.4029&244.9487&452.8086&278.197&266.1822\\
+		    $\rho/\rho_{\infty}$ &0.6334&0.34864&0.92051&3.1973&0.94596&0.84711\\
+		    $\rho \ [kg/m^3]$ &0.26141&0.14389&0.3799&1.3195&0.3904&0.34961\\
+		    \bottomrule
+		    \end{tabular}
+		    \caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=6^\circ$ e $\Minf=6$}\label{tabS8}
+\end{table}	
+
+
+\begin{table} [!h]
+	\centering 
+	\rowcolors{1}{}{grigio_chiaro}\begin{tabular}{l  c  c c c c c}    
+		\toprule&   
+		 \emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule$M$ &1.717 &1.8822 &1.9948 &1.8665 &2.437 &1.9786 \\
+		 $p/p_{\infty}$ &1.5327 &1.1908 &1.0001 &1.2285 &0.50471 &1.0001 \\
+		 $p \ [\si{Pa}]$ &40520.2356 &31480.6611 &26439.5504 &32477.9934 &13342.6358 &26439.4952 \\
+		 $T/T_{\infty}$ &1.1323&1.0535&1.0023&1.0608&0.82274&1.0096\\
+		 $T \ [K]$ &252.6799&235.0977&223.663&236.7264&183.5954&225.2822\\
+		 $\rho/\rho_{\infty}$ &1.3536&1.1303&0.99783&1.1581&0.61345&0.99066\\
+		 $\rho \ [kg/m^3]$ &0.55865&0.46648&0.41181&0.47795&0.25317&0.40885\\
+		 \bottomrule\end{tabular}
+		\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=-6^\circ$ e $\Minf=2$}\label{tabS9}
+		\end{table}			
+		
+		\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}\begin{tabular}{l  c  c c c c c}    \toprule&    \emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule$M$ &1.9313 &2.1053 &1.9988 &1.6506 &2.1856 &1.9881 \\$p/p_{\infty}$ &1.1124 &0.84842 &1.0012 &1.683 &0.73785 &1.0012 \\$p \ [\si{Pa}]$ &29407.7074 &22429.1211 &26469.1588 &44493.0925 &19505.9906 &26469.2197 \\$T/T_{\infty}$ &1.0309&0.95415&1.0005&1.1651&0.92056&1.0053\\$T \ [K]$ &230.0538&212.9195&223.2666&259.9977&205.4226&224.3291\\$\rho/\rho_{\infty}$ &1.079&0.88919&1.0007&1.4445&0.80152&0.99598\\$\rho \ [kg/m^3]$ &0.44532&0.36697&0.413&0.59616&0.33079&0.41105\\\bottomrule\end{tabular}\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=0^\circ$ e $\Minf=2$}\label{tabS10}\end{table}				
+		
+			
+		   
+		   					
+
+%----------------
+\newpage
+\begin{figure}[H]
+	\centering
+	\subfloat[][\footnotesize{$ \Minf = 2$}]
+	{
+		\begin{tikzpicture}[label distance= 1mm]
+		\pgfplotsset{every y tick label/.append style={font=\footnotesize, xshift=0.5ex}}
+		\pgfplotsset{every x tick label/.append style={font=\footnotesize}}
+		\begin{axis}[ 
+		%axis lines=none,        %commentare per ritornare alla griglia
+		xmin=-0.1, 
+		xmax=1.3, 
+		ymin=-0.15,
+		ymax=0.15,
+		xlabel=$ \frac {x}{c}$, 
+		ylabel=$ \frac {z}{c}$,
+		y label style={at={(axis cs: -0.2,0 )},rotate=-90,anchor=center},
+		ytick={-.1,-0.05,0,0.05,0.1},
+		yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+		width=14cm,
+		height=3 cm,
+		scale only axis,
+		grid=major] 
+		\addplot [black,solid, thick,mark options={solid}, mark size=2pt]
+		file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/1_IntermediateWave0_1_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/1_IntermediateWave1_2_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/1_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/2_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/3_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/4_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/5_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/FirstWave0_1_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/FirstWave1_2_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/FirstWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/FirstWave5_6_alpha_6_Mach_2.dat};
+		
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/LastWave0_1_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/LastWave1_2_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/LastWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/LastWave5_6_alpha_6_Mach_2.dat};
+		
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/ShockWave0_4_alpha_6_Mach_2.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/ShockWave2_3_alpha_6_Mach_2.dat};
+		
+		\addplot [black,dashed,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/SlipLine_alpha_6_Mach_2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.16.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.16.dat};
+		\draw[-latex] (axis cs:-0.1, -0.0105) -- (axis cs:-0.02, -0.0021);
+		\node at (axis cs: 0.35, 0.07) { \scriptsize  1};
+		\node at (axis cs: 0.95, 0.07) { \scriptsize  2};
+		\node at (axis cs: 0.28, -0.08) { \scriptsize  4};
+		\node at (axis cs: 0.75, -0.075) { \scriptsize  5};
+		\node at (axis cs: 1.25, 0.055) { \scriptsize  3};
+		\node at (axis cs: 1.25, -0.037) { \scriptsize  6};
+		\end{axis}
+		\end{tikzpicture}
+		} \\
+	\subfloat[][\footnotesize{$\Minf = 4$}]
+	{
+		\begin{tikzpicture}[label distance= 1mm]
+		\pgfplotsset{every y tick label/.append style={font=\footnotesize, xshift=0.5ex}}
+		\pgfplotsset{every x tick label/.append style={font=\footnotesize}}
+		\begin{axis}[ 
+		%axis lines=none,        %commentare per ritornare alla griglia
+		xmin=-0.1, 
+		xmax=1.3, 
+		ymin=-0.15,
+		ymax=0.15,
+		xlabel=$ \frac {x}{c}$, 
+		ylabel=$ \frac {z}{c}$,
+		y label style={at={(axis cs: -0.2,0 )},rotate=-90,anchor=center},
+		ytick={-.1,-0.05,0,0.05,0.1},
+		yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+		width=14cm,
+		height=3 cm,
+		scale only axis] 
+		\addplot [black,solid, thick,mark options={solid}, mark size=2pt]
+		file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/1_IntermediateWave0_1_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/1_IntermediateWave1_2_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/1_IntermediateWave4_5_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/2_IntermediateWave4_5_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/3_IntermediateWave4_5_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/FirstWave0_1_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/FirstWave1_2_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/FirstWave4_5_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/FirstWave5_6_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/LastWave0_1_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/LastWave1_2_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/LastWave4_5_alpha_6_Mach_4.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/LastWave5_6_alpha_6_Mach_4.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/ShockWave0_4_alpha_6_Mach_4.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/ShockWave2_3_alpha_6_Mach_4.dat};
+		\addplot [black,dashed,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/SlipLine_alpha_6_Mach_4.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_-0.16.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_4_alpha_6/flowLine_k_0.16.dat};
+		\draw[-latex] (axis cs:-0.1, -0.0105) -- (axis cs:-0.02, -0.0021);
+		\node at (axis cs: 0.55, 0.07) { \scriptsize  1};
+		\node at (axis cs: 1, 0.06) { \scriptsize  2};
+		\node at (axis cs: 0.28, -0.08) { \scriptsize  4};
+		\node at (axis cs: 0.75, -0.075) { \scriptsize  5};
+		\node at (axis cs: 1.25, 0.05) { \scriptsize  3};
+		\node at (axis cs: 1.25, -0.01) { \scriptsize  6};
+		\end{axis}
+		\end{tikzpicture}
+		} \\
+	\subfloat[][\footnotesize{$\Minf = 6$}]
+	{
+		
+		\begin{tikzpicture}[label distance= 1mm]
+		\pgfplotsset{every y tick label/.append style={font=\footnotesize, xshift=0.5ex}}
+		\pgfplotsset{every x tick label/.append style={font=\footnotesize}}
+		\begin{axis}[ 
+		%axis lines=none,        %commentare per ritornare alla griglia
+		xmin=-0.1, 
+		xmax=1.3, 
+		ymin=-0.15,
+		ymax=0.15,
+		xlabel=$ \frac {x}{c}$, 
+		ylabel=$ \frac {z}{c}$,
+		y label style={at={(axis cs: -0.2,0 )},rotate=-90,anchor=center},
+		ytick={-.1,-0.05,0,0.05,0.1},
+		yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+		width=14cm,
+		height=3 cm,
+		scale only axis] 
+		\addplot [black,solid, thick,mark options={solid}, mark size=2pt]
+		file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/1_IntermediateWave0_1_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/1_IntermediateWave1_2_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/1_IntermediateWave4_5_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/2_IntermediateWave4_5_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/3_IntermediateWave4_5_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/FirstWave0_1_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/FirstWave1_2_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/FirstWave4_5_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/FirstWave5_6_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/LastWave0_1_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/LastWave1_2_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/LastWave4_5_alpha_6_Mach_6.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/LastWave5_6_alpha_6_Mach_6.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/ShockWave0_4_alpha_6_Mach_6.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/ShockWave2_3_alpha_6_Mach_6.dat};
+		\addplot [black,dashed,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/SlipLine_alpha_6_Mach_6.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_-0.16.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_6_alpha_6/flowLine_k_0.16.dat};
+		\draw[-latex] (axis cs:-0.1, -0.0105) -- (axis cs:-0.02, -0.0021);
+		\node at (axis cs: 0.6, 0.07) { \scriptsize  1};
+		\node at (axis cs: 1, 0.02) { \scriptsize  2};
+		\node at (axis cs: 0.28, -0.08) { \scriptsize  4};
+		\node at (axis cs: 1, -0.075) { \scriptsize  5};
+		\node at (axis cs: 1.25, 0.04) { \tiny  3};
+		\node at (axis cs: 1.25, 0) { \scriptsize  6};
+		\end{axis}
+		\end{tikzpicture} 
+	}
+	\caption{\footnotesize Schematizzazione campo di moto per $\alpha=6^\circ$ con inclinazione onde in scala reale al variare del numero di Mach a monte. Matlab R206b.}
+	\label{fig:subfig1}
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+	\centering
+	\subfloat[][\footnotesize{$\alpha=-6^\circ$}]
+	{
+			\begin{tikzpicture}[label distance= 1mm]
+			\pgfplotsset{every y tick label/.append style={font=\footnotesize, xshift=0.5ex}}
+			\pgfplotsset{every x tick label/.append style={font=\footnotesize}}
+			\begin{axis}[ 
+			%axis lines=none,        %commentare per ritornare alla griglia
+			xmin=-0.1, 
+			xmax=1.3, 
+			ymin=-0.15,
+			ymax=0.15,
+			xlabel=$ \frac {x}{c}$, 
+			ylabel=$ \frac {z}{c}$,
+			y label style={at={(axis cs: -0.2,0 )},rotate=-90,anchor=center},
+			ytick={-.1,-0.05,0,0.05,0.1},
+			yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+			width=14cm,
+			height=3 cm,
+			scale only axis] 
+			\addplot [black,solid, thick,mark options={solid}, mark size=2pt]
+			file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/1_IntermediateWave1_2_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/1_IntermediateWave2_3_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/1_IntermediateWave4_5_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/2_IntermediateWave4_5_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/3_IntermediateWave4_5_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/4_IntermediateWave4_5_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/FirstWave1_2_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/FirstWave2_3_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/FirstWave4_5_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/LastWave1_2_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/LastWave2_3_alpha_-6_Mach_2.dat};
+			\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/LastWave4_5_alpha_-6_Mach_2.dat};		
+			\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/ShockWave0_1_alpha_-6_Mach_2.dat};
+			\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/ShockWave0_4_alpha_-6_Mach_2.dat};
+			\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/ShockWave5_6_alpha_-6_Mach_2.dat};
+			\addplot [black,dashed,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/SlipLine_alpha_-6_Mach_2.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.1.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.1.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.02.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.02.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.02.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.2.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.2.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.3.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.3.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.04.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.04.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.06.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.06.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.08.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.08.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.12.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.12.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.14.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.14.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_-0.16.dat};
+			\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alphaMeno6/flowLine_k_0.16.dat};
+			\draw[-latex] (axis cs:-0.1, 0.0105) -- (axis cs:-0.02, 0.0021);
+			\node at (axis cs: 0.35, 0.07) { \scriptsize  1};
+			\node at (axis cs: 1, 0.06) { \scriptsize  2};
+			\node at (axis cs: 0.28, -0.08) { \scriptsize  4};
+			\node at (axis cs: 0.75, -0.075) { \scriptsize  5};
+			\node at (axis cs: 1.25, 0.05) { \scriptsize  3};
+			\node at (axis cs: 1.25, -0.1) { \scriptsize  6};
+			\end{axis}
+			\end{tikzpicture}
+		} \\
+	\subfloat[][\footnotesize{$\alpha=0^\circ$}]
+	{\begin{tikzpicture}[label distance= 1mm]
+		\pgfplotsset{every y tick label/.append style={font=\footnotesize, xshift=0.5ex}}
+		\pgfplotsset{every x tick label/.append style={font=\footnotesize}}
+		\begin{axis}[ 
+		%axis lines=none,        %commentare per ritornare alla griglia
+		xmin=-0.1, 
+		xmax=1.3, 
+		ymin=-0.15,
+		ymax=0.15,
+		xlabel=$ \frac {x}{c}$, 
+		ylabel=$ \frac {z}{c}$,
+		y label style={at={(axis cs: -0.2,0 )},rotate=-90,anchor=center},
+		ytick={-.1,-0.05,0,0.05,0.1},
+		yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+		width=14cm,
+		height=3 cm,
+		scale only axis,
+		grid=major] 
+		\addplot [black,solid, thick,mark options={solid}, mark size=2pt]
+		file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/1_IntermediateWave1_2_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/1_IntermediateWave4_5_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/2_IntermediateWave4_5_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/3_IntermediateWave4_5_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/4_IntermediateWave4_5_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/5_IntermediateWave4_5_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/FirstWave0_1_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/FirstWave0_4_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/FirstWave1_2_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/FirstWave2_3_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/FirstWave4_5_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/FirstWave5_6_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/LastWave0_1_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/LastWave0_4_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/LastWave0_1_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/LastWave1_2_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/LastWave2_3_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/LastWave4_5_alpha_0_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/LastWave5_6_alpha_0_Mach_2.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/ShockWave0_1_alpha_0_Mach_2.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/ShockWave0_4_alpha_0_Mach_2.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/ShockWave2_3_alpha_0_Mach_2.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/ShockWave5_6_alpha_0_Mach_2.dat};
+		\addplot [black,dashed,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/SlipLine_alpha_0_Mach_2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_-0.16.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_0/flowLine_k_0.16.dat};
+		\draw[-latex] (axis cs:-0.11, 0) -- (axis cs:-0.02, 0);
+		\node at (axis cs: 0.35, 0.07) { \scriptsize  1};
+		\node at (axis cs: 0.95, 0.07) { \scriptsize  2};
+		\node at (axis cs: 0.28, -0.08) { \scriptsize  4};
+		\node at (axis cs: 0.75, -0.075) { \scriptsize  5};
+		\node at (axis cs: 1.25, 0.036) { \scriptsize  3};
+		\node at (axis cs: 1.25, -0.037) { \scriptsize  6};
+		\end{axis}
+		\end{tikzpicture}} \\
+	\subfloat[][\footnotesize{$\alpha=6^\circ$}]
+	{\begin{tikzpicture}[label distance= 1mm]
+		\pgfplotsset{every y tick label/.append style={font=\footnotesize, xshift=0.5ex}}
+		\pgfplotsset{every x tick label/.append style={font=\footnotesize}}
+		\begin{axis}[ 
+		%axis lines=none,        %commentare per ritornare alla griglia
+		xmin=-0.1, 
+		xmax=1.3, 
+		ymin=-0.15,
+		ymax=0.15,
+		xlabel=$ \frac {x}{c}$, 
+		ylabel=$ \frac {z}{c}$,
+		y label style={at={(axis cs: -0.2,0 )},rotate=-90,anchor=center},
+		ytick={-.1,-0.05,0,0.05,0.1},
+		yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+		width=14cm,
+		height=3 cm,
+		scale only axis,
+		grid=major] 
+		\addplot [black,solid, thick,mark options={solid}, mark size=2pt]
+		file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/1_IntermediateWave0_1_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/1_IntermediateWave1_2_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/1_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/2_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/3_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/4_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/5_IntermediateWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/FirstWave0_1_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/FirstWave1_2_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/FirstWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/FirstWave5_6_alpha_6_Mach_2.dat};
+		
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/LastWave0_1_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/LastWave1_2_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/LastWave4_5_alpha_6_Mach_2.dat};
+		\addplot [black,thin,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/LastWave5_6_alpha_6_Mach_2.dat};
+		
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/ShockWave0_4_alpha_6_Mach_2.dat};
+		\addplot [black,very thick,solid,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/ShockWave2_3_alpha_6_Mach_2.dat};
+		
+		\addplot [black,dashed,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/SlipLine_alpha_6_Mach_2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.1.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.02.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.2.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.3.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.04.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.06.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.08.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.12.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.14.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_-0.16.dat};
+		\addplot [black,ultra thin,mark options={solid}]file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/Mach_2_alpha_6/flowLine_k_0.16.dat};
+		\draw[-latex] (axis cs:-0.1, -0.0105) -- (axis cs:-0.02, -0.0021);
+		\node at (axis cs: 0.35, 0.07) { \scriptsize  1};
+		\node at (axis cs: 0.95, 0.07) { \scriptsize  2};
+		\node at (axis cs: 0.28, -0.08) { \scriptsize  4};
+		\node at (axis cs: 0.75, -0.075) { \scriptsize  5};
+		\node at (axis cs: 1.25, 0.055) { \scriptsize  3};
+		\node at (axis cs: 1.25, -0.037) { \scriptsize  6};
+		\end{axis}
+		\end{tikzpicture}} 
+	\caption{\footnotesize Schematizzazione campo di moto per \Minf = 2 con inclinazione onde in scala reale al variare dell'angolo d'attacco. Matlab R206b.}
+	\label{fig:subfig2}
+\end{figure}
+
+%------------------------------
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.3,0.98)}},
+ylabel style={rotate=-90}, xmin=-8, 
+xmax=8, 
+ymin=-0.2,
+ymax=0.2,
+xlabel=$ {\alpha}$, 
+ylabel=$C_l$,
+width=9cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thin,smooth]
+file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/Cl_vs_alpha_Mach_2.dat};
+\addplot [black,smooth]
+file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/Cl_vs_alpha_Mach_4.dat};
+\addplot [black,very thick,smooth]
+file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/Cl_vs_alpha_Mach_6.dat};
+\legend {$\Minf=2$,$\Minf=4$,$\Minf=6$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Confronto curve di portanza al variare del numero di Mach. MATLAB R2016b}
+\label{figS9}
+\end{figure}
+
+\begin{figure} [h!]
+	\centering
+	\begin{tikzpicture} 
+	\begin{axis} [ 
+	legend style={at={(0.3,0.98)}},
+	ylabel style={rotate=-90}, xmin=0, 
+	xmax=300, 
+	ymin=-0.2,
+	ymax=0.2,
+	xlabel=$C_d$, 
+	ylabel=$C_l$,
+	width=9cm,
+	height=7 cm,
+	scale only axis,
+	grid=major] 
+	\addplot [black,very thin,smooth]
+	file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/Cl_vs_CdCount_Mach_2.dat};
+	\addplot [black,smooth]
+	file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/Cl_vs_CdCount_Mach_4.dat};
+	\addplot [black,very thick,smooth]
+	file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/Cl_vs_CdCount_Mach_6.dat};
+	\legend {$\Minf=2$,$\Minf=4$,$\Minf=6$}
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\footnotesize Confronto polari non viscose al variare del numero di Mach. MATLAB R2016b}
+	\label{figS10}
+\end{figure}
+
+\begin{figure} [h!]
+	\centering
+	\begin{tikzpicture} 
+	\begin{axis} [ 
+	legend style={at={(0.98,0.98)}},
+	ylabel style={rotate=-90}, xmin=-8, 
+	xmax=8, 
+	ymin=-0.2,
+	ymax=0.2,
+	xlabel=$ {\alpha}$, 
+	ylabel=\Cmle,
+	width=9cm,
+	height=7 cm,
+	scale only axis,
+	grid=major] 
+	\addplot [black,very thin,smooth]
+	file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/CmLE_vs_alpha_Mach_2.dat};
+	\addplot [black,smooth]
+	file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/CmLE_vs_alpha_Mach_4.dat};
+	\addplot [black,very thick,smooth]
+	file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/CmLE_vs_alpha_Mach_6.dat};
+	\legend {$\Minf=2$,$\Minf=4$,$\Minf=6$}
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\footnotesize Confronto curve del coefficiente di momento rispetto al bordo d'attacco al variare del numero di Mach. MATLAB R2016b}
+	\label{figS11}
+\end{figure}
+
+\begin{figure} [h!]
+	\centering
+	\begin{tikzpicture} 
+	\begin{axis} [ 
+	legend style={at={(0.98,0.98)}},
+	ylabel style={rotate=-90}, xmin=2, 
+	xmax=6, 
+	ymin=0,
+	ymax=0.3,
+	xlabel=\Minf, 
+	ylabel=$C_l$,
+	ytick={0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3},
+	yticklabels={0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3},
+	width=9cm,
+	height=7 cm,
+	scale only axis,
+	grid=major] 
+	\addplot [black, mark=*,mark options={solid}]
+	file{images/fileDat/Parte_2-Profilo_supersonico/AerodinamicaNonViscosa/CurveVSAlpha/Cl_vs_Mach_alpha_6.dat};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\footnotesize Variazione del coefficiente di portanza al variare del numero di Mach, fissato l'angolo d'attacco $\alpha=6^{\circ}$. MATLAB R2016b}
+	\label{figS11}
+\end{figure}

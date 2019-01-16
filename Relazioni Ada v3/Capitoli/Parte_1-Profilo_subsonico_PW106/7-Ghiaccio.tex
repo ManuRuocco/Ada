@@ -1,0 +1,130 @@
+% !TeX program = PdfLaTeX
+% !TeX root = ../../Elaborati_Aerodinamica_Bruno_Spoti.tex
+\chapter{Effetti del ghiaccio}
+%L'accrescimento di ghiaccio sulle superfici dei velivoli può essere studiato come un cambiamento di geometria che genera un degrado delle prestazioni aerodinamiche o di manovrabilità del velivolo. In particolare ciò si traduce in un degrado del $C_{l_{\mathrm{max}}}$  e dell' ${\alpha}_{\mathrm{stall}}$ con un conseguente aumento della velocità di stallo, e un incremento del coefficiente di resistenza. 
+%Di seguito sono state riportate le analisi per due diverse modalità di accrescimento del ghiaccio: {\itshape Rime icing} ove tutte le goccioline di acqua che impattano si ghiacciano, e {\itshape Glaze icing}, caratterizzato da forme più complesse in quanto c'è una frazione d'acqua on ghiacciata.
+%Considerato il profilo di interesse, il PW106, e la sua applicabilità su velivoli non di grandi dimensioni, tale problematicità può avere un peso notevole vista la dimensione relativa tra ghiaccio e profilo stesso. 
+%Al fine di disegnare il nuovo profilo con l'opportuna modifica al bordo d'attacco, i punti assegnati sono stati importati in un software per digitalizzare grafici |ref{sito:plotdigitizer}, ed è stato disegnato per punti, il nuovo bordo d'attacco con accrescimento di ghiaccio. Il profilo così definito è stato poi importato in XFOIL 6.99 per le analisi aerodinamiche.
+L'accrescimento di ghiaccio sulle superfici dei velivoli può essere studiato come un cambiamento di geometria che genera un degrado delle prestazioni aerodinamiche o di manovrabilità del velivolo. In particolare ciò si traduce in un degrado del $C_{l_{\mathrm{max}}}$  e dell' ${\alpha}_{\mathrm{stall}}$ con un conseguente aumento della velocità di stallo, e un incremento del coefficiente di resistenza. 
+Di seguito sono state riportate i profili per due diverse modalità di accrescimento del ghiaccio: {\itshape Rime icing} ove tutte le goccioline di acqua che impattano si ghiacciano, e {\itshape Glaze icing}, caratterizzato da forme più complesse in quanto c'è una frazione d'acqua on ghiacciata.
+Considerato il profilo di interesse, il PW106, e la sua applicabilità su velivoli non di grandi dimensioni, tale problematicità può avere un peso notevole vista la dimensione relativa tra ghiaccio e profilo stesso. 
+Al fine di disegnare il nuovo profilo con l'opportuna modifica al bordo d'attacco, i punti assegnati sono stati importati in un software per digitalizzare grafici |ref{sito:plotdigitizer}, ed è stato disegnato per punti, il nuovo bordo d'attacco con accrescimento di ghiaccio. Il profilo così definito è stato poi importato in XFOIL 6.99 per le analisi aerodinamiche. Le analisi sono state svolte sulla configurazione con {\itshape Rime icing}, in quanto a causa dell'elevata spigolosità dell caso  {\itshape Glaze icing}, il solutore XFOIL non è in grado di portare a convergenza la soluzione.
+
+\begin{figure}
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=-0.1, 
+xmax=1.1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ytick={-0.1,-0.05, 0,0.05, 0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$-0.05$,$0.1$},
+width=13cm,
+ height=2.1667 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Ghiaccio/ProfiloPW106Chiuso.dat};
+\addplot [black,solid,thin]
+file{images/fileDat/Ghiaccio/ProfiloPW106_Rime_icing.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, configurazione pulita e con accrescimento di ghiaccio di tipo {\itshape Rime icing}}
+\label{fig:rimeiicing}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=-0.1, 
+xmax=1.1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ytick={-0.1,-0.05, 0,0.05, 0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$-0.05$,$0.1$},
+width=13cm,
+ height=2.1667 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Ghiaccio/ProfiloPW106Chiuso.dat};
+\addplot [black,solid,thin]
+file{images/fileDat/Ghiaccio/ProfiloPW106_Glaze_icing.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, configurazione pulita e con accrescimento di ghiaccio di tipo {\itshape Glaze icing}}
+\label{fig:glazi}
+\end{figure}
+
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.45,0.98)}},
+ylabel style={rotate=-90}, xmin=0, 
+xmax=16, 
+ymin=0,
+ymax=1.4,
+xlabel=${\alpha}$,
+ylabel=$C_l$ ,
+width=12cm,
+height=14 cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth,mark=*]
+file{images/fileDat/Ghiaccio/liftCurve_Pulito.dat};
+\addplot [black,smooth,mark=square]
+file{images/fileDat/Ghiaccio/liftCurve_RE25e4_rime_icing.dat};
+\legend {configurazione pulita ,Rime icing}
+\end{axis}
+\end{tikzpicture} 
+\caption{\footnotesize Profilo alare PW106, confronto delle curve di portanza in configurazione pulita e con formazione di ghiacccio, soluzione viscosa con $ Re= 2.5\times10^5$. XFOIL 6.99 }
+\label{fig:clicing}
+\end{figure}
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.98,0.30)}},
+ylabel style={rotate=-90}, xmin=0, 
+ymin=0.2,
+ymax=1.4,
+xlabel=$C_d$ (drag count),
+ylabel=$C_l$ ,
+width=11cm,
+height=11cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth,mark=*]
+file{images/fileDat/Ghiaccio/polarCurve_Pulito.dat};
+\addplot [black,smooth,mark=square]
+file{images/fileDat/Ghiaccio/PolarCurve_RE25e4_rime_icing.dat};
+\legend {configurazione pulita ,Rime icing}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, confronto delle polari in configurazione pulita e con formazione di ghiacccio, soluzione viscosa con $ Re= 2.5\times10^5$. XFOIL 6.99 }
+\label{fig:policing}
+\end{figure}
+
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c S c c}
+\toprule
+\emph{Configurazione} &  $C_{{l}_{ \alpha = 10^{\circ}}} $  &  $C_{{d}_{ \alpha = 10^{\circ}}}$ & $C_{l_{\mathrm{max}}}$  \\ 
+\midrule
+Configurazione pulita & 1.15 & $21.2$ & $1.21$  \\
+{\itshape Rime icing} & 1.12 & $36.3$ & $1.17$  \\
+\bottomrule
+\end{tabular}
+\caption {Profilo alare PW106, $C_{l_{\mathrm{max}}}$, ${\alpha}_{\mathrm{stall}}$ e ${\alpha}_{\mathrm{zl}}$ per flap retratto e deflesso, $ Re=1\times10^6$.}
+\label{tab:flap}
+\end{table}
+

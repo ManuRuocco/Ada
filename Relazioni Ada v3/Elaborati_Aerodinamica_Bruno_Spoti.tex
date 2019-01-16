@@ -1,0 +1,192 @@
+\documentclass[a4paper, 12pt, openright, fleqn, oneside]{book}
+
+% --------------------------------------------------------------------------------------------------------------------------------------------
+% PACCHETTI E IMPOSTAZIONI
+% --------------------------------------------------------------------------------------------------------------------------------------------
+% Impostazioni del documento
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[full]{textcomp}
+\usepackage[italian]{babel}
+
+% Impostazioni dei linguaggi
+\providecommand{\csletcs}[2]{\expandafter\let\csname#1\expandafter\endcsname\csname#2\endcsname}
+\newcommand{\equivUC}[3][\def]{\expandafter#1\csname#2\expandafter\endcsname\expandafter{\csname#3\endcsname}}
+\newcommand{\UPCASElang}[1]{\uppercase{\def\temp{#1}}
+\csletcs{l@\temp}{l@#1}
+\equivUC{date\temp}{date#1}
+\equivUC{captions\temp}{captions#1}
+\equivUC{extras\temp}{extras#1}
+\equivUC{noextras\temp}{noextras#1}
+\equivUC[\edef]{\temp hyphenmins}{#1hyphenmins}}
+\UPCASElang{italian}
+\UPCASElang{english}
+\usepackage{csquotes}
+\usepackage{indentfirst}    
+\usepackage{geometry}
+\geometry{a4paper, top=30mm, bottom=25mm, left=25mm, right=30mm, marginparwidth=25mm}
+\raggedbottom
+\linespread{1} 
+
+% Altri pacchetti utili
+\usepackage[TM]{ar}
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplotstable}
+\usepackage[hang]{caption}
+\DeclareCaptionFormat{listing}{{\textwidth+17pt\relax\centering}\par\vskip1pt#1#2#3}
+\captionsetup{labelsep=period, labelfont={bf}}
+\captionsetup[lstlisting]{format=listing, singlelinecheck=false, justification=centering, margin=0pt, font={rm}, labelfont=bf}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage[intlimits]{mathtools}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={.}}
+\usepackage{subfig}
+\usepackage{rotating}
+\usepackage{float}
+\usepackage{floatflt}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage[nouppercase, swapnames]{frontespizio}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{relsize}
+\usepackage{titlesec}
+\usepackage{appendix}
+\usepackage{xspace}
+\usepackage{chemformula}
+\usepackage[italian]{varioref}
+\usepackage{wasysym}
+\usepackage{amssymb}
+%\usepackage{bbold}
+\usepackage[italian]{minitoc}
+\usepackage{yhmath}
+\usepackage{amsthm}
+
+% Impostazioni dello stile
+\titleformat{\chapter}[display]
+{\bfseries \Large}
+{\filleft \huge {\bfseries{\chaptertitlename}} \lapbox[6pt]{\width} 
+\ \colorbox{black}{\color{white}\Huge \strut {\thechapter}}}{3ex}
+{\titlerule\vspace{2ex}\filright}
+[\vspace{2ex}{\titlerule[2pt]}]
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyhead[LE]{\itshape \nouppercase \rightmark}
+\fancyhead[RO]{\itshape \nouppercase \leftmark}
+\addtolength{\headheight}{0.5pt}
+\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt} \fancyhf{} \fancyfoot[LE,RO]{\thepage}}
+
+\def\mynormalstretch{1.1}
+\setstretch{\mynormalstretch}
+\pgfplotsset{compat=1.13}
+\pgfplotsset{every axis/.append style={thick}}
+\usepgfplotslibrary{patchplots}
+\usepgfplotslibrary{fillbetween}
+\usepgflibrary{decorations.pathmorphing}
+\usepgflibrary{shapes.geometric,shapes.misc}
+\usepgflibrary{arrows}
+\usetikzlibrary{shapes,shadows,arrows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{intersections}
+\usetikzlibrary{decorations.markings}
+\tikzset{every mark/.append style={scale=0.75}}
+\makeatletter
+\tikzset{nomorepostaction/.code=\makeatletter\let\tikz@postactions\pgfutil@empty, my axis/.style={postaction={decorate, decoration={markings, mark=at position 1 with {\arrow[scale=2]{stealth}}}}}}
+\makeatother
+\pgfdeclarepatternformonly{definito destro}{\pgfqpoint{-2pt}{-2pt}}{\pgfqpoint{8pt}{8pt}}{\pgfqpoint{7pt}{7pt}}%
+{
+  \pgfsetlinewidth{0.4pt}
+  \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+  \pgfpathlineto{\pgfqpoint{10pt}{10pt}}
+  \pgfusepath{stroke}
+}
+
+\definecolor{grigio_chiaro}{gray}{0.85}
+
+%---------------------------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------------------------
+
+\input{Preambolo/Simboli}
+
+\begin{document}
+
+%FRONTESPIZIO
+\begin{frontespizio}
+\Universita {Napoli Federico II}
+\Divisione {\mbox{}}
+\Scuola{}
+\Titolo {Elaborati \\ di \\ Aerodinamica degli Aeromobili}
+\Sottotitolo{A cura di \\  \Large Bruno Spoti \\  \large M53000986 \\  \vspace*{2cm}  Esercizi in sviluppo o già convalidati  \rule{0.7\textwidth}{0.4pt} \vspace*{0.3cm}
+\begin{enumerate}\footnotesize
+\item   L'AERODINAMICA –NON VISCOSA E VISCOSA– DEL PROFILO ALARE ALLE BASSE VELOCITÀ DI VOLO - in sviluppo
+\item   L'AERODINAMICA NON VISCOSA DEL PROFILO ALARE ALLE ALTE VELOCITÀ DI VOLO - in sviluppo
+\item   L'AERODINAMICA DELL'ALA E DEL VELIVOLO - in sviluppo 
+\end{enumerate}
+}
+\Annoaccademico {2018/2019}
+\end{frontespizio}
+
+
+\frontmatter  %materiale iniziale (indice, lista simboli, prefazione prof)
+
+\input{Capitoli/prefazione_prof}
+
+\tableofcontents
+
+
+\mainmatter  %materiale del corpo centrale (due parti piú riepilogo)
+
+
+%\part {Aerodinamica del profilo alare - PW106}
+%   \input{Capitoli/Parte_1-Profilo_subsonico_PW106/1-Introduzione_e_geometria_profilo}
+%   \input{Capitoli/Parte_1-Profilo_subsonico_PW106/2-Soluzione_euleriana}
+%   \input{Capitoli/Parte_1-Profilo_subsonico_PW106/3-Comprimibilita}
+%   \input{Capitoli/Parte_1-Profilo_subsonico_PW106/4-Viscosita}
+%   \input{Capitoli/Parte_1-Profilo_subsonico_PW106/5-Alte_incidenze}
+%   \input{Capitoli/Parte_1-Profilo_subsonico_PW106/6-Flap.tex}
+%   \input{Capitoli/Parte_1-Profilo_subsonico_PW106/7-Ghiaccio.tex}
+%
+%\part {Aerodinamica non viscosa del profilo alare alle alte velocità di volo}  \input{Capitoli/Parte_2-Profilo_supersonico/Geometria}
+%\input{Capitoli/Parte_2-Profilo_supersonico/MachCriticoSup}
+%\input{Capitoli/Parte_2-Profilo_supersonico/CampoDiMotoM3}
+%\input{Capitoli/Parte_2-Profilo_supersonico/CampoDiMotoVarAlphaMach}
+	
+%\part { L' Aerodinamica del profilo alare - NACA $66_4-221$}
+%\input{introduzione_laminare}
+%\input{geometria_profilo_laminare}
+%\input{soluzione_euleriana_laminare}
+%\input{comprimibilita_laminare}
+%\input{viscosita_laminare}
+%
+%
+\part {L' Aerodinamica del velivolo Airbus~A340-200}
+\input{Capitoli/Parte_3-Aerodinamica_Velivolo_A340-200/intro_velivolo}
+
+%\input{Teoria_globale_velivolo}o_
+%\input{carico}
+%\input{stallo}
+
+
+\backmatter % materiale finale (bibliografia, risorse utilizzate)
+
+\input{Capitoli/simboli}
+\input{Capitoli/biblio}
+
+\end{document}

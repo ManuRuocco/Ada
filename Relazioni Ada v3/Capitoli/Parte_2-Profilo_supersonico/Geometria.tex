@@ -1,0 +1,91 @@
+% !TeX program = PdfLaTeX
+% !TeX root = ../../Elaborati_Aerodinamica_Bruno_Spoti.tex
+\chapter{Generalità e geometria del profilo alare per il volo supersonico}
+Scopo della seguente parte è lo studio dell'aerodinamica di tipo non viscoso per un profilo alare alle alte velocità di volo. La geometria del profilo è stata fornita tramite le coordinate di quattro punti che rappresentano i vertici di un quadrilatero.\\
+Lo studio del profilo è stato condotto attraverso uno {\itshape script} interamente scritto in MATLAB parametrizzato per le coordinate che ne definiscono la geometria e le condizioni operative. In primo luogo viene calcolata la geometria completa in termini di angoli interni e distanze tra i punti. Noti tali valori è valutato il $M'_{\infty\mathrm{cr}}$ in funzione dell'angolo d'attacco $\alpha$. Successivamente per $M_{\infty}=3$ e $\alpha=0^{\circ}$ è stato calcolato il campo di moto attorno al corpo, i coefficienti di forza e momento, le forze, i momenti, il centro di pressione, il centro aerodinamico e il campo di moto a valle. Infine sono state calcolate le curve di portanza, le polari non viscose e il campo di moto per alcune diverse combinazioni di  $\alpha$ e $M_{\infty}$ allo scopo di evidenziare gli effetti del numero di Mach sull'aerodinamica del profilo.  Il calcolo di tale campo di moto è stato parametrizzato rispetto l'angolo d'attacco del profilo cosicchè lo {\itshape script} sia in grado di valutare per ogni regione la presenza di onde d'urto od onde di espansione in funzione della geometria del profilo alare.
+
+\section{Geometria del Profilo}
+La geometria del profilo è stata fornita in forma puntuale mediante i quattro vertici di un quadrilatero
+\begin{itemize}
+\item Bordo d'attacco A(0,0);
+\item Bordo d'uscita B(1,0);
+\item C(0.60, 0.02)
+\item D(0.35, -0.06)
+\end{itemize}
+
+Unendo questi quattro punti si ottiene il profilo in questione come si vede in figura~\vref{figS1}.
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ 
+xmin=0, 
+xmax=1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid, thick,mark=*,mark options={solid}, mark size=2pt]
+file{images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometria.dat};
+\addplot[black,solid, thick,mark=*,mark options={solid}, mark size=2pt]coordinates {
+(0,0)
+(1,0) };
+\node at (axis cs: 0.02, 0.024) {$A$};
+\node at (axis cs: 0.6, 0.05) {$C$};
+\node at (axis cs: 0.35, -0.085) {$D$};
+\node at (axis cs: 0.98, 0.024) {$B$};
+%\coordinate (D) at (0.35,-0.06);
+%\coordinate (D1) at (0.35,0);
+%\coordinate (C) at (0.6,0.02);
+%\coordinate (C1) at (0.6,0);
+%\draw[thick] (D) -- (D1);
+%\draw[thick] (C) -- (C1);
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Punti assegnati e geometria del profilo alare per il volo supersonico}
+\label{figS1}
+\end{figure}
+
+Tramite lo {\itshape script} MATLAB sono state calcolate tutte le caratteristiche geometriche d'interesse del quadrilatero in analisi le quali, con riferimento alle notazioni presenti in figura~\vref{figS1} sono state riportate nella tabella~\vref{tabS1}.%riferimento tabella
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c  c  c c }
+\toprule
+\emph{Lato} & \emph{Lunghezza} [$L/c$] & \emph{Angolo} & \emph{Ampiezza} [deg]  \\
+\midrule
+$L_1=\overline{AC}$  &  0.600 &   $\theta_1=C\widehat{A}B$ &  $1.91$   \\   
+$L_2=\overline{CB}$  &  0.401 &   $\theta_2=C\widehat{B}A$  &  $2.86$ \\ 
+$L_4=\overline{AD}$  &  0.355 & $\theta_4= D\widehat{A}B $ &  $9.73 $ \\ 
+$L_5=\overline{DB}$  &  0.653 &  $\theta_5= D\widehat{B}A$ &  $5.27 $ \\ 
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Caratteristiche geometriche del profilo}
+\label{tabS1}
+\end{table}
+
+Nello svolgimento delle analisi riportate nei successivi capitoli sono state ricavate le caratteristiche areodinamiche di profilo riportate in tabella tabella~\vref{tabS1b}.
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c c}
+\toprule
+\multicolumn{2}{c}{\emph{Grandezze aerodinamiche}}  \\ 
+\midrule
+\alphazl &$ -0,7439 ^{\circ}$\\
+$\overline{x}_{ac}$ & 0.4350 \\
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Principali grandezze aerodinamiche del profilo per il volo supersonico.}
+\label{tabS1b}
+\end{table}
+
+%-------------
+
+
+
+

@@ -1,0 +1,412 @@
+% !TeX program = PdfLaTeX
+% !TeX root = ../../Elaborati_Aerodinamica_Bruno_Spoti.tex
+\chapter{Generalità e geometria del profilo alare PW106}
+
+Il seguente lavoro si prefigge lo scopo di studiare le prestazioni aerodinamiche del profilo alare \emph{PW106}, un profilo disegnato da Peter Wick e ottenuto a partire dal profilo alare simile PW51 rispetto al quale ha una curvatura maggiore e quindi un maggiore $C_{l_\mathrm{max}}$. 
+La valutazione delle caratteristiche dello stesso è stata condotta attraverso l'applicazione di metodi teorici tramite il codice XFOIL e con l'ausilio di script implementati in MATLAB.\\
+Preliminarmente è stata trattata la geometria del profilo, la cui costruzione è stata fatta per punti. In seguito sono state ricavate le caratteristiche geometriche dello stesso e i risultati del profilo sottile. È stata poi studiata la soluzione in campo Euleriano incomprimibile a vari $C_l$ significativi, graficandone il coefficiente di pressione. Si è passati, poi, alla soluzione in campo viscoso introducendo gli effetti del numero di Reynolds e della turbolenza asintotica. Sono stati inoltre valutati gli effetti sullo strato limite in condizioni di alta portanza verificando, in base ai criteri semiempirici, il tipo di stallo del profilo in esame. Infine é stata ricavata l'aerodinamica del profilo considerando la deflessione di parte dello stesso come {\itshape flap} oppure come alettone.
+
+\section{Geometria del Profilo}
+
+La geometria del profilo è stata inizialmente fornita in forma tabellare con 33 punti sul dorso e 128 sul ventre \cite{prof:sito} riportata in figura~\ref{fig:puntiprofilo}. \\
+Il profilo alare è stato fornito aperto al bordo d'uscita, e, prima di procedere con le analisi, è stato ritenuto preferbile provvedere alla chiusura dello stesso tramite il comando {\itshape tgap} di XFOIL, benchè il software sia comunque in grado di eseguire analisi su profili aperti. Il confronto tra le due geometrie è riportato in figura~\vref{fig:BordoUscitaAperto}, mentre nelle figure~\vref{fig:puntiprofiloocDorso} e ~\vref {fig:puntiprofiloocVentre} sono riportate le differenze adimensionalizzate con la corda tra le coordinate z del profilo chiuso e le coordinate z della geometria aperta. 
+
+
+ La disegnazione tecnica del profilo e le successive applicazioni sono state condotte su una geometria ottenuta tramite un'interpolazione mediante {\itshape Spline}, così da avere 100 punti sul dorso e 100 punti sul ventre, alle stesse ascisse. \\ 
+La scelta di migliorare la geometria del profilo fornita è stata fatta a causa della forte oscillazione nel grafico della curvatura anche a valle della ripannellizazione in xfoil. Come si evince dal grafico in figura~\ref{fig:curvaturaSubfig}, a valle dell'interpolazione, la geometria risulta notevolmente migliorata, seppur con presenza di oscillazioni. 
+I punti di ascissa $x$, ordinata $y$ e ascissa curvilinea del profilo $s$, ottenuti tramite XFOIL, sono stati importati in MATLAB ed elaborati con un codice in grado di generare delle {\itshape spline} tramite la funzione {\itshape csaps} che genera spline cubiche con un dato fattore di {\itshape smoothing}. Il medesimo script consente anche la disegnazione della linea media del profilo e la valutazione di spessore e curvatura in funzione dell’ascissa x lungo la corda come mostrato da figura~\ref{fig:lineamedia} a figura~\ref{fig:curvaturaSubfig}.  \noindent \\
+
+
+\begin{figure} [H]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	xmin=0, 
+	xmax=1, 
+	ymin=-0.1,
+	ymax=0.1,
+	width=15 cm,
+	height=3.23 cm,
+	ytick={-0.1,-0.05,0,0.05,0.1},
+	yticklabels={,,},
+	xticklabels={,,},
+	axis line style={draw=none},
+	tick style={draw=none},
+	scale only axis,
+	] 
+\addplot [black]
+	file{images/fileDat/Geometria/ProfiloPW106Chiuso.dat};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\footnotesize Profilo alare PW106. }\label{fig:puntiprofiloNoGriglia}
+\end{figure}
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black, mark=*,only marks]
+file{images/fileDat/Geometria/ProfiloPW106Chiuso.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106. Punti assegnati (33 sul dorso e 128 sul ventre) }\label{fig:puntiprofilo}
+\end{figure}
+
+%GRAFICI PROFILO
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/ProfiloPW106Chiuso.dat};
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/lineaMediaPW106.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106. Geometria migliorata con Spline. MATLAB R2016b. }\label{fig:lineamedia}
+\end{figure}
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/puntiInfittit.dat};
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/lineaMediaPW106.dat};
+\addplot [black, mark=*,thick]
+file{images/fileDat/Geometria/ProfiloPW106Chiuso.dat};
+\legend{Profilo chiuso, Profilo aperto}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106. Confronto punti assegnati - geometria spline. MATLAB R2016b. }\label{fig:cp}
+\end{figure}
+\noindent
+ \\ \\
+
+\begin{figure} [h!]
+	\centering
+	\begin{tikzpicture} 
+	\begin{axis} [ 
+	xmin=0.9, 
+	xmax=1.02, 
+	ymin=-0.01,
+	ymax=0.01,
+	xlabel=$ \frac {x}{c}$, 
+	ylabel=$ \frac {z}{c}$,
+	ylabel style={rotate=-90},
+	%xtick={-0.03,0,0.03,0.06,0.09},
+	width=13cm,
+	height=4.33 cm,
+	scale only axis,
+	grid=major] 
+	\addplot [black,solid,very thick]
+	file{images/fileDat/Geometria/ProfiloPW106.dat};
+	\addplot [black,solid,very thin]
+	file{images/fileDat/Geometria/ProfiloPW106Chiuso.dat};	
+	\legend{Profilo chiuso in XFOIL, Profilo aperto};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\footnotesize Profilo alare PW106. Geometria fornita con bordo d'uscita aperto. }\label{fig:BordoUscitaAperto}
+\end{figure}
+
+\begin{figure} [h!]
+	\centering
+	\begin{tikzpicture} 
+	\begin{axis} [ 
+	xmin=0, 
+	xmax=1, 
+	ymin=-0.0005,
+	ymax=0,
+	xlabel=$ \frac {x}{c}$, 
+	ylabel=$ \Delta {\bar z}$,
+	ylabel style={rotate=-90},
+	ytick={-0.0005,-0.00045, - 0.0004, -0.00035, -0.0003, -0.00025, -0.0002, -0.00015, -0.0001, -0.00005, 0},
+	%yticklabels={$-0.00005$,$-0.0001$,$ - 0.00015$,$ -0.0002$, $-0.00025$, $-0.0003$,$ -0.00035$, $-0.0004$, $-0.00045$, $-0.0005$},
+	%yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+	width=13cm,
+	height=6.5 cm,
+	scale only axis,
+	grid=major] 
+	\addplot [black]
+	file{images/fileDat/Geometria/deltaDyProfiloChiusoDorso.dat};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\footnotesize Profilo alare PW106. Differenza delle ordinate del profilo sul dorso tra la geometria chiusa in XFOIL, e la geometria fornita con bordo d'uscita aperto ($z_{\mathrm{u, chiuso}}- z_{\mathrm{u, aperto}}$) }\label{fig:puntiprofiloocDorso}
+\end{figure}
+
+\begin{figure} [h!]
+	\centering
+	\begin{tikzpicture} 
+	\begin{axis} [ 
+	xmin=0, 
+	xmax=1, 
+	ymin=0,
+	ymax=0.0005,
+	xlabel=$ \frac {x}{c}$, 
+	ylabel=$ \Delta {\bar z}$,
+	ylabel style={rotate=-90},
+	ytick={0, 0.00005,0.0001, 0.00015, 0.0002, 0.00025, 0.0003, 0.00035, 0.0004, 0.00045, 0.0005},
+	%yticklabels={$-0.00005$,$-0.0001$,$ - 0.00015$,$ -0.0002$, $-0.00025$, $-0.0003$,$ -0.00035$, $-0.0004$, $-0.00045$, $-0.0005$},
+	%yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+	width=13cm,
+	height=6.5 cm,
+	scale only axis,
+	grid=major] 
+	\addplot [black]
+	file{images/fileDat/Geometria/deltaDyProfiloChiusoVentre.dat};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{\footnotesize Profilo alare PW106. Differenza delle ordinate del profilo sul ventre tra la geometria chiusa in XFOIL, e la geometria fornita con bordo d'uscita aperto ($z_{\mathrm{l, chiuso}}- z_{\mathrm{l, aperto}}$) }\label{fig:puntiprofiloocVentre}
+\end{figure}
+ 
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=-0.03, 
+xmax=0.1, 
+ymin=-0.03,
+ ymax=0.05,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+xtick={-0.03,0,0.03,0.06,0.09},
+width=13cm,
+ height=8.61 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/puntiInfittit.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize  Profilo alare PW106. Zoom del bordo d'attacco }\label{fig:cp}
+\end{figure}
+\noindent
+ \\ \\
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0.9, 
+xmax=1.02, 
+ymin=-0.01,
+ ymax=0.01,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+%xtick={-0.03,0,0.03,0.06,0.09},
+width=13cm,
+ height=4.33 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/puntiInfittit.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize  Profilo alare PW106. Zoom del bordo d'uscita }\label{fig:cp}
+\end{figure}
+\noindent
+ \\ \\
+ 
+
+%ASCISSA- ORDINATA - ASCISSACURVILINEA 
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=2.02, 
+ymin=0,
+ ymax=1,
+ xlabel=$ \frac {s}{c}$, 
+ylabel=$ \frac {x}{c}$,
+ylabel style={rotate=-90},
+width=12cm,
+ height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/ascissCurviineaAscissa.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize  Profilo alare PW106. Andamento ascissa curvilinea su ascissa. XFOIL 6.99. }\label{fig:cp}
+\end{figure}
+\noindent
+ \\ \\  \\
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=2.02, 
+ymin=-0.05,
+ ymax=0.1,
+ xlabel=$ \frac {s}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ylabel style={rotate=-90},
+width=12cm,
+ height=6 cm,
+scale only axis,
+ytick={-0.05,0,0.05,0.1},
+grid=major] 
+\addplot [black,solid, very thick]
+file{images/fileDat/Geometria/ascissaCurvilineaOrdinata.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize  Profilo alare PW106. Andamento ascissa curvilinea su ordinata. XFOIL 6.99. }\label{fig:cp}
+\end{figure}
+\noindent
+ \\ 
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=1, 
+ymin=0,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {t}{c}$, 
+width=11cm,
+ylabel style={rotate=-90},
+ height=8 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/spessorePW.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize  Profilo alare PW106, andamento dello spessore. MATLAB R2016b}\label{fig:spessore}
+\end{figure}
+\noindent
+ \\ \\
+ 
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=2.02, 
+ymin=-20,
+ ymax=160,
+ xlabel=$ \frac {s}{c}$, 
+ylabel=curvatura,
+width=11cm,
+ height=8 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thick]
+file{images/fileDat/Geometria/CurvaturaPW106200PanelsOK.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize  Profilo alare PW106- Andamento ascissa curvilinea - curvatura. XFOIL 6.99}\label{fig:cp}
+\end{figure}
+\noindent
+ \\ \\
+
+
+
+ 
+  \begin{figure}[h!]
+\centering
+\subfloat[][Geometria migliorata con Spline]
+{
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=2.02, 
+ymin=-3,
+ ymax=4,
+ xlabel=$ \frac {s}{c}$, 
+ylabel=curvatura,
+width=11cm,
+ height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid]
+file{images/fileDat/Geometria/CurvaturaPW106200PanelsOK.dat};
+\end{axis}
+\end{tikzpicture}
+} \\
+\subfloat[][Geometria assegnata]
+{
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=2.02, 
+ymin=-3,
+ ymax=4,
+ xlabel=$ \frac {s}{c}$, 
+ylabel=curvatura,
+width=11cm,
+ height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid, semithick]
+file{images/fileDat/Geometria/CurvaturaProfiloNonMigliorataNV.dat};
+\end{axis}
+\end{tikzpicture}
+} \\
+\caption{\footnotesize Profilo alare PW106- Zoom dell'andamento dell'ascissa curvilinea - curvatura, confronto tra geometria migliorata e geometria assegnata. XFOIL 6.99}
+\label{fig:curvaturaSubfig}
+\end{figure}
+
+
+
+%CONTINUA QUI
+\noindent \\ \\ \\ \\ \\ \\ \\ \\ \\ 
+
+I punti del profilo sono stati importati sul software CAD CATIA V5-6R2017 per rappresentare un'ala con profilo costante, di elevato allungamento come si vede in figura~\vref{fig:catia}.
+
+
+\begin{figure} [h!]
+\centering
+\includegraphics  [ height=6cm] {images/FileImg/rendering.jpg}
+\caption{\footnotesize Ala di elevato allungamento con profilo costante PW106, rendering in CATIA V5-6R2017}
+\label{fig:catia}
+\end{figure}

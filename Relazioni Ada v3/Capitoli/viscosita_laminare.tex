@@ -1,0 +1,165 @@
+\chapter{Effetti viscosi}
+
+In questo capitolo sarà studiata l’aerodinamica del profilo alare Sesta Serie NACA Laminare $66_4-221$ a diversi assetti.\\ In primo luogo saranno evidenziati gli effetti della viscosità sulla curva di portanza e sulla polare, ponendo particolare attenzione al comportamento della zona della sacca laminare. In seguito si studierà la variazione della distribuzione del Coefficiente di Pressione con il numero di Reynolds ad assetti anche non piccoli.  
+
+\section{Curva di Portanza e polare }
+
+I valori dell' $ {\alpha}_{stall}$ e del $C_{l_{max}}$ sono i seguenti \\
+
+
+\begin {itemize}
+\item $Re=3*10^6$ ${\to}$ $ {\alpha}_{stall}=22^\circ$  ${\to}$ $C_{l_{max}}=1.47$
+\item $Re=7*10^6$ ${\to}$ $ {\alpha}_{stall}=23^\circ$  ${\to}$ $C_{l_{max}}=1.60$
+\item $Re=1*10^7$ ${\to}$ $ {\alpha}_{stall}=25^\circ$  ${\to}$ $C_{l_{max}}=1.65$
+\end{itemize}
+
+\noindent \\ \\
+Nel grafico della polare del profilo si può notare la presenza di una sacca laminare intorno al valore del $C_{l_i}$ la cui estensione varia al variare del numero di Reynolds.\\ Per $ Re=3*10^6$ l’estensione della semisacca è di poco superiore a 0.4, valore designato nella sigla del profilo. Per numeri di Reynolds minori la sacca diventa più ampia, per numeri di Reynolds maggiori, la sacca riduce la propria estensione e arretra con una conseguente diminuzione del minimo coefficiente di resistenza.
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.3,0.98)}},
+xmin=-25, 
+xmax=25, 
+ymin=-1.8,
+ymax=1.8,
+xlabel=${\alpha}$,
+ylabel=$C_l$ ,
+width=12cm,
+height=19 cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth,mark=*]
+file{immagini/3_10_6_lam.dat};
+\addplot [black,smooth,mark=diamond*]
+file{immagini/7_10_6_lam.dat};
+\addplot [black, smooth,mark=star]
+file{immagini/1_10_7_lam.dat};
+\legend {$Re=3*10^6$,$Re=7*10^6$,$Re=1*10^7$}
+\end{axis}
+\end{tikzpicture} 
+\caption{\footnotesize Confronto delle curve di Portanza del profilo {\bfseries NACA $66_4-221$} al variare del numero di Reynolds }
+\end{figure}
+
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.98,0.35)}},
+xmin=0, 
+xmax=0.07, 
+ymin=-1.6,
+ymax=1.8,
+xlabel=$C_d$,
+ylabel=$C_l$ ,
+xtick={0.01,0.02,0.03,0.04,0.05,0.06,0.07},
+xticklabels={$0.01$,$0.02$,$0.03$,$0.04$,$0.05$,$0.06$,$0.07$},
+width=11cm,
+height=11cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth,mark=*]
+file{immagini/cd_cl_3_10_6_laminare.dat};
+\addplot [black, smooth,mark=diamond*]
+file{immagini/cd_cl_7_10_6_laminare.dat};
+\addplot [black, smooth,mark=star]
+file{immagini/cd_cl_1_10_7_laminare.dat};
+\legend {$Re=3*10^6$,$Re=7*10^6$,$Re=1*10^7$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Confronto delle Polari del profilo {\bfseries NACA $66_4-221$} al variare del numero di Reynolds }
+\end{figure}
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.98,0.60)}},
+xmin=0.002, 
+xmax=0.01, 
+ymin=-0.4,
+ymax=0.8,
+xlabel=$C_d$,
+ylabel=$C_l$ ,
+xtick={0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01},
+%xticklabels={$0.01$,$0.02$,$0.03$,$0.04$,$0.05$,$0.06$,$0.07$,$0.08$,$0.09$,$0.1$},
+width=7cm,
+height=6cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth,mark=*]
+file{immagini/cd_cl_3_10_6_laminare.dat};
+\addplot [black, smooth,mark=diamond*]
+file{immagini/cd_cl_7_10_6_laminare.dat};
+\addplot [black, smooth,mark=star]
+file{immagini/cd_cl_1_10_7_laminare.dat};
+\legend {$Re=3*10^6$,$Re=7*10^6$,$Re=1*10^7$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Confronto delle Polari del profilo {\bfseries NACA $66_4-221$} al variare del numero di Reynolds, zoom della sacca laminare }
+\end{figure}
+
+
+\section{Coefficiente di pressione al variare del numero di Reynolds }
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=1, 
+ymin=-1.5,
+ymax=1,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=5.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thin]
+file{immagini/cp3106.dat};
+\addplot [black,thick]
+file{immagini/cp_7_10_6_cl_02_laminare.dat};
+\addplot [black,ultra thick]
+file{immagini/cp_1_10_7_cl_02_laminare.dat};
+\legend {$Re=3*10^6$,$Re=7*10^6 $,$Re=1*10^7$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo NACA $66_4-221$, confronto del Coefficiente di Pressione per $C_l=C_{l_{id}}=0.1$ al variare del numero di Reynolds}
+\end{figure}
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=1, 
+ymin=-5,
+ymax=1,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=5.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thin]
+file{immagini/cl1_3_10_6_lam.dat};
+\addplot [black,thick]
+file{immagini/cl_1_7_10_6_lam.dat};
+\addplot [black,ultra thick]
+file{immagini/cl_1_1_10_7_lam.dat};
+\legend {$Re=3*10^6$,$Re=7*10^6 $,$Re=1*10^7$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo NACA $66_4-221$, confronto del Coefficiente di Pressione per $C_l=1$ al variare del numero di Reynolds}
+\end{figure}
+
+
+
+\section{Stallo}
+Per vedere il tipo di stallo cui va incontro il profilo si è applicato il criterio semiempirico di Thain e Gault considerando i numeri di Reynolds scelti e lo spessore percentuale all'$1.25 \%$ della corda che assume un valore di $2.47 \%$ definendo così uno stallo da separazione al bordo d'uscita.

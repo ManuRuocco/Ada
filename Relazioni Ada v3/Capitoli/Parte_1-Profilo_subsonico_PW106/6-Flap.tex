@@ -1,0 +1,492 @@
+% !TeX program = PdfLaTeX
+% !TeX root = ../../Elaborati_Aerodinamica_Bruno_Spoti.tex
+\chapter{Modifiche della geometria}
+
+In questo capitolo verranno apportate delle modifiche alla geometria del profilo tramite XFOIL al fine di studiarne la configurazione con {\itshape flap} e Alettoni.\\ Tramite la funzione {\itshape f}, nel menu {\itshape GDES} di XFOIL è possibile deflettere parte del profilo così da simulare un {\itshape plain flap}.
+Di seguito saranno riportate le curve di portanza, le polari, la distribuzione del coefficiente di pressione e i principali risultati numerici per diverse deflessioni dignificative delle superfici mobili.
+
+\section {Configurazione con {\itshape Flap}}
+
+Per studiare il comportamento del profilo con {\itshape flap} è stata prevista una deflessione di  $25^\circ $, compatibilmente con dati verosimili in condizione di atterraggio. La corda del flap è stata scelta pari al 30\% della corda del profilo.\\
+Lo scopo del flap è quello di aumentare il $C_{l_{\mathrm{max}}}$ del profilo, ottenendo, però, anche uno stallo ad angoli d'attacco più bassi. Con flap parzialmente aperti (dai $10^\circ $ ai $20^\circ $) l’effetto risultante è un forte aumento di portanza e un relativamente piccolo incremento di resistenza. Per flap con deflessioni più ampie si ha anche un forte aumento di resistenza. In tabella~\ref{tab:flap} sono riportati gli effetti della deflessione dei flap, in termini di $C_{l_{max}}$ e angolo di stallo per $Re=1\times10^6$, in caso incomprimibile.\\
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c S c c}
+\toprule
+\emph{Angolo di deflessione dei flap} &  $C_{l_{\mathrm{max}}}$  &  ${\alpha}_{\mathrm{stall}}$ & ${\alpha}_{\mathrm{zl}}$  \\ 
+\midrule
+$\delta_{\mathrm{flap}}=0^\circ$ & 1.37 & $13.1^\circ$  & $-0.873^\circ$  \\
+$\delta_{\mathrm{flap}}=25^\circ$ & 1.75 & $7.41^\circ$ & $-14.7^\circ$  \\
+\bottomrule
+\end{tabular}
+\caption {Profilo alare PW106, $C_{l_{\mathrm{max}}}$, ${\alpha}_{\mathrm{stall}}$ e ${\alpha}_{\mathrm{zl}}$ per flap retratto e deflesso, $ Re=1\times10^6$.}
+\label{tab:flap}
+\end{table}
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-0.2,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ytick={-0.2,-0.1,0,0.1},
+yticklabels={$-0.2$,$-0.1$,$0$,$0.1$},
+width=13cm,
+ height=3.9 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thin]
+file{images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat};
+\addplot [black,solid,very thick]
+file{images/fileDat/FlapsAlettoni/PW106FlapTakeOff.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, configurazione con flap per $\delta_{flap}=25 ^\circ$  }
+\end{figure}
+
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.35,0.98)}},
+ylabel style={rotate=-90}, xmin=-18, 
+xmax=18, 
+ymin=0,
+ymax=2,
+xlabel=${\alpha}$,
+ylabel=$C_l$ ,
+width=10cm,
+height=12.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth, thick]
+file{images/fileDat/FlapsAlettoni/clFlapClean.dat};
+\addplot [black,smooth,mark=*, thick]
+file{images/fileDat/FlapsAlettoni/ClFlap25.dat};
+\legend {$\delta_{flap}=0 ^\circ$,$\delta_{flap}=25 ^\circ$}
+\end{axis}
+\end{tikzpicture} 
+\caption{\footnotesize Profilo alare PW106,  confronto delle curve di portanza del profilo per $ Re=1\times10^6$ per flap deflessi e in configurazione pulita. XFOIL 6.99 }
+\label{fig:flappi}
+\end{figure}
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-7,
+ymax=1,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=8 cm,
+scale only axis,
+grid=major] 
+\addplot [black,thin]
+file{images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6dorso.dat};
+\addplot [black,ultra thick]
+file{images/fileDat/FlapsAlettoni/PW106CP4degdorso.dat};
+\addplot [black,thin,dashed]
+file{images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6ventre.dat};
+\addplot [black,ultra thick,dashed]
+file{images/fileDat/FlapsAlettoni/PW106CP4degventre.dat};
+\legend {$\delta_{flap}=0 ^\circ$,  $\delta_{flap}=25 ^\circ$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, confronto del Coefficiente di Pressione con flap deflessi $\delta_{flap}=25 ^\circ$ e configurazione pulita. $Re=1\times10^6$ $\alpha =4 ^\circ$ }
+\end{figure}
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.98,0.20)}},
+ylabel style={rotate=-90}, xmin=0, 
+ymin=-1,
+ymax=2,
+xlabel=$C_d$,
+ylabel=$C_l$ ,
+width=11cm,
+height=8cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth,thick]
+file{images/fileDat/FlapsAlettoni/cd_cl_10_6.dat};
+\addplot [black,smooth,mark=square]
+file{images/fileDat/FlapsAlettoni/CdFlapTo.dat};
+\legend {$\delta_{flap}=0 ^\circ$,$\delta_{flap}=25 ^\circ$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize  Profilo alare PW106, confronto delle polari per $ Re=1\times10^6$ con flap deflessi e in configurazione pulita }
+\end{figure}
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=35, 
+ymin=-20,
+ymax=0,
+xlabel=$\delta_{flap}$,
+ylabel= ${\alpha}_{\mathrm{0l}}$ ,
+width=11cm,
+height=6cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth,thick]
+file{images/fileDat/FlapsAlettoni/VariazioneZeroLiftDeltaFlap.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, variazione del  ${\alpha}_{\mathrm{0l}}$ con l 'angolo di deflessione del flap per $ Re=1\times10^6$}
+\end{figure}
+
+%\begin{figure} [H]
+%\centering
+%\begin{tikzpicture} 
+%\begin{axis} [ 
+%ylabel style={rotate=-90}, xmin=0, 
+%xmax=50, 
+%ymin=1.5,
+%ymax=2.1,
+%ytick={1.5,1.6,1.7,1.8,1.9,2,2.1},
+%xlabel=$\delta_{flap}$,
+%ylabel=$C_{l_{max}}$ ,
+%width=11cm,
+%height=6cm,
+%scale only axis,
+%grid=major] 
+%\addplot [black, smooth,thick]
+%file{immagini/clmaxflap.dat};
+%\end{axis}
+%\end{tikzpicture}
+%\caption{\footnotesize Profilo {\bfseries S4110}, variazione del $C_{l_{max}}$ con l 'angolo di deflessione del flap  per $ Re=1*10^6$}
+%\end{figure}
+
+
+\newpage
+\section {Configurazione con Alettoni}
+
+Per studiare il comportamento del profilo con Alettoni sono state previste deflessioni di  $+6^\circ $ e $-6^\circ $. Di seguito sono riportati i grafici del $C_P$ e delle curve di portanza nelle varie configurazioni. \\ 
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thin]
+file{images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat};
+\addplot [black,solid,very thick]
+file{images/fileDat/FlapsAlettoni/alettone_6deg.dat};
+\end{axis}
+\end{tikzpicture}\\
+
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thin]
+file{images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat};
+\addplot [black,solid,very thick]
+file{images/fileDat/FlapsAlettoni/ProfiloAlettone_meno6Deg.dat};
+\end{axis}
+\end{tikzpicture}\\
+
+\caption{\footnotesize Profilo alare PW106, configurazione con alettoni per $6^\circ$  $-6^\circ$ }
+\end{figure}
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-2.5,
+ymax=1,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,ultra thin]
+file{images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_dorso.dat};
+\addplot [black,thick]
+file{images/fileDat/FlapsAlettoni/cp_4deg_alettone_6deg_dorso.dat};
+\addplot [black, ultra thick]
+file{images/fileDat/FlapsAlettoni/cp_4deg_alettoneNegativo_dorso.dat};
+\addplot [black, dashed, ultra thin]
+file{images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_ventre.dat};
+\addplot [black, dashed, thick]
+file{images/fileDat/FlapsAlettoni/cp_4deg_alettone_6deg_ventre.dat};
+\addplot [black, dashed, ultra thick]
+file{images/fileDat/FlapsAlettoni/cp_4deg_alettoneNegativo_ventre.dat};
+\legend {$\delta_a=0 ^\circ$,$\delta_a=6 ^\circ$, $\delta_a=-6 ^\circ$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, confronto del Coefficiente di Pressione sul dorso del profilo (linea continua) e sul ventre (linea tratteggiata) in configurazione pulita e con alettoni in caso incomprimibile. $Re=1\times10^6$ $\alpha =4 ^\circ$ }
+\end{figure}
+
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.3,0.98)}},
+ylabel style={rotate=-90}, xmin=2, 
+xmax=18, 
+ymin=0,
+ymax=1.5,
+xlabel=${\alpha}$,
+ylabel=$C_l$ ,
+width=10cm,
+height=12.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth, thick]
+file{images/fileDat/FlapsAlettoni/clFlapClean.dat};
+\addplot [black,smooth,mark=*, thick]
+file{images/fileDat/FlapsAlettoni/Cl_re_106_alettone_6_deg.dat};
+\addplot [black, smooth,mark=diamond*, thick]
+file{images/fileDat/FlapsAlettoni/Cl_re_106_alettone_meno6_deg.dat};
+\legend {$\delta_a=0 ^\circ$,$\delta_a=6 ^\circ$, $\delta_a=-6 ^\circ$}
+\end{axis}
+\end{tikzpicture} 
+\caption{\footnotesize Profilo alare PW106, confronto delle curve di portanza in caso incomprimibile per $ Re=1\times10^6$ per alettoni deflessi e in configurazione pulita }
+\end{figure}
+
+
+\newpage
+\section {Configurazione con {\itshape Droop Nose}}
+Nell'ambito delle analisi del profilo alare PW106 con dispositivi mobili, è stata condotta un'ulteriore analisi con {\itshape droop nose}, un dispositivo di ipersostentazione da bordo d'attacco, simile allo {\itshape slat} ove l'intera sezione del bordo anteriore ruota verso il basso. Al fine di definire tale configurazione in xfoil, è stato utilizzato il comando {\itshape f} nel menu {\itshape GDES} di xfoil, ove è stata ruotata tutta la parte posteriore dell'angolo di deflessione del {\itshape droop nose} e poi il profilo è stato esso stesso ruotato e traslato con i comandi {\itshape ADEG} e {\itshape Tran} per riposizionare il TE in y=0. La traslazione lungo l'asse y è stata misurata digitalizzando il grafico e misurandone la distanza.
+Per studiare il comportamento del profilo con {\itshape droop nose} è stata prevista una deflessione di  $\delta_{DN} = 15^\circ $ mentre la corda è stata scelta pari al 15\% della corda del profilo, i cui risultati principali sono riportati in  figura~\vref{fig:dn1},  figura~\vref{fig:dn2} e in  tabella~\vref{tab:droopn}.\\
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-0.1,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ytick={-0.1,-0.05,0,0.05,0.1},
+yticklabels={$-0.1$,$-0.05$,$0$,$0.05$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thin]
+file{images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat};
+\addplot [black,solid,very thick]
+file{images/fileDat/FlapsAlettoni/ProfiloDropNose15Deg.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, configurazione pulita e con {\itshape droop nose} per $\delta_{DN} = 15^\circ $}
+\end{figure}
+
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-2.5,
+ymax=1,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=9cm,
+height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,ultra thin]
+file{images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_dorso.dat};
+\addplot [black,thick]
+file{images/fileDat/FlapsAlettoni/cp_re_106_alpha_4_droop_nose_15_deg_dorso.dat};
+\addplot [black, dashed, ultra thin]
+file{images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_ventre.dat};
+\addplot [black, dashed, thick]
+file{images/fileDat/FlapsAlettoni/cp_re_106_alpha_4_droop_nose_15_deg_ventre.dat};
+\legend {$\delta_{DN}=0 ^\circ$,$\delta_{DN} = 15^\circ $}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, confronto del Coefficiente di Pressione sul dorso del profilo (linea continua) e sul ventre (linea tratteggiata) in configurazione pulita e con {\itshape droop nose} in caso incomprimibile. $Re=1\times10^6$ $\alpha =4 ^\circ$ }
+\label{fig:dn1}
+\end{figure}
+
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c S c }
+\toprule
+\emph{Angolo di deflessione del {\itshape droop nose} } &  $C_{l_{\mathrm{max}}}$  &  ${\alpha}_{\mathrm{stall}}$  \\ 
+\midrule
+$\delta_{\mathrm{DN}}=0^\circ$ & 1.37 & $13.1^\circ$   \\
+$\delta_{\mathrm{DN}}=15^\circ$ & 1.51 & $15.8^\circ$  \\
+\bottomrule
+\end{tabular}
+\caption {Profilo alare PW106, $C_{l_{\mathrm{max}}}$ e ${\alpha}_{\mathrm{stall}}$ per {\itshape droop nose} retratto e deflesso, $ Re=1\times10^6$.}
+\label{tab:droopn}
+\end{table}
+
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.3,0.98)}},
+ylabel style={rotate=-90}, xmin=2, 
+xmax=18, 
+ymin=0,
+ymax=1.6,
+xlabel=${\alpha}$,
+ylabel=$C_l$ ,
+width=10cm,
+height=12.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth, thick]
+file{images/fileDat/FlapsAlettoni/clFlapClean.dat};
+\addplot [black,ultra thick,mark=*]
+file{images/fileDat/FlapsAlettoni/Curva_portanze_re106_droopNose_15deg.dat};
+\legend {$\delta_{DN}=0 ^\circ$,$\delta_{DN} = 15^\circ $}
+\end{axis}
+\end{tikzpicture} 
+\caption{\footnotesize Profilo alare PW106, confronto delle curve di portanza in caso incomprimibile per $ Re=1\times10^6$ con {\itshape droop nose} deflesso e in configurazione pulita }
+\label{fig:dn2}
+\end{figure}
+
+Infine è stato riportato un caso con contemporanea deflessione di flap a $\delta_{f} = 25^\circ $ e {\itshape droop nose} a $\delta_{DN} = 15^\circ$, i cui risultati sono riportati in  figura~\vref{fig:dn3},  figura~\vref{fig:dn4} e in tabella~\vref{tab:droopn1}.
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-0.2,
+ ymax=0.1,
+ xlabel=$ \frac {x}{c}$, 
+ylabel=$ \frac {z}{c}$,
+ytick={-0.2,-0.1,0,0.1},
+yticklabels={$-0.2$,$-0.1$,$0$,$0.1$},
+width=13cm,
+ height=2.6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid,very thin]
+file{images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat};
+\addplot [black,solid,very thick]
+file{images/fileDat/FlapsAlettoni/ProfiloConFlapEDN.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, configurazione pulita e con {\itshape droop nose} per $\delta_{DN} = 15^\circ $}
+\end{figure}
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-4,
+ymax=1,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,ultra thin]
+file{images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_dorso.dat};
+\addplot [black,solid,very thick]
+file{images/fileDat/FlapsAlettoni/Cp_Flap_DN_4degdorso.dat};
+\addplot [black, dashed, ultra thin]
+file{images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_ventre.dat};
+\addplot [black, dashed, thick]
+file{images/fileDat/FlapsAlettoni/Cp_Flap_DN_4degventre.dat};
+\legend {configurazione pulita ,$\delta_{DN} = 15^\circ$  e  $\delta_{f} = 25^\circ $}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, confronto del Coefficiente di Pressione sul dorso del profilo (linea continua) e sul ventre (linea tratteggiata) in configurazione pulita e con {\itshape droop nose} e {\itshape flap} in caso incomprimibile. $Re=1\times10^6$ $\alpha =4 ^\circ$ }
+\label{fig:dn3}
+\end{figure}
+\noindent \\ 
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c S c }
+\toprule
+\emph{Angolo di deflessione dele superfici mobili } &  $C_{l_{\mathrm{max}}}$  &  ${\alpha}_{\mathrm{stall}}$  \\ 
+\midrule
+Configurazione pulita & 1.37 & $13.1^\circ$   \\
+$\delta_{\mathrm{DN}}=15^\circ$  e $\delta_{flap}=25 ^\circ$ & 1.94 & $9.5^\circ$  \\
+\bottomrule 
+\end{tabular}
+\caption {Profilo alare PW106, $C_{l_{\mathrm{max}}}$ e ${\alpha}_{\mathrm{stall}}$ per configurazione pulita e {\itshape droop nose} e {\itshape flap} deflessi, $ Re=1\times10^6$.}
+\label{tab:droopn1}
+\end{table}
+\noindent \\ \\
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.5,0.98)}},
+ylabel style={rotate=-90}, xmin=-5, 
+xmax=18, 
+ymin=0,
+ymax=2.4,
+xlabel=${\alpha}$,
+ylabel=$C_l$ ,
+width=10cm,
+height=13 cm,
+scale only axis,
+grid=major] 
+\addplot [black, smooth, thick]
+file{images/fileDat/FlapsAlettoni/clFlapClean.dat};
+\addplot [black,smooth,mark=*, thick]
+file{images/fileDat/FlapsAlettoni/ClFlap25.dat};
+\addplot [black, smooth,mark=diamond*, thick]
+file{images/fileDat/FlapsAlettoni/Curva_portanze_re106_droopNose_15deg.dat};
+\addplot [black, smooth,mark=square, thick]
+file{images/fileDat/FlapsAlettoni/Curva_portanze_re106_droopNose_15deg_flap25.dat};
+\legend {configurazione pulita ,$\delta_f=25 ^\circ$, $\delta_{DN}=15 ^\circ$, $\delta_f=25 ^\circ$ e $\delta_{DN}=15 ^\circ$}
+\end{axis}
+\end{tikzpicture} 
+\caption{\footnotesize Profilo alare PW106, confronto delle curve di portanza in caso incomprimibile per $ Re=1\times10^6$ in configurazione pulita, con flap deflessi, con {\itshape droop nose} deflesso e con entrambi  }
+\label{fig:dn4}
+\end{figure}
+

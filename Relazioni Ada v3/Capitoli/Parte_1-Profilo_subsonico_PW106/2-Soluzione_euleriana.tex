@@ -1,0 +1,324 @@
+% !TeX program = PdfLaTeX
+% !TeX root = ../../Elaborati_Aerodinamica_Bruno_Spoti.tex
+\chapter{Aerodinamica non viscosa incomprimibile}
+Nel seguente capitolo verranno esposti i risultati ottenuti circa le caratteristiche del profilo in termini di retta di portanza, angolo d’attacco ideale e di portanza nulla e coefficiente di momento focale. Infine verranno graficate le distribuzioni del coefficiente di pressione al variare del $C_l $.
+\section{Curve di portanza e momento}
+Tramite l’utilizzo di XFOIL è stato possibile ottenere l’andamento della curva di portanza del profilo PW106 e quello del momento aerodinamico in termini di soluzione Euleriana incomprimibile, calcolato rispetto al punto ad un quarto della corda. Al fine di calcolare il centro aerodinamico è stata applicata la formula~\vref{eq:centroAerodinamico}, dalla particolarizzazione della quale è stata ricavata anche la curva del momento rispetto il bordo d'attacco riportate in figura~\vref{fig:cmIncomp}. I principali risultati sono riportati in tabella~\vref{tab:risultatiXFOIL}.
+
+
+\renewcommand\arraystretch{1.4} 
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c| c}
+\toprule
+  &  \emph{XFOIL 6.99} \\ 
+\midrule
+${\alpha}_{\mathrm{zl}}$ & $-0.872^\circ$ \\
+${C_{l_{\alpha}}}$ & $0.117 \, \si{deg}^{-1}$ \\
+${ C_{m_{{\alpha}_{c4}}}}$ &$-0.0007 \, \si{deg}^{-1}$  \\ 
+${ C_{m_{{\alpha}_{le}}}}$ &$-0.0301 \, \si{deg}^{-1}$\\
+ $\frac{X_{ac}}{c}$  & 0.256\\
+\bottomrule
+\end{tabular}
+\caption {Profilo alare PW106, principali risultati ottenuti tramite XFOIL 6.99.}
+\label{tab:risultatiXFOIL}
+\end{table}
+
+\begin{equation}
+\frac {x_{ac}}{c}=\frac {x_{c_4}}{c} - \frac{ C_{m_{{\alpha}_{c4}}}}{C_{l_{\alpha}}}
+\label{eq:centroAerodinamico}
+\end{equation}
+
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=-10, 
+xmax=10, 
+ymin=-1,
+ymax=1.6,
+xlabel=$ \alpha$, 
+ylabel=$ C_l $,
+ytick={-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.2,1.4,1.6},
+width=9cm,
+height=7.5cm,
+scale only axis,
+grid=major] 
+\addplot [black]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/Cl_vs_alpha.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, curva di portanza, soluzione euleriana incomprimibile.  XFOIL 6.99 }\label{fig:cl}
+\end{figure}
+\noindent
+\\ 
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=-10, 
+xmax=10, 
+ymin=-0.35,
+ymax=0.3,
+xlabel=$ \alpha$, 
+ylabel=$ C_{m}$,
+%ytick={-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5},
+width=9cm,
+height=7.5 cm,
+scale only axis,
+grid=major] 
+\addplot [black]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/Cm_c_quarti_vs_alpha_v2.dat};
+\addplot [black,dashed]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/Cm_le_vs_alpha_v2.dat};
+\addplot [black,dashdotted]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/Cm_ac_vs_alpha_v2.dat};
+\legend {${ C_{m_{c4}}}$, ${ C_{m_{le}}}$ , ${ C_{m_{ac}}}$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, curve di momento, soluzione euleriana incomprimibile al variare del polo.  XFOIL 6.99 }\label{fig:cmIncomp}
+\end{figure}
+
+
+
+\noindent \\
+\section{Centro di Pressione}
+
+Il centro di pressione é quel punto in cui si puó ritenere applicata la risultante delle forze fluidodinamiche agenti sul profilo.
+Per calcolarlo si é ricorsi alla formula~\vref{eq:centroPressione}. \cite{prof:tognaccini}
+
+\begin{equation}
+-\frac {x_{cp}}{c}=\frac{ C_{m_{le}}}{C_l}
+\label{eq:centroPressione}
+\end{equation}
+
+Il $ C_{m_{le}}$ è il coefficiente di momento calcolato rispetto al bordo d’attacco del profilo. \\
+Esso può essere ottenuto tramite il calcolo dei coefficienti di Fourier dello sviluppo in serie della derivata della linea media, in accordo con la Teoria del Profilo Sottile, i cui risultati saranno in seguito esposti.
+
+\begin{equation}
+\label{eqn:zerouno}
+C_{m_{le}}= \frac {{\pi}}{4}(c_2-c_1)- \frac {C_l}{4}
+\end{equation}
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=-3, 
+xmax=2, 
+ymin=-0.25,
+ymax=0.8,
+xlabel=$ {\alpha}$, 
+ylabel=$\frac{x_{cp}}{c}$,
+width=9cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black,smooth]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/XcpCAlpha1.dat};
+\addplot [black,smooth]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/XcpCAlpha2.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, andamento dell'ascissa del centro di pressione al variare di ${\alpha}$.  XFOIL 6.99}\label{fig:cp}
+\end{figure}
+
+
+\section{Risultati della Teoria del Profilo Sottile}
+
+Al fine di calcolare i coefficienti di Fourier dello sviluppo in serie della derivata della linea media, è stato implementato uno script in MATLAB che, ricevendo in ingresso i punti della linea media, consente di ottenere il gradiente della retta di portanza, l’angolo d’attacco ideale e di portanza nulla e il coefficiente di momento di beccheggio rispetto al fuoco.
+
+I coefficienti dello sviluppo in serie di Fourier valgono\\
+
+\begin{equation}
+\label{eqn:prima}
+c_0= \frac {1}{{\pi}}\int_0^{\pi} C'(x) d{\theta}
+\end{equation}
+
+\begin{equation}
+\label{eqn:seconda}
+c_n= \frac {2}{{\pi}}\int_0^{\pi} C'(x) {\cos}(n{\theta}) d{\theta}
+\end{equation}
+
+
+\noindent \\ \\
+Dalle formule \ref{eqn:prima} e \ref{eqn:seconda} sono stati ricavati i seguenti risultati, i cui valori sono riportati in 
+
+
+\begin {itemize}
+\item ${\alpha}_i=c_0$
+\item ${\alpha}_{zl}=c_0-\frac {c_1}{2}$
+\item $C_{m\frac {c}{4}}=-\frac {{\pi}}{4}(c_1-c_2)$
+\end{itemize}
+
+\noindent \\ 
+Per il calcolo è stato utilizzato il $C_{l{\alpha}}$ ottenuto con XFOIL pari a $6.73 rad^{-1}$.
+
+%\begin{equation}
+%\label{eqn:terza}
+%c_{l_{\alpha}}=2{\pi}(1+ k{\tau})
+%\end{equation}
+
+%\noindent \\
+%Il cui risultato è \\
+%
+%\begin{center}
+% { k=0.79}
+%\end {center}
+
+
+\renewcommand\arraystretch{1.4} 
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c| c}
+\toprule
+  &  \emph{Teoria del profilo sottile} \\ 
+\midrule
+${\alpha}_{i} $ & $0.0363^\circ$ \\
+${\alpha}_{\mathrm{zl}}$ & $-0.789^\circ$ \\
+${ C_{m_{{\alpha}_{c4}}}}$ &$-0.00103$  \\ 
+\bottomrule
+\end{tabular}
+\caption {Profilo alare PW106, principali risultati ottenuti tramite l'applicazione della teoria del profilo sottile implementata mediante MATLAB R2016b.}
+\label{tab:profiloSottile}
+\end{table}
+
+\section{Coefficiente di Pressione}
+
+Di seguito sono riportati gli andamenti del coefficiente di pressione del profilo alare in studio, nell’ ipotesi di campo Euleriano incomprimibile, in funzione dell’ascissa adimensionalizzata rispetto la corda a vari $C_l$, anche non piccoli.\\ \\
+
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-17,
+ymax=2,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_-1_Inv_Inc_dorso.dat};
+\addplot [black, dashed]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_-1_Inv_Inc_ventre.dat};
+\legend {Dorso,Ventre}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, distribuzione del coefficiente di pressione $C_l=-1 \  ( \alpha=-9.40^\circ$). Soluzione Euleriana incomprimibile.  XFOIL 6.99 }\label{fig:cp}
+\end{figure}
+
+\begin{figure} 
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-1.5,
+ymax=1,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_0_Inv_Inc_dorso.dat};
+\addplot [black, dashed]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_0_Inv_Inc_ventre.dat};
+\legend {Dorso,Ventre}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, distribuzione del coefficiente di pressione $C_l=0 \ ( \alpha \!= \! -0.873^\circ$). Soluzione Euleriana incomprimibile.  XFOIL 6.99 }\label{fig:cp}
+\end{figure}
+
+
+\begin{figure} 
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-1.2,
+ymax=1,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_0.5_Inv_Inc_dorso.dat};
+\addplot [black, dashed]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_0.5_Inv_Inc_ventre.dat};
+\legend {Dorso,Ventre}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, distribuzione del coefficiente di pressione $C_l=0.5 \ ( \alpha=3.39^\circ )$. Soluzione Euleriana incomprimibile.  XFOIL 6.99 }\label{fig:cp}
+\end{figure}
+\noindent \\
+
+
+\begin{figure} 
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-3.5,
+ymax=1.5,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_1_Inv_Inc_dorso.dat};
+\addplot [black, dashed]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_1_Inv_Inc_ventre.dat};
+\legend {Dorso,Ventre}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, distribuzione del coefficiente di pressione $C_l=1 \ ( \alpha=7.68^\circ$). Soluzione Euleriana incomprimibile.  XFOIL 6.99 }\label{fig:cp}
+\end{figure}
+\noindent \\
+
+
+\begin{figure} 
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+ylabel style={rotate=-90}, xmin=0, 
+xmax=1, 
+ymin=-9,
+ymax=1.5,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_1.4_Inv_Inc_dorso.dat};
+\addplot [black, dashed]
+file{images/fileDat/AnalisiNonViscoseIncomprimibili/cp_1.4_Inv_Inc_ventre.dat};
+\legend {Dorso,Ventre}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Profilo alare PW106, distribuzione del coefficiente di pressione $C_l=1.4 \ ( \alpha=10.3^\circ$). Soluzione Euleriana incomprimibile.  XFOIL 6.99 }\label{fig:cp}
+\end{figure}
+\noindent 
+
+
+
+

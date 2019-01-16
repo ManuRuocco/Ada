@@ -1,0 +1,111 @@
+% !TeX program = PdfLaTeX
+% !TeX root = ../../Elaborati_Aerodinamica_Bruno_Spoti.tex
+
+\chapter{Numero di Mach critico superiore \Msup}
+In questo capitolo sono riportati i risultati ottenuti per il calcolo del numero di Mach critico superiore \Msup del profilo per il volo supersonico. Per prima cosa, note le caratteristiche dell'aria, è stato ricostruito l'abbaco d'urto in MATLAB R2016b, per via analitica, riportato in figura~\vref{figS2}.
+Successivamente, assegnata la geometria e l'angolo d'attacco ($\alpha$ da $-8^{\circ}$ a $8^{\circ}$, con passo $\alpha=2^{\circ}$), è stato calcolato il numero di Mach critico superiore in quelle condizioni i cui risultati sono riportati in figura~\vref{figS2} e in tabella~\vref{tabS2}.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ 
+xmin=0, 
+xmax=90, 
+ymin=0,
+ ymax=50,
+ xlabel=$ \varepsilon$, 
+ylabel=$ \delta$,
+ylabel style={rotate=-90},
+width=13cm,
+ height=10 cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.1616.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.3636.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.5657.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.7677.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_1.9697.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.1717.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.3737.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.5758.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.7778.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_2.9798.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.1818.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.3838.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.5859.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.7879.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_3.9899.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_4.596.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_4.798.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_4.1919.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_4.3939.dat};
+\addplot [black,solid]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/delta_vs_epsilon_Mach_5.dat};
+\addplot [black,solid, dashed]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/AbbacoDurto/CurvaMaxAbbaco.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Abbaco d'urto per l'aria}
+\label{figS2}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ 
+xmin=-8, 
+xmax=8, 
+ymin=1, ymax=2,
+ xlabel=$ \alpha$, 
+ylabel=\Msup,
+ylabel style={rotate=-90},
+width=13cm,
+ height=7cm,
+scale only axis,
+grid=major] 
+\addplot [black,solid, thick,mark=*,mark options={solid}, mark size=2pt]
+file{images/fileDat/Parte_2-Profilo_supersonico/MachCriticoSuperiore/Msup_vs_alpha_Mach.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Numero di Mach critico superiore al variare di $\alpha$. MATLAB R2016b}
+\label{figS3}
+\end{figure}
+
+\begin{table} [!h]\centering \rowcolors{1}{}{grigio_chiaro}
+\begin{tabular}{c c }
+\toprule
+$\alpha$ [deg] & \Msup  \\ 
+\midrule
+-8	&	1.418	\\
+-6	&	1.345	\\
+-4	&	1.273	\\
+-2	&	1.338	\\
+0	&	1.411	\\
+2	&	1.485	\\
+4	&	1.563	\\
+6	&	1.645	\\
+8	&	1.732	\\
+\bottomrule
+\end{tabular}
+\caption {\footnotesize Numero di Mach critico superiore al variare dell'angolo d'attacco $\alpha$}
+\label{tabS2}
+\end{table}

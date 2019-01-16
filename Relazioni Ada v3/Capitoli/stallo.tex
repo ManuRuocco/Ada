@@ -1,0 +1,49 @@
+\chapter {Lo stallo dell'ala}
+
+Lo stallo convenzionale dell’ala è quella condizione per la quale il primo profilo della stessa va in stallo. Giacché allo stallo del primo profilo gli altri possono non essere ancora stallati, lo stallo dell’ala sarà comunque più graduale di quello di un profilo, quindi avverrà a $C_L$ minori e ad angoli d’attacco maggiori.\\
+In primo luogo calcoliamo il numero di Reynolds locale valutato rispetto la corda dell’ala che è costante:
+\begin{equation}
+\label{eqn:re}
+Re=\frac{{\rho}Vc}{\mu}
+\end{equation}
+\noindent \\
+si ottiene $Re=2*10^6$.\\
+Per il calcolo del $C_{l_{max}}$ del profilo {\bfseries NACA 4412}  si è ricorso ad un confronto tra i dati riportati sull’Abbott \cite{prof:jane} e i risultati di XFOIL, scegliendo un valore prossimo a quello riportato sull'Abbott, tenendo conto di eventuali errori di lettura dovuti al fatto che il Re calcolato non è riportato in figura. \\
+
+\begin{center}
+$ C_{l_{max}}=1.52 $
+\end {center}
+
+\noindent \\
+La valutazione del sentiero di stallo è stata fatta sull’ala reale quindi priva di svergolamento ($C_{l_b}=0$).\\
+È stato possibile ricavare l’andamento del $C_{l_{max}}$ - $C_{l_b}$ in funzione dell’ascissa adimensionalizzata.
+L’andamento del $C_{l_a1}$ è stato ricavato attraverso l’applicazione del metodo semiempirico di Schrenk. A partire da questo valore, si incrementa la curva aumentando il $C_L$ finché non si trova la tangenza con la curva $C_{l_{max}}$ - $C_{l_b}$. A tale configurazione corrisponde il coefficiente di portanza per la quale si ha lo stallo convenzionale.\\ \\
+Si ottiene un $C_{L_{max}}=1.34$ cui corrisponde un $\alpha_{stall}=16.2 ^\circ$
+
+
+\begin{figure} [h]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.25,0.25)}},
+xmin=-1, 
+xmax=1, 
+ymin=0,
+ymax=1.6,
+xlabel=$\eta$, 
+ylabel=$C_l$ ,
+width=14cm,
+height=8cm,
+scale only axis,
+grid=major] 
+\addplot [black, thick,smooth]
+file{immagini/cladd1.dat};
+\addplot [black, ultra thin,dashed,smooth]
+file{immagini/clmax.dat};
+\addplot [black, ultra thick,smooth]
+file{immagini/stallomax.dat};
+\legend {$C_{l_{a1}}$,$C_{l_{max}}$,$k*C_{l_{max}}$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Velivolo Jabiru J450, calcolo del sentiero di stallo, ala non svergolata}
+\end{figure}

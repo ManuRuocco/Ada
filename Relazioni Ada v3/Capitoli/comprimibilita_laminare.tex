@@ -1,0 +1,89 @@
+\chapter{Effetti della Comprimibilità}
+
+Tramite XFOIL è stato ricavato il valore $M_{\infty crit}$=0.626 in corrispondenza di $C_l$=$C_{l_{id}}$=0.2. \\
+Di seguito saranno rappresentati graficamente la variazione del $M_{\infty crit}$ con il $C_L$ e gli effetti della comprimibilità lineare sul Cp e sulla retta di portanza.\\ 
+
+\begin{figure} [H]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=-1.5, 
+xmax=1.5, 
+ymin=0.2,
+ymax=0.8,
+xlabel=$C_l$, 
+ylabel=$M_{\infty}$ ,
+width=10cm,
+height=6 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thick]
+file{immagini/critico_laminare.dat};
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Andamento del $ M_{\infty crit} $  al variare del Coefficiente di Portanza, profilo NACA $66_4-221$}
+\end{figure}
+\noindent \\
+
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+xmin=0, 
+xmax=1, 
+ymin=-1,
+ymax=1.5,
+xlabel=$\frac{x}{c}$, 
+ylabel=$C_p$ ,
+ y dir=reverse,
+width=12cm,
+height=7 cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thin, smooth]
+file{immagini/AAAAM0.dat};
+\addplot [black,thick, smooth]
+file{immagini/AAAM02.dat};
+\addplot [black,ultra thick, smooth]
+file{immagini/AAA04.dat};
+\legend {$M_{\infty}=0$,$M_{\infty}=0.2$,$M_{\infty}=0.4$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize NACA $66_4-221$, confronto del Coefficiente di Pressione per $C_l=0.2$ (centro sacca) al variare del numero di Mach}
+\end{figure}
+
+
+Come si puó notare per effetto della comprimibilità cambierà la distribuzione del Coefficiente di pressione lungo il profilo. In particolare, all’aumentare del numero di Mach, le zone espanse espandono di più, e quelle compresse comprimono di più.\\
+Successivamente tramite XFOIL sono stati studiati gli effetti della comprimibilitá lineare sulla retta di portanza, quindi è stato valutato ció tramite la similitudine di Karman e Tsein.
+
+
+\begin{figure} [h!]
+\centering
+\begin{tikzpicture} 
+\begin{axis} [ 
+legend style={at={(0.3,0.98)}},
+xmin=-12, 
+xmax=12, 
+ymin=-1,
+ymax=1.6,
+xlabel=$ \alpha$, 
+ylabel=$ C_l $,
+%ytick={-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1,1.2,1.4,1.6},
+width=10cm,
+height=7.5cm,
+scale only axis,
+grid=major] 
+\addplot [black,very thin]
+file{immagini/M0.dat};
+\addplot [black, thick]
+file{immagini/M2.dat};
+\addplot [black,ultra thick]
+file{immagini/M4.dat};
+\legend {$M_{\infty}=0$,$M_{\infty}=0.2$,$M_{\infty}=0.4$}
+\end{axis}
+\end{tikzpicture}
+\caption{\footnotesize Confronto della retta di portanza del profilo alare NACA $66_4-221$ al variare del numero di Mach }
+\end{figure}
+\noindent
+\\ 
