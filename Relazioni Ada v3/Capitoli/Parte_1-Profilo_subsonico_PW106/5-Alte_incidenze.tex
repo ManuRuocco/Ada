@@ -278,10 +278,10 @@ file{images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e7ventre.dat};
 \noindent \\
 
 
-Dalle figure  \ref{fig:stall} e  \ref{fig:stallz} si può notare il diverso comportamento del profilo in condizioni di stallo al variare del numero di Reynolds. \\Per $Re=5\times10^5$ si può osservare la formazione di una bolla laminare sul dorso del profilo, verso il LE. %Tale bolla ha un’estensione di circa il $20\%$ della corda.
-Ciò può essere confermato dall’intervallo di valori negativi del coefficiente di attrito diagrammati in figura \ref{fig:coef} cui corrisponde un picco nel diagramma di H come si vede in figura \ref{fig:h}.
-Per $Re=1\times10^6$ si ha una bolla più corta che potrebbe esser causa di uno stallo da esplosione da bolla, più violento. Aumentando il numero di Reynolds, fino ad un valore di $Re=10\times10^6$ la bolla scompare cosicché il profilo è caratterizzato da uno stallo turbolento.\\
-È possibile verificare queste considerazioni nei grafici  riportati in figura~\vref{fig:h} e~\vref{fig:coef} che esprimono i parametri di strato limite più significativi in tal senso. Alla presenza di una bolla corrispondono zone di $C_f$  negative piú o meno estese e picchi nel fattore di forma H.
+%Dalle figure  \ref{fig:stall} e  \ref{fig:stallz} si può notare il diverso comportamento del profilo in condizioni di stallo al variare del numero di Reynolds. \\Per $Re=5\times10^5$ si può osservare la formazione di una bolla laminare sul dorso del profilo, verso il LE. %Tale bolla ha un’estensione di circa il $20\%$ della corda.
+%Ciò può essere confermato dall’intervallo di valori negativi del coefficiente di attrito diagrammati in figura \ref{fig:coef} cui corrisponde un picco nel diagramma di H come si vede in figura \ref{fig:h}.
+%Per $Re=1\times10^6$ si ha una bolla più corta che potrebbe esser causa di uno stallo da esplosione da bolla, più violento. Aumentando il numero di Reynolds, fino ad un valore di $Re=10\times10^6$ la bolla scompare cosicché il profilo è caratterizzato da uno stallo turbolento.\\
+%È possibile verificare queste considerazioni nei grafici  riportati in figura~\vref{fig:h} e~\vref{fig:coef} che esprimono i parametri di strato limite più significativi in tal senso. Alla presenza di una bolla corrispondono zone di $C_f$  negative piú o meno estese e picchi nel fattore di forma H.
 %
 %\noindent \\  \\
 
@@ -345,8 +345,8 @@ file{images/fileDat/EffettiViscosiAlteIncidenze/Cf_stall_Re1e7.dat};
  \noindent \\ 
 
 
-Questi risultati sono confermati dal criterio semiempirico di stallo di Thain e Gault.\\
- Per verificare il tipo di stallo è stato calcolato lo spessore percentuale del profilo ad ${\frac {x}{c} }=0.0125$ ottenendo un valore di $1.75 \%$ entrando, in tal modo, nel grafico riportato in figura~\vref{fig:tin}.
+Applicando il criterio semiempirico di stallo di Thain e Gault e possibile fare una previsione del tipo di stallo.\\
+In particolare per verificare il tipo di stallo è stato calcolato lo spessore percentuale del profilo ad ${\frac {x}{c} }=0.0125$ ottenendo un valore di $1.75 \%$ entrando, in tal modo, nel grafico riportato in figura~\vref{fig:tin}.
 
 
 
@@ -356,3 +356,37 @@ Questi risultati sono confermati dal criterio semiempirico di stallo di Thain e 
 \caption{\footnotesize Criterio di Thain e Gault, risultati per il profilo PW106}
 \label {fig:tin}
 \end {figure}
+
+\begin{figure} [H]
+	\centering
+	\begin{tikzpicture} 
+	\begin{semilogyaxis} [ 
+	ylabel style={rotate=-90}, xmin=0.3, 
+	xmax=2.5, 
+	ymin=300000,
+	ymax=40000000,
+	xlabel=$\frac{s}{c}$,
+	ylabel=$C_f$ ,
+	width=10cm,
+	height=12cm,
+	scale only axis] 
+	\addplot [black,very thick,smooth]
+	file{images/fileDat/EffettiViscosiAlteIncidenze/StallBoundary1.dat};
+	\addplot [black,very thick,smooth]
+	file{images/fileDat/EffettiViscosiAlteIncidenze/StallBoundary2.dat};
+		\node at (axis cs: 0.4, 0.07) { \scriptsize Regione 1};
+	\node at (axis cs: 0.7, 3000000) { \scriptsize THIN AIRFOIL};
+	\node at (axis cs: 1.45, 3000000) { \scriptsize LEADING EDGE};
+	\node at (axis cs: 2.1, 3000000) { \scriptsize TRAILING EDGE};
+		\node at (axis cs: 0.7, 2500000) { \scriptsize STALL};
+	\node at (axis cs: 1.45, 2500000) { \scriptsize STALL};
+	\node at (axis cs: 2.1, 2500000) { \scriptsize STALL};
+	\node at (axis cs: 0.8, -0.1) { \scriptsize Regione 5};
+	\node at (axis cs: 1.3, 0.04) { \scriptsize Regione 3};
+	\node at (axis cs: 1.3, -0.05) { \scriptsize Regione 6};
+	\end{semilogyaxis}
+	\end{tikzpicture}
+	\caption{\footnotesize Profilo alare PW106, confronto dell'andamento del coefficiente d'attrito $C_f$ allo stallo al variare del numero di Reynolds. XFOIL 6.99}
+	\label{fig:coef}
+\end{figure}
+\noindent \\ 

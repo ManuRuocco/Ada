@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.2.9)  16 JAN 2019 20:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.2.9)  17 JAN 2019 01:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2096,11 +2096,11 @@ Package: fancyhdr 2016/09/06 3.8 Extensive control of page headers and footers
 )
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 90.
+less on input line 91.
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 91.
+less on input line 92.
 
 
 (c:/texlive/2017/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.patch
@@ -2230,31 +2230,40 @@ Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'italian'.
 
-(./Elaborati_Aerodinamica_Bruno_Spoti.aux)
+(./Elaborati_Aerodinamica_Bruno_Spoti.aux
+
+LaTeX Warning: Label `fig:pol' multiply defined.
+
+
+LaTeX Warning: Label `fig:n1' multiply defined.
+
+
+LaTeX Warning: Label `fig:coef' multiply defined.
+
+)
 \openout1 = `Elaborati_Aerodinamica_Bruno_Spoti.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 128.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 128.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 129.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 129.
 
-
-(c:/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
+ (c:/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Info: Redefining \it@ocap on input line 128.
-LaTeX Info: Redefining \it@ccap on input line 128.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Info: Redefining \it@ocap on input line 129.
+LaTeX Info: Redefining \it@ccap on input line 129.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -2264,20 +2273,20 @@ LaTeX Info: Redefining \it@ccap on input line 128.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(71.13188pt, 441.01773pt, 85.35826pt)
-* v-part:(T,H,B)=(85.35826pt, 688.5567pt, 71.13188pt)
+* h-part:(L,W,R)=(99.58464pt, 441.01773pt, 56.9055pt)
+* v-part:(T,H,B)=(85.35826pt, 702.78308pt, 56.9055pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=441.01773pt
-* \textheight=688.5567pt
-* \oddsidemargin=-1.1381pt
-* \evensidemargin=-1.1381pt
+* \textheight=702.78308pt
+* \oddsidemargin=27.31465pt
+* \evensidemargin=27.31465pt
 * \topmargin=-18.78552pt
 * \headheight=12.5pt
 * \headsep=19.8738pt
 * \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=71.13188pt
+* \marginparwidth=38.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
 * \skip\footins=10.8pt plus 4.0pt minus 2.0pt
@@ -2401,29 +2410,29 @@ Package minitoc(hints) Warning: W0028
 (minitoc(hints))                after minitoc.
 
 \c__siunitx_mathsf_int=\count349
-LaTeX Font Info:    Try loading font information for OMX+yhex on input line 128
+LaTeX Font Info:    Try loading font information for OMX+yhex on input line 129
 .
 (c:/texlive/2017/texmf-dist/tex/latex/yhmath/omxyhex.fd
 File: OMXyhex.fd 
 File: OMXyhex.fd 2013/07/03 v1.1 YH's humble contribution to TeX maths (NP)
 )
 LaTeX Font Info:    External font `yhcmex10' loaded for size
-(Font)              <12> on input line 128.
+(Font)              <12> on input line 129.
 LaTeX Font Info:    External font `yhcmex10' loaded for size
-(Font)              <8> on input line 128.
+(Font)              <8> on input line 129.
 LaTeX Font Info:    External font `yhcmex10' loaded for size
-(Font)              <6> on input line 128.
-LaTeX Font Info:    Try loading font information for U+wasy on input line 128.
+(Font)              <6> on input line 129.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 129.
 
 (c:/texlive/2017/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 128.
+LaTeX Font Info:    Try loading font information for U+msa on input line 129.
 
 (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 128.
+LaTeX Font Info:    Try loading font information for U+msb on input line 129.
 
 (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2435,45 +2444,909 @@ File: Elaborati_Aerodinamica_Bruno_Spoti-frn.pdf Graphic file (type pdf)
 
 <use Elaborati_Aerodinamica_Bruno_Spoti-frn.pdf>
 Package pdftex.def Info: Elaborati_Aerodinamica_Bruno_Spoti-frn.pdf used on inp
-ut line 131.
+ut line 132.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
  [1
 
 
  <./Elaborati_Aerodinamica_Bruno_Spoti-frn.pdf{c:/texlive/2017/texmf-var/fonts/
-map/pdftex/updmap/pdftex.map}>] (./Capitoli/prefazione_prof.tex [1
+map/pdftex/updmap/pdftex.map}>] (./Frontmatter/Indicazioni.tex
+Underfull \hbox (badness 10000) in paragraph at lines 11--13
 
-]
+ []
 
-Package Fancyhdr Warning: \headheight is too small (12.5pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
 
-[2]) (./Elaborati_Aerodinamica_Bruno_Spoti.toc)
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+) [1
+
+] (./Elaborati_Aerodinamica_Bruno_Spoti.toc)
 \tf@toc=\write6
 \openout6 = `Elaborati_Aerodinamica_Bruno_Spoti.toc'.
 
 
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 154.
+less on input line 158.
 
-[3
+[2
 
 ]
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 179.
+less on input line 161.
 
 [1
 
 
-] (./Capitoli/Parte_3-Aerodinamica_Velivolo_A340-200/intro_velivolo.tex
+] (./Capitoli/Parte_1-Profilo_subsonico_PW106/4-Viscosita.tex
 Capitolo 1.
 
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 21.
+
+[2
+
+]
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cl_vs_alpha_Re_5_10_5.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cl_vs_alpha_Re_1_10_6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cl_vs_alpha_Re_3_10_6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cl_vs_alpha_Re_1_10_7.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/cd_cl_5_10_5.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/cd_cl_10_6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/cd_cl_3_10_6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/cd_cl_10_7.dat}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3]
+PGFPlots: reading {images/fileDat/EffettiViscosi/cd_cl_5_10_5.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/cd_cl_10_6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/cd_cl_3_10_6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/cd_cl_10_7.dat}
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 116--119
+
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_3_Invdorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_3_Invventre.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_3_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_3_Re_2.5_10e5ventre.da
+t}
+LaTeX Font Info:    External font `yhcmex10' loaded for size
+(Font)              <10> on input line 148.
+LaTeX Font Info:    External font `yhcmex10' loaded for size
+(Font)              <7> on input line 148.
+LaTeX Font Info:    External font `yhcmex10' loaded for size
+(Font)              <5> on input line 148.
+
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_0_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_0_Re_5_10e5dorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_0_Re_1_10e6dorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_0_Re_2.5_10e5ventre.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_0_Re_5_10e5ventre.dat}
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_0_Re_1_10e6ventre.dat}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_5_10e5dorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_1_10e6dorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5ventre.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_5_10e5ventre.dat}
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_1_10e6ventre.dat}
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_4_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_4_Re_5_10e5dorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_4_Re_1_10e6dorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_4_Re_2.5_10e5ventre.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_4_Re_5_10e5ventre.dat}
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_4_Re_1_10e6ventre.dat}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6]
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_0_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_4_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_0_Re_2.5_10e5ventre.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5ventre.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_4_Re_2.5_10e5ventre.da
+t}
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[7] <images/fileImg/alfa0_Re_25e4.png, id=100, 672.47235pt x 44.8074pt>
+File: images/fileImg/alfa0_Re_25e4.png Graphic file (type png)
+
+<use images/fileImg/alfa0_Re_25e4.png>
+Package pdftex.def Info: images/fileImg/alfa0_Re_25e4.png used on input line 30
+5.
+(pdftex.def)             Requested size: 418.96548pt x 27.91566pt.
+
+<images/fileImg/alfa2_Re_25e4.png, id=102, 672.47235pt x 44.8074pt>
+File: images/fileImg/alfa2_Re_25e4.png Graphic file (type png)
+
+<use images/fileImg/alfa2_Re_25e4.png>
+Package pdftex.def Info: images/fileImg/alfa2_Re_25e4.png used on input line 30
+7.
+(pdftex.def)             Requested size: 418.96548pt x 27.91566pt.
+
+<images/fileImg/alfa4_Re_25e4.png, id=103, 672.47235pt x 45.16875pt>
+File: images/fileImg/alfa4_Re_25e4.png Graphic file (type png)
+
+<use images/fileImg/alfa4_Re_25e4.png>
+Package pdftex.def Info: images/fileImg/alfa4_Re_25e4.png used on input line 30
+9.
+(pdftex.def)             Requested size: 418.96548pt x 28.14078pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 301--312
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 317--319
+
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa0_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa0_Re_5e5.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa0_Re_1e6.dat}
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8 <./images/fileImg/alfa0_Re_25e4.png> <./images/fileImg/alfa2_Re_25e4.png> <.
+/images/fileImg/alfa4_Re_25e4.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
+
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa0_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa0_Re_5e5.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa0_Re_1e6.dat}
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa0_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa2_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa4_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa0_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa2_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa4_Re_25e4.dat}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10]
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alpha2_Re25e4_xtr0.3dorso.d
+at}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5ventre.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alpha2_Re25e4_xtr0.3ventre.
+dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa2_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa2_Re_25e4_xtr0.3.dat}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11]
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa2_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa2_Re_25e4_xtr0.3.dat}
+LaTeX Font Info:    External font `yhcmex10' loaded for size
+(Font)              <17.28> on input line 542.
+
+Underfull \hbox (badness 10000) in paragraph at lines 544--547
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 555--556
+
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5_n3dorso.
+dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5dorso.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5_n15dorso
+.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5_n3ventre
+.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5ventre.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cp_alfa_2_Re_2.5_10e5_n15ventr
+e.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa2_Re_25e4_n3.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa2_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/H_alfa2_Re_25e4_n15.dat}
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[13]
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa2_Re_25e4_n3.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa2_Re_25e4.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cf_alfa2_Re_25e4_n15.dat}
+) (./Capitoli/Parte_1-Profilo_subsonico_PW106/5-Alte_incidenze.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[14]
+Capitolo 2.
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_alfa_12_Re_1_1
+0e6dorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_alfa_12_Re_1_1
+0e6ventre.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_alfa_4_Re_1_10
+e6dorso.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_alfa_4_Re_1_10
+e6ventre.dat}
+<images/fileImg/alfa4_Re_1e6.png, id=131, 672.47235pt x 44.0847pt>
+File: images/fileImg/alfa4_Re_1e6.png Graphic file (type png)
+
+<use images/fileImg/alfa4_Re_1e6.png>
+Package pdftex.def Info: images/fileImg/alfa4_Re_1e6.png used on input line 43.
+
+(pdftex.def)             Requested size: 418.96548pt x 27.46541pt.
+
+<images/fileImg/alfa12_Re_1e6.png, id=132, 672.47235pt x 44.44604pt>
+File: images/fileImg/alfa12_Re_1e6.png Graphic file (type png)
+
+<use images/fileImg/alfa12_Re_1e6.png>
+Package pdftex.def Info: images/fileImg/alfa12_Re_1e6.png used on input line 45
+.
+(pdftex.def)             Requested size: 418.96548pt x 27.69054pt.
+
+<images/fileImg/alfa19_Re_1e6.png, id=133, 672.47235pt x 141.6492pt>
+File: images/fileImg/alfa19_Re_1e6.png Graphic file (type png)
+
+<use images/fileImg/alfa19_Re_1e6.png>
+Package pdftex.def Info: images/fileImg/alfa19_Re_1e6.png used on input line 47
+.
+(pdftex.def)             Requested size: 418.96548pt x 88.24953pt.
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 50.
+
+[15
+
+]
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/H_alfa4_Re_1e6.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/H_alfa12_Re_1e6.d
+at}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[16 <./images/fileImg/alfa4_Re_1e6.png> <./images/fileImg/alfa12_Re_1e6.png> <.
+/images/fileImg/alfa19_Re_1e6.png>]
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cf_alfa4_Re_1e6.d
+at}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cf_alfa12_Re_1e6.
+dat}
+Missing character: There is no ; in font nullfont!
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[17]
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Theta_alfa4_Re_1e
+6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Theta_alfa12_Re_1
+e6.dat}
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (5.42618pt too wide) in paragraph at lines 128--129
+ [][] 
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Delta_star_alfa4_
+Re_1e6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Delta_star_alfa12
+_Re_1e6.dat}
+Missing character: There is no ; in font nullfont!
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
+
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cl_vs_alpha_Re_5_10_5.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cl_vs_alpha_Re_1_10_6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cl_vs_alpha_Re_3_10_6.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosi/Cl_vs_alpha_Re_1_10_7.dat}
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[19]
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re5e5dor
+so.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e6dor
+so.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e7dor
+so.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re5e5ven
+tre.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e6ven
+tre.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e7ven
+tre.dat}
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[20]
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re5e5dor
+so.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e6dor
+so.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e7dor
+so.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re5e5ven
+tre.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e6ven
+tre.dat}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cp_stall_Re1e7ven
+tre.dat}
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
+
+ []
+
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/H_stall_Re5e5.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/H_stall_Re1e6.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/H_stall_Re1e7.dat
+}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cf_stall_Re5e5.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cf_stall_Re1e6.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/Cf_stall_Re1e7.da
+t}
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
+
+ []
+
+<images/fileImg/thin.png, id=159, 518.6878pt x 488.57532pt>
+File: images/fileImg/thin.png Graphic file (type png)
+
+<use images/fileImg/thin.png>
+Package pdftex.def Info: images/fileImg/thin.png used on input line 355.
+(pdftex.def)             Requested size: 341.43306pt x 321.62573pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[22]
+Package pgfplots info on input line 372: Using 'lua backend=false' for axis: ym
+ode=log unsupported (yet).
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/StallBoundary1.da
+t}
+PGFPlots: reading {images/fileDat/EffettiViscosiAlteIncidenze/StallBoundary2.da
+t}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[23 <./images/fileImg/thin.png>])
+(./Capitoli/Parte_1-Profilo_subsonico_PW106/6-Flap.tex
+Underfull \hbox (badness 10000) in paragraph at lines 392--3
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[24]
+Capitolo 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--12
+
+ []
+
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/PW106FlapTakeOff.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/clFlapClean.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ClFlap25.dat}
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 78.
+
+[25
+
+]
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6dorso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/PW106CP4degdorso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6ventre.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/PW106CP4degventre.dat}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[26]
+PGFPlots: reading {images/fileDat/FlapsAlettoni/cd_cl_10_6.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/CdFlapTo.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/VariazioneZeroLiftDeltaFlap.dat
+}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[27]
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
+
+ []
+
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/alettone_6deg.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ProfiloAlettone_meno6Deg.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_dorso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/cp_4deg_alettone_6deg_dorso.dat
+}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/cp_4deg_alettoneNegativo_dorso.
+dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_ventre.dat}
+
+PGFPlots: reading {images/fileDat/FlapsAlettoni/cp_4deg_alettone_6deg_ventre.da
+t}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/cp_4deg_alettoneNegativo_ventre
+.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/clFlapClean.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cl_re_106_alettone_6_deg.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cl_re_106_alettone_meno6_deg.da
+t}
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[29]
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 292--294
+
+ []
+
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ProfiloDropNose15Deg.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_dorso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/cp_re_106_alpha_4_droop_nose_15
+_deg_dorso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_ventre.dat}
+
+PGFPlots: reading {images/fileDat/FlapsAlettoni/cp_re_106_alpha_4_droop_nose_15
+_deg_ventre.dat}
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+PGFPlots: reading {images/fileDat/FlapsAlettoni/clFlapClean.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Curva_portanze_re106_droopNose_
+15deg.dat}
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[31]
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ProfiloPW106Chiuso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ProfiloConFlapEDN.dat}
+
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[32]
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_dorso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_Flap_DN_4degdorso.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_alfa_4_Re_1_10e6_ventre.dat}
+
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Cp_Flap_DN_4degventre.dat}
+
+Underfull \hbox (badness 10000) in paragraph at lines 448--462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 448--462
+
+ []
+
+PGFPlots: reading {images/fileDat/FlapsAlettoni/clFlapClean.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/ClFlap25.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Curva_portanze_re106_droopNose_
+15deg.dat}
+PGFPlots: reading {images/fileDat/FlapsAlettoni/Curva_portanze_re106_droopNose_
+15deg_flap25.dat}
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[33]) (./Capitoli/Parte_2-Profilo_supersonico/CampoDiMotoM3.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[34]
+Capitolo 4.
+
+Underfull \hbox (badness 1540) in paragraph at lines 15--15
+[][]|\T1/cmr/m/n/10 Con-di-zio-ni ope-ra-ti-ve per l'a-na-li-si ae-ro-di-na-mi-
+ca del pro-fi-lo ala-re per il vo-lo
+ []
+
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometr
+ia.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/1_IntermediateWave1_2_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/1_IntermediateWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/2_IntermediateWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/3_IntermediateWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/4_IntermediateWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/FirstWave1_2_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/FirstWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/LastWave1_2_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/LastWave1_2_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave0_1_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave0_4_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave2_3_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave5_6_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave5_6_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/SlipLine_alpha_0_Mach_3.dat}
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 85.
+
+[35
+
+]
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Geometr
+ia.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/1_IntermediateWave1_2_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/1_IntermediateWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/2_IntermediateWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/3_IntermediateWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/4_IntermediateWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/FirstWave1_2_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/FirstWave4_5_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/LastWave1_2_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/LastWave1_2_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave0_1_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave0_4_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave2_3_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave5_6_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/ShockWave5_6_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/SlipLine_alpha_0_Mach_3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.1.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.1.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.02.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.02.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.02.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.2.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.2.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.3.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.04.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.04.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.06.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.06.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.08.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.08.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.12.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.12.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.14.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.14.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_-0.16.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/Geometria/Mach_3_
+alpha_0/flowLine_k_0.16.dat}
+
+Overfull \hbox (3.33897pt too wide) in paragraph at lines 153--154
+ [][] 
+ []
+
+
+Overfull \hbox (2.45053pt too wide) in paragraph at lines 159--175
+ [][] 
+ []
+
+
+! Package varioref Error: \vref or \vpageref at page boundary 36-37 (may loop).
+
+
+See the varioref package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.183 ...è stato riportato in figura~\vref{figS6}
+                                                   al variare dell'angolo d'...
+
+Please check the pages in question. You might need to replace the \vref
+or \vpageref by a normal \(page)ref to stop LaTeX running forever.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/CentroPressione/x
+cp_vs_alpha_Mach_3_ramo_negativo.dat}
+PGFPlots: reading {images/fileDat/Parte_2-Profilo_supersonico/CentroPressione/x
+cp_vs_alpha_Mach_3_ramo_positivo.dat}
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[36]
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[37]
+
+Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
+less on input line 183.
+
+[38
+
+] (./Capitoli/Parte_3-Aerodinamica_Velivolo_A340-200/intro_velivolo.tex
+Capitolo 5.
+
 <images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/tritticoA340-200.png, id
-=70, 625.8582pt x 343.0416pt>
+=221, 625.8582pt x 343.0416pt>
 File: images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/tritticoA340-200.pn
 g Graphic file (type png)
 
@@ -2502,16 +3375,11 @@ LaTeX Font Info:    Font shape `U/ar/m/it' will be
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (40.1191pt too wide) in paragraph at lines 45--67
- [][] 
- []
-
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 <images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/CadAlaAirbusA340-200.png
-, id=72, 879.5259pt x 239.2137pt>
+, id=222, 879.5259pt x 239.2137pt>
 File: images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/CadAlaAirbusA340-20
 0.png Graphic file (type png)
 
@@ -2526,7 +3394,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 <images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/RenderingA340-200.png, i
-d=73, 1132.10954pt x 440.847pt>
+d=223, 1132.10954pt x 440.847pt>
 File: images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/RenderingA340-200.p
 ng Graphic file (type png)
 
@@ -2542,33 +3410,36 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 )
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 187.
+less on input line 191.
 
-[2
+[39
 
  <./images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/tritticoA340-200.png>
 ]
 
-Package Fancyhdr Warning: \headheight is too small (12.5pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Text page 40 contains only floats.
 
-[3 <./images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/CadAlaAirbusA340-20
-0.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.5pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4 <./images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/RenderingA340-200.p
-ng>] (./Capitoli/simboli.tex
+[40 <./images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/CadAlaAirbusA340-2
+00.png>]
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[41 <./images/fileImg/Parte_3-Aerodinamica_Velivolo_A340-200/RenderingA340-200.
+png>] (./Capitoli/simboli.tex
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 33.
+less on input line 34.
 
-[5
+[42
 
 
 ]) (./Capitoli/biblio.tex
@@ -2578,9 +3449,9 @@ Package Fancyhdr Warning: \headheight is too small (12.5pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6])
+[43])
 
-Package caption Warning: Unused \captionsetup[lstlisting] on input line 39.
+Package caption Warning: Unused \captionsetup[lstlisting] on input line 40.
 See the caption package documentation for explanation.
 
 Package minitoc Info: I0009
@@ -2602,43 +3473,57 @@ ile.
 
 
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 192.
+less on input line 196.
 
-[7
+[44
 
-] (./Elaborati_Aerodinamica_Bruno_Spoti.aux) ) 
+] (./Elaborati_Aerodinamica_Bruno_Spoti.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 47715 strings out of 492995
- 1104773 string characters out of 6136403
- 1399691 words of memory out of 5000000
- 50198 multiletter control sequences out of 15000+600000
- 23013 words of font info for 63 fonts, out of 8000000 for 9000
+ 49005 strings out of 492995
+ 1133917 string characters out of 6136403
+ 1603089 words of memory out of 5000000
+ 51297 multiletter control sequences out of 15000+600000
+ 29807 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,22n,103p,10422b,751s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2017/texmf-dist/fonts
-/enc/dvips/cm-super/cm-super-t1.enc}{c:/texlive/2017/texmf-dist/fonts/enc/dvips
-/cm-super/cm-super-ts1.enc}<c:/texlive/2017/texmf-dist/fonts/type1/public/aspec
-tratio/amarri.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-<c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texliv
-e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2017/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2017/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx12
-00.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:
-/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2
-017/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2017/texmf-
-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2017/texmf-dist/fonts
-/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2017/texmf-dist/fonts/type1/pub
-lic/cm-super/sfrm1200.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-sup
-er/sfti1000.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti120
-0.pfb>
-Output written on Elaborati_Aerodinamica_Bruno_Spoti.pdf (11 pages, 986219 byte
-s).
+ 69i,22n,107p,10422b,2254s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
+ive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2017/
+texmf-dist/fonts/type1/public/aspectratio/amarri.pfb><c:/texlive/2017/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2017/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi12.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi5.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/
+texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/20
+17/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2017/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2017/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr7.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texl
+ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2017/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2017/texmf-dist/
+fonts/type1/public/cm-super/sfbi1728.pfb><c:/texlive/2017/texmf-dist/fonts/type
+1/public/cm-super/sfbx0800.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/c
+m-super/sfbx1000.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sf
+bx1200.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb
+><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texli
+ve/2017/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2017/te
+xmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><c:/texlive/2017/texmf-dist/f
+onts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2017/texmf-dist/fonts/type1
+/public/cm-super/sfrm1000.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm
+-super/sfrm1200.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sft
+i1000.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
+
+Output written on Elaborati_Aerodinamica_Bruno_Spoti.pdf (47 pages, 1791260 byt
+es).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
+ 344 PDF objects out of 1000 (max. 8388607)
+ 225 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 129 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 164 words of extra memory for PDF output out of 10000 (max. 10000000)
 
