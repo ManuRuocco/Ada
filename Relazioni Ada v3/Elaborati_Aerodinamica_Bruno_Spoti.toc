@@ -2,25 +2,27 @@
 \select@language {italian}
 \contentsline {part}{I\hspace {1em}Aerodinamica del profilo alare - PW106}{1}
 \contentsline {xpart}{Aerodinamica del profilo alare - PW106}{2}
-\contentsline {chapter}{\numberline {1}Effetti viscosi}{2}
-\contentsline {section}{\numberline {1.1}Curva di Portanza e polare}{2}
-\contentsline {section}{\numberline {1.2}Coefficiente di pressione al variare del numero di Reynolds }{5}
-\contentsline {section}{\numberline {1.3}Sviluppo e parametri di Strato Limite}{8}
-\contentsline {section}{\numberline {1.4}Effetto della Transizione Forzata}{11}
-\contentsline {section}{\numberline {1.5}Effetto della variazione di $n_{cr}$}{13}
-\contentsline {chapter}{\numberline {2}Aerodinamica viscosa alle alte incidenze}{15}
-\contentsline {section}{\numberline {2.1}Coefficiente di pressione}{15}
-\contentsline {section}{\numberline {2.2}Sviluppo e Parametri di strato limite}{16}
-\contentsline {section}{\numberline {2.3}Effetto della variazione del numero di Reynolds e stallo}{19}
-\contentsline {chapter}{\numberline {3}Modifiche della geometria}{25}
-\contentsline {section}{\numberline {3.1}Configurazione con {\itshape Flap}}{25}
-\contentsline {section}{\numberline {3.2}Configurazione con Alettoni}{29}
-\contentsline {section}{\numberline {3.3}Configurazione con {\itshape Droop Nose}}{31}
-\contentsline {chapter}{\numberline {4}Campo di moto e aerodinamica non viscosa per fissati $\alpha $ e $M_{\infty }$}{35}
-\contentsline {section}{\numberline {4.1}Determinazione del campo di moto attorno al corpo e a valle}{35}
-\contentsline {section}{\numberline {4.2}Calcolo delle caratteristiche aerodinamiche}{36}
-\contentsline {part}{II\hspace {1em}L' Aerodinamica del velivolo Airbus~A340-200}{38}
-\contentsline {xpart}{L' Aerodinamica del velivolo Airbus~A340-200}{39}
-\contentsline {chapter}{\numberline {5}Introduzione}{39}
-\contentsline {chapter}{\relax \fontsize {12}{14.5}\selectfont \abovedisplayskip 12\p@ plus3\p@ minus7\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \belowdisplayskip \abovedisplayskip \let \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ Lista dei simboli}{42}
-\contentsline {chapter}{Bibliografia}{43}
+\contentsline {chapter}{\numberline {1}Generalit\IeC {\`a} e geometria del profilo alare PW106}{2}
+\contentsline {section}{\numberline {1.1}Geometria del Profilo}{2}
+\contentsline {chapter}{\numberline {2}Effetti viscosi}{11}
+\contentsline {section}{\numberline {2.1}Curva di Portanza e polare}{11}
+\contentsline {section}{\numberline {2.2}Coefficiente di pressione al variare del numero di Reynolds }{14}
+\contentsline {section}{\numberline {2.3}Sviluppo e parametri di Strato Limite}{17}
+\contentsline {section}{\numberline {2.4}Effetto della Transizione Forzata}{20}
+\contentsline {section}{\numberline {2.5}Effetto della variazione di $n_{cr}$}{22}
+\contentsline {chapter}{\numberline {3}Aerodinamica viscosa alle alte incidenze}{24}
+\contentsline {section}{\numberline {3.1}Coefficiente di pressione}{24}
+\contentsline {section}{\numberline {3.2}Sviluppo e Parametri di strato limite}{25}
+\contentsline {section}{\numberline {3.3}Effetto della variazione del numero di Reynolds e stallo}{28}
+\contentsline {chapter}{\numberline {4}Modifiche della geometria}{34}
+\contentsline {section}{\numberline {4.1}Configurazione con {\itshape Flap}}{34}
+\contentsline {section}{\numberline {4.2}Configurazione con Alettoni}{38}
+\contentsline {section}{\numberline {4.3}Configurazione con {\itshape Droop Nose}}{40}
+\contentsline {chapter}{\numberline {5}Campo di moto e aerodinamica non viscosa per fissati $\alpha $ e $M_{\infty }$}{44}
+\contentsline {section}{\numberline {5.1}Determinazione del campo di moto attorno al corpo e a valle}{44}
+\contentsline {section}{\numberline {5.2}Calcolo delle caratteristiche aerodinamiche}{45}
+\contentsline {part}{II\hspace {1em}L' Aerodinamica del velivolo Airbus~A340-200}{47}
+\contentsline {xpart}{L' Aerodinamica del velivolo Airbus~A340-200}{48}
+\contentsline {chapter}{\numberline {6}Introduzione}{48}
+\contentsline {chapter}{\relax \fontsize {12}{14.5}\selectfont \abovedisplayskip 12\p@ plus3\p@ minus7\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \belowdisplayskip \abovedisplayskip \let \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ Lista dei simboli}{51}
+\contentsline {chapter}{Bibliografia}{52}
