@@ -3,7 +3,7 @@
 
 \chapter{Campo di moto e aerodinamica non viscosa al variare delle condizioni}
 Lo {\itshape script} Matlab utilizzato per ottenere i risultati riportati in questo capitolo è parametizzato, oltre che per la geometria del profilo, anche per le condizioni operative in termini di quota, numero di Mach e angolo d'attacco. In particolare, nel seguente capitolo, facendo variare $\alpha$ e \Minf sono stati ottenuti i grafici seguenti che permettono di vedere gli effetti del numero di Mach sulle caratteristiche aerodinamiche del profilo alare.
-Per prima cosa sono stati ricostruiti i campi di moto per diverse combinazioni di numero di Mach e angolo d'attacco. Nelle cinque differenti condizioni operative analizzate sono state calcolate le grandezze riportate da tabella~\vref{tabS6} a tabella~\vref{tabS10}, le onde d'urto e le onde di aspansione presenti, la direzione della linea di slip e le linee di corrente. Sono state poi valutate le curve di portanza, resistenza e momento per tre differenti numeri di Mach, e infine il valore del coefficiente di portanza fissato $\alpha$ al variare di \Minf.
+Per prima cosa sono stati ricostruiti i campi di moto per diverse combinazioni di numero di Mach e angolo d'attacco. Nelle cinque differenti condizioni operative analizzate sono state calcolate le grandezze riportate da tabella~\ref{tabS6} a tabella~\vref{tabS10}, le onde d'urto e le onde di aspansione presenti, la direzione della linea di slip e le linee di corrente. Sono state poi valutate le curve di portanza, resistenza e momento per tre differenti numeri di Mach, e infine il valore del coefficiente di portanza fissato $\alpha$ al variare di \Minf.
 
 
 %\begin{table} [H]\centering \rowcolors{1}{}{grigio_chiaro}
@@ -23,12 +23,14 @@ Per prima cosa sono stati ricostruiti i campi di moto per diverse combinazioni d
 	\centering 
 	\rowcolors{1}{}{grigio_chiaro}\begin{tabular}{l  c  c c c c c}   
 		\toprule&   
-		\emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule$M$ &2.1517 &2.3385 &1.9859 &1.4151 &1.9297 &1.9599 \\$p/p_{\infty}$ &0.78917 &0.58915 &1.0065 &2.2762 &1.0546 &1.0065 \\
-		$p \ [\si{Pa}]$ &20862.8208 &15574.9526 &26607.012 &60173.4691 &27880.7177 &26607.2346 \\
-		$T/T_{\infty}$ &0.93459&0.85971&1.0063&1.2853&1.0316&1.018\\
-		$T \ [K]$ &208.5535&191.8435&224.5571&286.804&230.2119&227.1572\\
-		$\rho/\rho_{\infty}$ &0.84441&0.68529&1.0002&1.771&1.0223&0.98871\\
-		$\rho \ [kg/m^3]$ &0.34849&0.28282&0.41277&0.7309&0.4219&0.40805\\
+		\emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule
+		$M$ &2.15 &2.34 &1.99 &1.42 &1.93 &1.96 \\
+		$p/p_{\infty}$   &  0.7892   &  0.5892   &  1.007   &  2.277   &  1.055   &  1.007 \\
+		$p \ [\si{Pa}]$  & 20862.82  & 15574.95  & 26607.01  & 60173.47  & 27880.72  & 26607.23 \\
+		$T/T_{\infty}$  & 0.9346 & 0.8597 & 1.006 & 1.285 & 1.032 & 1.018\\
+		$T \ [\si{K}]$  & 208.6 & 191.8 & 224.6 & 286.8 & 230.2 & 227.2\\
+		$\rho/\rho_{\infty}$  & 0.8444 & 0.6853 & 1.0002 & 1.771 & 1.022&0.9887\\
+		$\rho \ [\si{kg/m^3}]$ & 0.3485 & 0.2828 & 0.4128 & 0.7309 & 0.4219 & 0.4081\\
 		\bottomrule
 	\end{tabular}
 	\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=6^\circ$ e $\Minf=2$}\label{tabS6}
@@ -39,13 +41,13 @@ Per prima cosa sono stati ricostruiti i campi di moto per diverse combinazioni d
 	\begin{tabular}{l  c  c c c c c}   
 		\toprule&    
 		\emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule
-		$M$ &4.3284 &4.7663 &3.9255 &2.8767 &3.7497 &3.8136 \\
-		$p/p_{\infty}$ &0.65149 &0.37857 &1.0066 &3.8973 &1.0989 &1.0067 \\
-		$p \ [\si{Pa}]$ &17223.0389 &10007.904 &26611.1007 &103030.9142 &29051.7301 &26612.3423 \\
-		$T/T_{\infty}$ &0.88477&0.75765&1.0289&1.5819&1.1018&1.0745\\
-		$T \ [K]$ &197.4368&169.0698&229.6046&353.0022&245.8629&239.7786\\
-		$\rho/\rho_{\infty}$ &0.73634&0.49966&0.97831&2.4637&0.99741&0.93685\\
-		$\rho \ [kg/m^3]$ &0.30389&0.20621&0.40376&1.0168&0.41164&0.38664\\
+		$M$ &4.33 &4.77 &3.93 &2.88 &3.75 &3.81 \\
+		$p/p_{\infty}$ &0.6515 &0.3786 &1.007 &3.897 &1.099 &1.007 \\
+		$p \ [\si{Pa}]$  & 17223.04  & 10007.90  & 26611.10  & 103030.91  & 29051.73  & 26612.34 \\
+		$T/T_{\infty}$  & 0.885 & 0.7577 & 1.029 & 1.582 & 1.102 & 1.075\\
+		$T \ [\si{K}]$  & 197.4 & 169.1 & 229.6 & 353.0 & 245.9 & 239.8\\
+		$\rho/\rho_{\infty}$  & 0.7363 & 0.4997 & 0.9783 & 2.464 & 0.9974 & 0.9369\\
+		$\rho \ [\si{kg/m^3}]$  & 0.3039 & 0.2062 & 0.4038 & 1.017 & 0.4116 & 0.3866\\
 		\bottomrule
 	\end{tabular}
 	\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=6^\circ$ e $\Minf=4$}\label{tabS7}\end{table}				
@@ -55,16 +57,18 @@ Per prima cosa sono stati ricostruiti i campi di moto per diverse combinazioni d
 	\rowcolors{1}{}{grigio_chiaro}
 	\begin{tabular}{l  c  c c c c c}    
 		\toprule&
-		\emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule$M$ &6.6496 &7.5824 &5.6878 &3.8994 &5.2808 &5.4196 \\
-		$p/p_{\infty}$ &0.52765 &0.22874 &1.0104 &6.4878 &1.1793 &1.0105 \\
-		$p \ [\si{Pa}]$ &13949.2181 &6046.9323 &26711.9441 &171512.6281 &31176.5615 &26712.9049 \\
-		$T/T_{\infty}$ &0.83305&0.65607&1.0977&2.0292&1.2467&1.1928\\
-		$T \ [K]$ &185.8952&146.4029&244.9487&452.8086&278.197&266.1822\\
-		$\rho/\rho_{\infty}$ &0.6334&0.34864&0.92051&3.1973&0.94596&0.84711\\
-		$\rho \ [kg/m^3]$ &0.26141&0.14389&0.3799&1.3195&0.3904&0.34961\\
+		\emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule
+		$M$  & 6.65  & 7.58  & 5.69  & 3.90  & 5.28  & 5.42 \\
+		$p/p_{\infty}$  & 0.5277  & 0.2287  & 1.010  & 6.488  & 1.179  & 1.011 \\
+		$p \ [\si{Pa}]$  & 13949.22  & 6046.93  & 26711.94  & 171512.63  & 31176.56  & 26712.90 \\
+		$T/T_{\infty}$  & 0.8331 & 0.6561 & 1.098 & 2.029 & 1.247 & 1.193\\
+		$T \ [\si{K}]$  & 185.9 & 146.4 & 244.9 & 452.8 & 278.2 & 266.2\\
+		$\rho/\rho_{\infty}$  & 0.6334 & 0.3486 & 0.9205 & 3.198 & 0.9460 & 0.8471\\
+		$\rho \ [\si{kg/m^3}]$  & 0.2614 & 0.1439 & 0.3799 & 1.320 & 0.3904 & 0.3496\\
 		\bottomrule
 	\end{tabular}
-	\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=6^\circ$ e $\Minf=6$}\label{tabS8}
+	\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=6^\circ$ e $\Minf=6$}
+	\label{tabS8}
 \end{table}	
 
 
@@ -72,18 +76,38 @@ Per prima cosa sono stati ricostruiti i campi di moto per diverse combinazioni d
 	\centering 
 	\rowcolors{1}{}{grigio_chiaro}\begin{tabular}{l  c  c c c c c}    
 		\toprule&   
-		\emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule$M$ &1.717 &1.8822 &1.9948 &1.8665 &2.437 &1.9786 \\
-		$p/p_{\infty}$ &1.5327 &1.1908 &1.0001 &1.2285 &0.50471 &1.0001 \\
-		$p \ [\si{Pa}]$ &40520.2356 &31480.6611 &26439.5504 &32477.9934 &13342.6358 &26439.4952 \\
-		$T/T_{\infty}$ &1.1323&1.0535&1.0023&1.0608&0.82274&1.0096\\
-		$T \ [K]$ &252.6799&235.0977&223.663&236.7264&183.5954&225.2822\\
-		$\rho/\rho_{\infty}$ &1.3536&1.1303&0.99783&1.1581&0.61345&0.99066\\
-		$\rho \ [kg/m^3]$ &0.55865&0.46648&0.41181&0.47795&0.25317&0.40885\\
+		\emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule
+		$M$  & 1.72  & 1.88  & 1.99  & 1.87  & 2.44  & 1.98 \\
+		$p/p_{\infty}$  & 1.533  & 1.191  & 1.0001  & 1.229  & 0.5047  & 1.0001 \\
+		$p \ [\si{Pa}]$  & 40520.24  & 31480.66  & 26439.55  & 32477.99  & 13342.63  & 26439.50 \\
+		$T/T_{\infty}$  & 1.132 & 1.054 & 1.002 & 1.061 & 0.8227 & 1.010\\
+		$T \ [\si{K}]$  & 252.7 & 235.1 & 223.7 & 236.7 & 183.6 & 225.3\\
+		$\rho/\rho_{\infty}$  & 1.354 & 1.130 & 0.9978 & 1.158 & 0.6134 & 0.9907\\
+		$\rho \ [\si{kg/m^3}]$  & 0.5587 & 0.4665 & 0.4118 & 0.4780 & 0.2532 & 0.4089\\
 		\bottomrule\end{tabular}
-	\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=-6^\circ$ e $\Minf=2$}\label{tabS9}
+	\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=-6^\circ$ e $\Minf=2$}
+	\label{tabS9}
 \end{table}			
 
-\begin{table} [H]\centering \rowcolors{1}{}{grigio_chiaro}\begin{tabular}{l  c  c c c c c}    \toprule&    \emph{Regione 1}& \emph{Regione 2}& \emph{Regione 3}& \emph{Regione 4}& \emph{Regione 5}& \emph{Regione 6}   \\  \midrule$M$ &1.9313 &2.1053 &1.9988 &1.6506 &2.1856 &1.9881 \\$p/p_{\infty}$ &1.1124 &0.84842 &1.0012 &1.683 &0.73785 &1.0012 \\$p \ [\si{Pa}]$ &29407.7074 &22429.1211 &26469.1588 &44493.0925 &19505.9906 &26469.2197 \\$T/T_{\infty}$ &1.0309&0.95415&1.0005&1.1651&0.92056&1.0053\\$T \ [K]$ &230.0538&212.9195&223.2666&259.9977&205.4226&224.3291\\$\rho/\rho_{\infty}$ &1.079&0.88919&1.0007&1.4445&0.80152&0.99598\\$\rho \ [kg/m^3]$ &0.44532&0.36697&0.413&0.59616&0.33079&0.41105\\\bottomrule\end{tabular}\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=0^\circ$ e $\Minf=2$}\label{tabS10}\end{table}				
+\begin{table} [H]
+	\centering 
+	\rowcolors{1}{}{grigio_chiaro}
+	\begin{tabular}{l  c  c c c c c}    
+		\toprule 
+		 &  \emph{Regione 1} &  \emph{Regione 2} &  \emph{Regione 3} &  \emph{Regione 4} &  \emph{Regione 5} &  \emph{Regione 6}  \\  
+		\midrule
+		$M$  & 1.93  & 2.11  & 2.00  & 1.65  & 2.19  & 1.99 \\
+		$p/p_{\infty}$  & 1.112  & 0.8484  & 1.001  & 1.683  & 0.7379  & 1.001 \\
+		$p \ [\si{Pa}]$  & 29407.71  & 22429.12  & 26469.16  & 44493.09  & 19505.99  & 26469.22 \\
+		$T/T_{\infty}$  & 1.031 & 0.9542 & 1.001 & 1.165 & 0.9206 & 1.005\\
+		$T \ [K]$  & 230.1 & 212.9 & 223.3 & 260.0 & 205.4 & 224.3\\
+		$\rho/\rho_{\infty}$  & 1.079 & 0.8892 & 1.001 & 1.445 & 0.8015 & 0.9960\\
+		$\rho \ [kg/m^3]$  & 0.4453 & 0.3670 & 0.4130 & 0.5962 & 0.3308 & 0.4111\\
+		\bottomrule
+	\end{tabular}
+\caption {\footnotesize Grandezze descrittive del campo di moto per $\alpha=0^\circ$ e $\Minf=2$}
+\label{tabS10}
+\end{table}				
 
 
 
