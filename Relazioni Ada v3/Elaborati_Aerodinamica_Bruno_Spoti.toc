@@ -5,8 +5,13 @@
 \contentsline {part}{II\hspace {1em}L' Aerodinamica del velivolo Airbus~A340-200}{2}
 \contentsline {xpart}{L' Aerodinamica del velivolo Airbus~A340-200}{3}
 \contentsline {chapter}{\numberline {1}Introduzione}{3}
-\contentsline {chapter}{\numberline {2}Il carico lungo l'ala}{6}
-\contentsline {section}{\numberline {2.1}Il metodo di Schrenk}{6}
-\contentsline {section}{\numberline {2.2}Carico alare effettivo secondo Pope \& Haney}{9}
-\contentsline {chapter}{\relax \fontsize {12}{14.5}\selectfont \abovedisplayskip 12\p@ plus3\p@ minus7\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \belowdisplayskip \abovedisplayskip \let \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ Lista dei simboli}{11}
-\contentsline {chapter}{Bibliografia}{12}
+\contentsline {chapter}{\numberline {2}La Teoria Globale}{6}
+\contentsline {section}{\numberline {2.1} Calcoli Preliminari}{6}
+\contentsline {subsection}{\numberline {2.1.1} Densit\IeC {\`a} alla quota di tangenza}{6}
+\contentsline {subsection}{\numberline {2.1.2}Fattore di Oswald}{7}
+\contentsline {section}{\numberline {2.2} Coefficiente di Portanza}{7}
+\contentsline {section}{\numberline {2.3} Coefficiente di Resistenza indotta e Resistenza indotta}{8}
+\contentsline {section}{\numberline {2.4} Deviazione impressa della corrente e velocit\IeC {\`a} verticale}{9}
+\contentsline {section}{\numberline {2.5}Grafici}{10}
+\contentsline {chapter}{\relax \fontsize {12}{14.5}\selectfont \abovedisplayskip 12\p@ plus3\p@ minus7\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \belowdisplayskip \abovedisplayskip \let \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ Lista dei simboli}{18}
+\contentsline {chapter}{Bibliografia}{19}
