@@ -1,0 +1,181 @@
+AirbusA340-200
+
+#Mach
+ 0.2
+
+#IYsym   IZsym   Zsym
+ 0       0       0.0
+
+#Sref    Cref(mac)    Bref
+370.0   7.39    58.3
+
+#Xref    Yref    Zref
+0.0     0.0     0.0
+
+#--------------------------------------------------
+SURFACE 
+Wing 
+!Nchordwise  Cspace  Nspanwise  Sspace
+12           1.0     26         -1.1
+
+COMPONENT 
+1
+
+YDUPLICATE 
+0.0
+
+ANGLE
+0.0
+
+SCALE
+1.0   1.0   1.0
+
+TRANSLATE
+0.0  0.0  0.0
+
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+18.626   0.0  -1.464   11.982    0.0  
+!AFILE
+!sc20614.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+SECTION   #KINK
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+24.35    9.1    -0.45     7.2    0.0  
+!AFILE
+!sc20614.dat
+#CONTROL
+#slat    -1.0 -0.05  0. 0. 0.  +1
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+SECTION	   #TIP
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+36.973    29.15    0.86     2.57    0.0  
+!AFILE
+!sc20610.dat
+#CONTROL
+#slat    -1.0 -0.05  0. 0. 0.  +1
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+SECTION   #WINGLET TIP 
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+39.427    30.15    2.161     0.93    0.0  
+!AFILE
+!sc20610.dat
+#CONTROL
+#slat    -1.0 -0.05  0. 0. 0.  +1
+#CONTROL
+
+#------------------------------------------
+BODY                 
+Fuselage             
+30   1.0             !Nbody  Bspace
+
+!COMPONENT 
+!1
+
+!YDUPLICATE 
+!0.0
+
+ANGLE
+0.0
+
+SCALE
+58.57  58.57 58.57
+
+TRANSLATE
+0.0  0.0  0.0
+
+!BFILE
+!topview.dat
+
+BFILE
+sideviewinterp.dat
+#-------------------------------------------
+#--------------------------------------------------
+SURFACE 
+Stab 
+!Nchordwise  Cspace  Nspanwise  Sspace
+12           1.0     26         -1.1
+
+COMPONENT 
+1
+
+YDUPLICATE 
+0.0
+
+ANGLE
+0.0
+
+SCALE
+1.0   1.0   1.0
+
+TRANSLATE
+0.0  0.0  0.0
+
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+51   0.0  1.8   5    0.0  
+!AFILE
+!sc20614.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+
+SECTION	   #TIP
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+57.4    9.7    2.8     2.2    0.0  
+!AFILE
+!sc20610.dat
+#CONTROL
+#slat    -1.0 -0.05  0. 0. 0.  +1
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+
+#--------------------------------------------------
+SURFACE 
+Fin 
+!Nchordwise  Cspace  Nspanwise  Sspace
+12           1.0     26         -1.1
+
+COMPONENT 
+1
+
+YDUPLICATE 
+0.0
+
+ANGLE
+0.0
+
+SCALE
+1.0   1.0   1.0
+
+TRANSLATE
+0.0  0.0  0.0
+
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+48.15   0.0  2.97   7.8    0.0  
+!AFILE
+!sc20614.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+
+SECTION	   #TIP
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+56.1    0.0    11.27     3.1    0.0  
+!AFILE
+!sc20610.dat
+#CONTROL
+#slat    -1.0 -0.05  0. 0. 0.  +1
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1

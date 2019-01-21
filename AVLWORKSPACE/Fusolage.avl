@@ -1,0 +1,37 @@
+AirbusA340-200Fusolage
+
+#Mach
+ 0.2
+
+#IYsym   IZsym   Zsym
+ 0       0       0.0
+
+#Sref    Cref(mac)    Bref
+370.0   7.39    58.3
+
+#Xref    Yref    Zref
+0.0     0.0     0.0
+
+#--------------------------------------------------
+BODY                 
+Fuselage             
+25   1.0             !Nbody  Bspace
+
+!COMPONENT 
+!1
+
+!YDUPLICATE 
+!0.0
+
+ANGLE
+0.0
+
+SCALE
+1.0   1.0   1.0
+
+TRANSLATE
+0.0  0.0  0.0
+
+
+BFILE
+sideview.dat

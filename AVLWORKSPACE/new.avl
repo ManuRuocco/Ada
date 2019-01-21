@@ -1,0 +1,82 @@
+AirbusA340-200
+
+#Mach
+ 0.2
+
+#IYsym   IZsym   Zsym
+ 0       0       0.0
+
+#Sref    Cref(mac)    Bref
+370.0   7.39    58.3
+
+#Xref    Yref    Zref
+0.0     0.0     0.0
+
+#--------------------------------------------------
+SURFACE 
+Wing 
+!Nchordwise  Cspace  Nspanwise  Sspace
+12           1.0     26         -1.1
+
+COMPONENT 
+1
+
+YDUPLICATE 
+0.0
+
+ANGLE
+0.0
+
+SCALE
+1.0   1.0   1.0
+
+TRANSLATE
+0.0  0.0  0.0
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.0   0.0  0.0      58.570000000000000  
+AFILE
+sideview.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.008248   0.0096295032  0.0   58.032569802725618    0.0  
+AFILE
+sideview.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.025729   0.0192590064  0    52.011655202472966    0.0  
+AFILE
+sideview.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.050412   0.0288885096  0   47.789030762621664    0.0  
+AFILE
+sideview.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.086202   0.0385180128  0   42.001428344878171    0.0  
+AFILE
+sideview.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
+
+SECTION    #ROOT
+#Xle    Yle    Zle     Chord   Ainc  Nspanwise  Sspace
+0.167167   0.048147516  0   30.604144144144144   0.0  
+AFILE
+sideview.dat
+#CONTROL
+#flap     1.0  0.81  0. 0. 0.  +1
